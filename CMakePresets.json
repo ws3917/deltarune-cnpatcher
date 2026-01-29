@@ -1,0 +1,48 @@
+{
+    "version": 8,
+    "configurePresets": [
+        {
+            "name": "base",
+            "hidden": true,
+            "generator": "Ninja",
+            "binaryDir": "${sourceDir}/build/${presetName}",
+            "installDir": "${sourceDir}/install/${presetName}",
+            "architecture": {
+                "strategy": "external",
+                "value": "x64"
+            },
+            "toolset": {
+                "strategy": "external",
+                "value": "host=x64"
+            },
+            "cacheVariables": {
+                "CMAKE_C_COMPILER": "cl.exe",
+                "CMAKE_C_FLAGS": "/utf-8 /validate-charset /W4",
+                "CMAKE_CXX_COMPILER": "cl.exe",
+                "CMAKE_CXX_FLAGS": "/utf-8 /validate-charset /EHsc /W4",
+                "CMAKE_EXPORT_COMPILE_COMMANDS": true
+            },
+            "condition": {
+                "lhs": "${hostSystemName}",
+                "type": "equals",
+                "rhs": "Windows"
+            }
+        },
+        {
+            "name": "debug",
+            "inherits": "base",
+            "displayName": "MSVC Debug",
+            "cacheVariables": {
+                "CMAKE_BUILD_TYPE": "Debug"
+            }
+        },
+        {
+            "name": "release",
+            "inherits": "base",
+            "displayName": "MSVC Release",
+            "cacheVariables": {
+                "CMAKE_BUILD_TYPE": "Release"
+            }
+        }
+    ]
+}
