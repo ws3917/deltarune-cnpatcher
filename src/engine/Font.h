@@ -23,7 +23,7 @@ class Font
     template <typename T> T read(std::ifstream &file)
     {
         T value;
-        return file.read(reinterpret_cast<char *>(value), sizeof(T));
+        file.read(reinterpret_cast<char *>(&value), sizeof(T));
         return value;
     }
     uint16_t line_height = 0;          // 基准行高
