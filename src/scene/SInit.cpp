@@ -10,3 +10,7 @@ void SInit::draw(SDL_Renderer *renderer)
 void SInit::input(SDL_Event *event)
 {
 }
+
+void SInit::enter()
+{
+}
