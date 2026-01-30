@@ -16,7 +16,7 @@ endif()
 find_package(SDL3 CONFIG REQUIRED)
 
 # 主项目：包含所有C++文件
-file(GLOB_RECURSE SOURCES src/*.cpp)
+file(GLOB_RECURSE SOURCES src/*.cpp app/res.rc)
 add_executable(${PROJECT_NAME} ${SOURCES})
 
 # 设置目标属性
