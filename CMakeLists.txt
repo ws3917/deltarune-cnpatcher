@@ -6,8 +6,16 @@ project(cn_patcher)
 set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
+if(WIN32)
+    set(PLATFORM_DIR "msvc")
+    add_compile_definitions(WIN32_LEAN_AND_MEAN NOMINMAX)
+elseif(UNIX)
+    set(PLATFORM_DIR "gcc")
+    set(CMAKE_BUILD_RPATH_USE_ORIGIN ON)
+endif()
+
 # 预加载第三方库
-file(GLOB THIRD_PARTY_DIRS 3rdparty/*)
+file(GLOB THIRD_PARTY_DIRS "3rdparty/${PLATFORM_DIR}/*")
 if(THIRD_PARTY_DIRS)
     list(PREPEND CMAKE_PREFIX_PATH ${THIRD_PARTY_DIRS})
 endif()
@@ -16,22 +24,28 @@ endif()
 find_package(SDL3 CONFIG REQUIRED)
 
 # 主项目：包含所有C++文件
-file(GLOB_RECURSE SOURCES src/*.cpp app/res.rc)
-add_executable(${PROJECT_NAME} ${SOURCES})
+file(GLOB_RECURSE SOURCES src/*.cpp)
+if(WIN32)
+    set(RC_FILES app/res.rc)
+endif()
 
-# 设置目标属性
-set_target_properties(${PROJECT_NAME} PROPERTIES
-    WIN32_EXECUTABLE $<CONFIG:Release>
-)
+add_executable(${PROJECT_NAME} ${SOURCES} ${RC_FILES})
 
 # 链接库
 target_link_libraries(${PROJECT_NAME} PRIVATE SDL3::SDL3-shared)
 
+if(WIN32)
+    # Release 模式下隐藏控制台窗口
+    set_target_properties(${PROJECT_NAME} PROPERTIES 
+        WIN32_EXECUTABLE $<CONFIG:Release>
+    )
 
-# 构建后续操作：自动复制 DLL
-add_custom_command(TARGET ${PROJECT_NAME} POST_BUILD
-    COMMAND ${CMAKE_COMMAND} -E copy_if_different
-        $<TARGET_RUNTIME_DLLS:${PROJECT_NAME}>
-        $<TARGET_FILE_DIR:${PROJECT_NAME}>
-    COMMAND_EXPAND_LISTS
-)
+    # 复制DLL
+    add_custom_command(TARGET ${PROJECT_NAME} POST_BUILD
+        COMMAND ${CMAKE_COMMAND} -E copy_if_different
+            $<TARGET_RUNTIME_DLLS:${PROJECT_NAME}>
+            $<TARGET_FILE_DIR:${PROJECT_NAME}>
+        COMMAND_EXPAND_LISTS
+        COMMENT "Copying DLLs for Windows..."
+    )
+endif()
