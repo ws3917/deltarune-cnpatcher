@@ -7,6 +7,7 @@
  * This code is public domain. Feel free to use it for any purpose!
  */
 
+#include <SDL3/SDL_video.h>
 #define SDL_MAIN_USE_CALLBACKS 1 /* use the callbacks instead of main() */
 #include <SDL3/SDL.h>
 #include <SDL3/SDL_main.h>
@@ -342,7 +343,7 @@ SDL_AppResult SDL_AppInit(void **appstate, int argc, char *argv[])
 
     *appstate = as;
 
-    if (!SDL_CreateWindowAndRenderer("examples/demo/snake", SDL_WINDOW_WIDTH, SDL_WINDOW_HEIGHT, SDL_WINDOW_RESIZABLE, &as->window, &as->renderer)) {
+    if (!SDL_CreateWindowAndRenderer("examples/demo/snake", SDL_WINDOW_WIDTH, SDL_WINDOW_HEIGHT, SDL_WINDOW_FULLSCREEN, &as->window, &as->renderer)) {
         return SDL_APP_FAILURE;
     }
     SDL_SetRenderLogicalPresentation(as->renderer, SDL_WINDOW_WIDTH, SDL_WINDOW_HEIGHT, SDL_LOGICAL_PRESENTATION_LETTERBOX);
