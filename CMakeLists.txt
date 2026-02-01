@@ -16,6 +16,7 @@ endif()
 
 # 预加载第三方库
 file(GLOB THIRD_PARTY_DIRS "3rdparty/${PLATFORM_DIR}/*")
+
 if(THIRD_PARTY_DIRS)
     list(PREPEND CMAKE_PREFIX_PATH ${THIRD_PARTY_DIRS})
 endif()
@@ -25,6 +26,7 @@ find_package(SDL3 CONFIG REQUIRED)
 
 # 主项目：包含所有C++文件
 file(GLOB_RECURSE SOURCES src/*.cpp)
+
 if(WIN32)
     set(RC_FILES app/res.rc)
 endif()
@@ -36,15 +38,15 @@ target_link_libraries(${PROJECT_NAME} PRIVATE SDL3::SDL3-shared)
 
 if(WIN32)
     # Release 模式下隐藏控制台窗口
-    set_target_properties(${PROJECT_NAME} PROPERTIES 
+    set_target_properties(${PROJECT_NAME} PROPERTIES
         WIN32_EXECUTABLE $<CONFIG:Release>
     )
 
     # 复制DLL
     add_custom_command(TARGET ${PROJECT_NAME} POST_BUILD
         COMMAND ${CMAKE_COMMAND} -E copy_if_different
-            $<TARGET_RUNTIME_DLLS:${PROJECT_NAME}>
-            $<TARGET_FILE_DIR:${PROJECT_NAME}>
+        $<TARGET_RUNTIME_DLLS:${PROJECT_NAME}>
+        $<TARGET_FILE_DIR:${PROJECT_NAME}>
         COMMAND_EXPAND_LISTS
         COMMENT "Copying DLLs for Windows..."
     )

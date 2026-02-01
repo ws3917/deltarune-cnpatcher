@@ -2,15 +2,15 @@ plugins {
     id 'com.android.application'
 }
 
-def keystorePropertiesFile = rootProject.file("local.properties")
+def keystoreFile = rootProject.file("local.properties")
 def keystoreProperties = new Properties()
-if (keystorePropertiesFile.exists()) {
-    keystorePropertiesFile.withInputStream { keystoreProperties.load(it) }
+if (keystoreFile.exists()) {
+    keystoreFile.withInputStream { keystoreProperties.load(it) }
 }
 
 android {
     namespace = "xyz.ws3917.game"
-    compileSdk = 35 
+    compileSdk = 35
     ndkVersion = "28.2.13676358"
 
     defaultConfig {
@@ -29,17 +29,19 @@ android {
 
     signingConfigs {
         release {
-            storeFile = file("game.keystore")
-            storePassword = keystoreProperties['STORE_PASSWORD']
-            keyAlias = keystoreProperties['KEY_ALIAS']
-            keyPassword = keystoreProperties['KEY_PASSWORD']
+            if (keystoreProperties['STORE_FILE']) {
+                storeFile = file(keystoreProperties['STORE_FILE'])
+                storePassword = keystoreProperties['STORE_PASSWORD']
+                keyAlias = keystoreProperties['KEY_ALIAS']
+                keyPassword = keystoreProperties['KEY_PASSWORD']
+            }
         }
     }
 
     buildTypes {
         release {
             signingConfig = signingConfigs.release
-            minifyEnabled = false
+            minifyEnabled = true
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
     }
