@@ -23,6 +23,7 @@ endif()
 
 # 需要使用的第三方库
 find_package(SDL3 CONFIG REQUIRED)
+find_package(SDL3_mixer CONFIG REQUIRED)
 
 # 主项目：包含所有C++文件
 file(GLOB_RECURSE SOURCES src/*.cpp)
@@ -34,7 +35,10 @@ endif()
 add_executable(${PROJECT_NAME} ${SOURCES} ${RC_FILES})
 
 # 链接库
-target_link_libraries(${PROJECT_NAME} PRIVATE SDL3::SDL3-shared)
+target_link_libraries(${PROJECT_NAME} PRIVATE
+    SDL3::SDL3-shared
+    SDL3_mixer::SDL3_mixer-shared
+)
 
 if(WIN32)
     # Release 模式下隐藏控制台窗口
@@ -48,6 +52,12 @@ if(WIN32)
         $<TARGET_RUNTIME_DLLS:${PROJECT_NAME}>
         $<TARGET_FILE_DIR:${PROJECT_NAME}>
         COMMAND_EXPAND_LISTS
-        COMMENT "Copying DLLs for Windows..."
     )
 endif()
+
+add_custom_command(TARGET ${PROJECT_NAME} POST_BUILD
+    COMMAND ${CMAKE_COMMAND} -E copy_directory_if_different
+    ${CMAKE_SOURCE_DIR}/assets/
+    $<TARGET_FILE_DIR:${PROJECT_NAME}>
+    COMMAND_EXPAND_LISTS
+)
