@@ -1,6 +1,4 @@
 #include "E_Font.hpp"
-#include <SDL3/SDL_render.h>
-#include <SDL3/SDL_surface.h>
 bool E_Font::load(SDL_Renderer *renderer, const std::string &path)
 {
     std::ifstream file(path, std::ios::binary);

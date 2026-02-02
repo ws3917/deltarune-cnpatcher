@@ -1,4 +1,4 @@
-#include "S_Init.h"
+#include "S_Init.hpp"
 void S_Init::update(float delta)
 {
 }

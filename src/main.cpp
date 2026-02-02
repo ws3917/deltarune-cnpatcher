@@ -1,10 +1,10 @@
-#include "engine/E_Game.hpp"
-#include <SDL3/SDL_init.h>
+#include "engine/Game.hpp"
 #include <SDL3/SDL_main.h>
 
 int main(int, char **)
 {
-    E_Game *game = E_Game::get();
+    Game *game = Game::get();
+    
     SDL_Log("-- Game Start --\n");
     game->init();
     SDL_Event event;
