@@ -6,9 +6,6 @@
 #include <string>
 #include <unordered_map>
 
-#include "SDL3/SDL_properties.h"
-
-
 class AudioMgr {
  public:
   enum class AudioType { Music, Sound, Voice };

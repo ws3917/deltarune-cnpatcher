@@ -1,19 +1,17 @@
 #include "Game.hpp"
 
-#include <fstream>
 #include <nlohmann/json.hpp>
 #include <string>
 
 #include "AudioMgr.hpp"
 #include "FontMgr.hpp"
 #include "ImageMgr.hpp"
-#include "SDL3/SDL_log.h"
 
 void Game::init() {
   // 创建窗口
   window =
       SDL_CreateWindow("title", WIDTH, HEIGHT,
-                       SDL_WINDOW_HIGH_PIXEL_DENSITY | SDL_WINDOW_RESIZABLE);
+                       SDL_WINDOW_HIGH_PIXEL_DENSITY | SDL_WINDOW_FULLSCREEN);
   renderer = SDL_CreateRenderer(window, nullptr);
   if (!window || !renderer) {
     SDL_Log("[C] <Init> Can't create window / renderer: %s", SDL_GetError());
@@ -37,6 +35,7 @@ void Game::init() {
   }
 
   // 加载资源
+  SDL_Log("[I] <Init> Start loading assets");
   loadAssets("assets.json");
 }
 void Game::enterScene(Scene* scene) {
@@ -77,14 +76,17 @@ void Game::exit() {
 }
 SDL_AppResult Game::getState() { return state; }
 void Game::loadAssets(const std::string& json_path) {
-  std::ifstream json_file(json_path);
-  if (!json_file.is_open()) {
-    SDL_Log("[E] <loadAssets> Can't open json file: %s", json_path.c_str());
+  size_t size;
+  void* json_data = SDL_LoadFile(json_path.c_str(), &size);
+  if (!json_data) {
+    SDL_Log("[E] <loadAssets> Can't open json file '%s': %s", json_path.c_str(),
+            SDL_GetError());
     return;
   }
   nlohmann::json j;
   try {
-    json_file >> j;
+    j = nlohmann::json::parse((char*)json_data, (char*)json_data + size);
+    SDL_free(json_data);
   } catch (const nlohmann::json::parse_error& e) {
     SDL_Log("[E] <loadAssets> Can't parse json file: %s", json_path.c_str());
     return;

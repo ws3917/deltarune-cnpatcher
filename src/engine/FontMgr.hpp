@@ -2,7 +2,6 @@
 #pragma once
 #include <SDL3/SDL.h>
 
-#include <fstream>
 #include <string>
 #include <unordered_map>
 
@@ -42,9 +41,10 @@ class FontMgr {
   uint32_t getNextUTF8(const std::string& str, size_t& i);
 
   template <typename T>
-  T read(std::ifstream& file) {
+  T read(uint8_t*& cursor) {
     T value;
-    file.read(reinterpret_cast<char*>(&value), sizeof(T));
+    memcpy(&value, cursor, sizeof(T));
+    cursor += sizeof(T);
     return value;
   }
   FontMgr() = default;

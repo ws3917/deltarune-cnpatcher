@@ -2,7 +2,6 @@
 
 #include <SDL3_mixer/SDL_mixer.h>
 
-#include "SDL3/SDL_properties.h"
 
 bool AudioMgr::init() {
   mixer = MIX_CreateMixerDevice(SDL_AUDIO_DEVICE_DEFAULT_PLAYBACK, nullptr);

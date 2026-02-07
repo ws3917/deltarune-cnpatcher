@@ -4,7 +4,6 @@
 #include "../engine/FontMgr.hpp"
 #include "../engine/Game.hpp"
 #include "../engine/ImageMgr.hpp"
-#include "SDL3/SDL_scancode.h"
 
 void S_Init::update(float delta) {
   img_pos_x += delta;
@@ -14,8 +13,8 @@ void S_Init::update(float delta) {
 void S_Init::draw(SDL_Renderer* renderer) {
   FontMgr::get()->draw(renderer, "main", "你好\n我是ws3917", 200, 200, 2.0f);
   ImageMgr::get()->draw(renderer, "icon", Game::WIDTH / 2.0f, 20, 0, 0.5f);
-  ImageMgr::get()->draw(renderer, "test1", img_pos_x, 20);
-  ImageMgr::get()->draw(renderer, "test2", img_pos_x / 2.0f, 400, 0, 0.5f);
+  ImageMgr::get()->draw(renderer, "test1", img_pos_x, 200);
+  ImageMgr::get()->draw(renderer, "test2", img2_pos.x, img2_pos.y, 0, 2.0);
 }
 
 void S_Init::input(SDL_Event* event) {
@@ -37,6 +36,10 @@ void S_Init::input(SDL_Event* event) {
       default:
         break;
     }
+  }
+  if (event->type == SDL_EVENT_MOUSE_MOTION) {
+    img2_pos.x = event->motion.x;
+    img2_pos.y = event->motion.y;
   }
 }
 

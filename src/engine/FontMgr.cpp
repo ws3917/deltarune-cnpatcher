@@ -2,11 +2,14 @@
 
 bool FontMgr::load(SDL_Renderer* renderer, const std::string& name,
                    const std::string& path) {
-  std::ifstream file(path, std::ios::binary);
-  if (!file.is_open()) {
-    SDL_Log("[E] <LoadFont> Fnt file not found: %s", path.c_str());
+  size_t data_size;
+  void* raw_data = SDL_LoadFile(path.c_str(), &data_size);
+  if (!raw_data) {
+    SDL_Log("[E] <LoadFont> Fnt file is not found: %s", path.c_str());
     return false;
   }
+  uint8_t* file = static_cast<uint8_t*>(raw_data);
+  uint8_t* end = file + data_size;
 
   // 加载字图
   std::string glyph_path = path;
@@ -18,6 +21,7 @@ bool FontMgr::load(SDL_Renderer* renderer, const std::string& name,
   if (!glyph_file) {
     SDL_Log("[E] <LoadFont> Can't open glyph file %s: %s", glyph_path.c_str(),
             SDL_GetError());
+    SDL_free(raw_data);
     return false;
   }
   Font* font = new Font;
@@ -36,24 +40,21 @@ bool FontMgr::load(SDL_Renderer* renderer, const std::string& name,
   }
 
   // 读物内容
-  while (file.peek() != EOF) {
+  while (file < end) {
     uint8_t block_type = read<uint8_t>(file);
     uint32_t block_size = read<uint32_t>(file);
+    uint8_t* next_block_pos = file + block_size;
+    if (next_block_pos > end) {
+      SDL_Log("[E] <LoadFont> Block size overflow.");
+      break;
+    }
     int num_chars = block_size / 20;
-    std::streampos next_block_pos = file.tellg() + std::streamoff(block_size);
 
     switch (block_type) {
       case 2:
         font->line_height = read<uint16_t>(file);
         font->base = read<uint16_t>(file);
-        read<uint16_t>(file);
-        read<uint16_t>(file);
-        read<uint16_t>(file);
-        read<uint8_t>(file);
-        read<uint8_t>(file);
-        read<uint8_t>(file);
-        read<uint8_t>(file);
-        read<uint8_t>(file);
+        file += 11;
         break;
       case 4:
         for (int i = 0; i < num_chars; i++) {
@@ -66,16 +67,16 @@ bool FontMgr::load(SDL_Renderer* renderer, const std::string& name,
           g.x_offset = read<int16_t>(file);
           g.y_offset = read<int16_t>(file);
           g.x_advance = read<int16_t>(file);
-          read<uint8_t>(file);
-          read<uint8_t>(file);
+          file += 2;
           font->glyphs[g.id] = g;
         }
         break;
       default:
         break;
     }
-    file.seekg(next_block_pos);
+    file = next_block_pos;
   }
+  SDL_free(raw_data);
   font_assets[name] = font;
   return true;
 }

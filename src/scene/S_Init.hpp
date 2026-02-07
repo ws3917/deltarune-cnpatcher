@@ -10,4 +10,5 @@ class S_Init : public Scene {
 
  private:
   float img_pos_x = 0;
+  SDL_FPoint img2_pos = {0, 0};
 };
