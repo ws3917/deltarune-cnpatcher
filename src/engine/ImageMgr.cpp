@@ -44,10 +44,9 @@ void ImageMgr::draw(SDL_Renderer* renderer, const std::string& name, float x,
   SDL_RenderTexture(renderer, tex, &src, &dst);
 }
 
-void ImageMgr::clear() {
+void ImageMgr::exit() {
   for (auto& [_, obj] : image_assets) {
     SDL_DestroyTexture(obj.first);
   }
   image_assets.clear();
 }
-ImageMgr::~ImageMgr() { clear(); }

@@ -21,10 +21,10 @@ class ImageMgr {
 
   void draw(SDL_Renderer* renderer, const std::string& name, float x, float y,
             int frame_idx = 0, float scale = 1.0f);
-  void clear();
+  void exit();
 
  private:
   ImageMgr() = default;
-  ~ImageMgr();
+  ~ImageMgr() = default;
   std::unordered_map<std::string, std::pair<SDL_Texture*, int>> image_assets;
 };

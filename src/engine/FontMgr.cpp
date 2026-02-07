@@ -131,7 +131,7 @@ uint32_t FontMgr::getNextUTF8(const std::string& str, size_t& i) {
   }
   return '?';
 }
-void FontMgr::clear() {
+void FontMgr::exit() {
   for (auto& [name, font] : font_assets) {
     if (font->atlas) {
       SDL_DestroyTexture(font->atlas);
@@ -141,4 +141,3 @@ void FontMgr::clear() {
   }
   font_assets.clear();
 }
-FontMgr::~FontMgr() { clear(); }

@@ -28,7 +28,7 @@ class Game {
 
  private:
   Game() = default;
-  ~Game();
+  ~Game() = default;
   SDL_Window* window = nullptr;
   SDL_Renderer* renderer = nullptr;
   SDL_AppResult state = SDL_APP_CONTINUE;

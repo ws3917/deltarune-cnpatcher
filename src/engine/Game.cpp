@@ -1,12 +1,11 @@
 #include "Game.hpp"
+
 #include "AudioMgr.hpp"
+#include "FontMgr.hpp"
+#include "ImageMgr.hpp"
+
 
 void Game::init() {
-  if (!SDL_Init(SDL_INIT_VIDEO | SDL_INIT_AUDIO)) {
-    SDL_Log("[C] <Init> SDL init failed: %s", SDL_GetError());
-    abort(true);
-  }
-
   // 创建窗口
   constexpr int WIDTH = 960, HEIGHT = 720;
   window =
@@ -30,10 +29,6 @@ void Game::init() {
                     static_cast<int>(HEIGHT * scale));
 
   // 音频
-  if (!MIX_Init()) {
-    SDL_Log("[C] <Init> Can't init audio: %s", SDL_GetError());
-    abort(true);
-  }
   if (!AudioMgr::get()->init()) {
     abort(true);
   }
@@ -62,6 +57,9 @@ void Game::abort(bool error) {
   state = error ? SDL_APP_FAILURE : SDL_APP_SUCCESS;
 };
 void Game::exit() {
+  AudioMgr::get()->exit();
+  ImageMgr::get()->exit();
+  FontMgr::get()->exit();
   if (renderer) {
     SDL_DestroyRenderer(renderer);
     renderer = nullptr;
@@ -70,8 +68,5 @@ void Game::exit() {
     SDL_DestroyWindow(window);
     window = nullptr;
   }
-  MIX_Quit();
-  SDL_Quit();
 }
 SDL_AppResult Game::getState() { return state; }
-Game::~Game() { exit(); }

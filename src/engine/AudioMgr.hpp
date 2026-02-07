@@ -25,11 +25,11 @@ class AudioMgr {
   // loop = true 代表循环播放，resume = true代表继续播放
   void play(const std::string& name);
   void stop(const std::string& name);
-  void clear();
+  void exit();
 
  private:
   AudioMgr() = default;
-  ~AudioMgr();
+  ~AudioMgr() = default;
 
   MIX_Mixer* mixer = nullptr;
   std::unordered_map<std::string, std::pair<MIX_Audio*, AudioType>> audio_assets = {};

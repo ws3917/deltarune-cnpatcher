@@ -35,7 +35,7 @@ class FontMgr {
 
   void draw(SDL_Renderer* renderer, const std::string& name,
             const std::string& text, float x, float y, float scale = 1.0f);
-  void clear();
+  void exit();
 
  private:
   // 读取str[i]位置的下一个UTF-8字符
@@ -48,6 +48,6 @@ class FontMgr {
     return value;
   }
   FontMgr() = default;
-  ~FontMgr();
+  ~FontMgr() = default;
   std::unordered_map<std::string, Font*> font_assets;
 };

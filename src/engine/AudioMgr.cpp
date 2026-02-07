@@ -19,8 +19,13 @@ bool AudioMgr::init() {
   return true;
 }
 
-AudioMgr::~AudioMgr() {
-  clear();
+void AudioMgr::exit() {
+  MIX_StopAllTracks(mixer, 0);
+  for (auto& track : tracks) {
+    if (track) MIX_SetTrackAudio(track, nullptr);
+  }
+  for (auto& [_, obj] : audio_assets) MIX_DestroyAudio(obj.first);
+  audio_assets.clear();
   for (auto& track : tracks) {
     MIX_DestroyTrack(track);
     track = nullptr;
@@ -29,15 +34,6 @@ AudioMgr::~AudioMgr() {
     MIX_DestroyMixer(mixer);
     mixer = nullptr;
   }
-}
-
-void AudioMgr::clear() {
-  MIX_StopAllTracks(mixer, 0);
-  for (auto& track : tracks) {
-    if (track) MIX_SetTrackAudio(track, nullptr);
-  }
-  for (auto& [_, obj] : audio_assets) MIX_DestroyAudio(obj.first);
-  audio_assets.clear();
 }
 
 void AudioMgr::play(const std::string& name) {

@@ -1,4 +1,5 @@
 #include <SDL3/SDL_main.h>
+#include <SDL3_mixer/SDL_mixer.h>
 
 #include "engine/Game.hpp"
 #include "scene/S_Init.hpp"
@@ -7,6 +8,14 @@ int main(int, char**) {
   //    std::locale::global(std::locale(".UTF-8"));
   Game* game = Game::get();
   SDL_Log("-- Game Start --\n");
+  if (!SDL_Init(SDL_INIT_VIDEO | SDL_INIT_AUDIO)) {
+    SDL_Log("[C] <Init> SDL init failed: %s", SDL_GetError());
+    return -1;
+  }
+  if (!MIX_Init()) {
+    SDL_Log("[C] <Init> SDL_mixer init failed: %s", SDL_GetError());
+    return -1;
+  }
   game->init();
   // 进入初始场景
   game->enterScene(new S_Init);
@@ -23,6 +32,8 @@ int main(int, char**) {
     game->draw();
   }
   game->exit();
+  MIX_Quit();
+  SDL_Quit();
   if (game->getState() == SDL_APP_FAILURE) {
     SDL_Log("-- Game End With Error --");
     return -1;
