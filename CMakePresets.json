@@ -6,78 +6,27 @@
             "hidden": true,
             "generator": "Ninja",
             "binaryDir": "${sourceDir}/build/${presetName}",
-            "installDir": "${sourceDir}/install/${presetName}"
-        },
-        {
-            "name": "win-base",
-            "hidden": true,
-            "inherits": "base",
-            "condition": {
-                "type": "equals",
-                "lhs": "${hostSystemName}",
-                "rhs": "Windows"
-            },
-            "architecture": {
-                "value": "x64",
-                "strategy": "external"
-            },
-            "toolset": {
-                "value": "v143,host=x64",
-                "strategy": "external"
-            },
+            "installDir": "${sourceDir}/install/${presetName}",
             "cacheVariables": {
-                "CMAKE_C_COMPILER": "cl.exe",
-                "CMAKE_CXX_COMPILER": "cl.exe",
-                "CMAKE_CXX_FLAGS": "/utf-8 /validate-charset /EHsc /W4",
-                "CMAKE_C_FLAGS": "/utf-8 /validate-charset /W4",
-                "CMAKE_EXPORT_COMPILE_COMMANDS": true
-            }
-        },
-        {
-            "name": "linux-base",
-            "hidden": true,
-            "inherits": "base",
-            "condition": {
-                "type": "equals",
-                "lhs": "${hostSystemName}",
-                "rhs": "Linux"
-            },
-            "cacheVariables": {
+                "CMAKE_EXPORT_COMPILE_COMMANDS": true,
                 "CMAKE_C_COMPILER": "gcc",
                 "CMAKE_CXX_COMPILER": "g++",
-                "CMAKE_C_FLAGS": "-Wall -Wextra",
-                "CMAKE_CXX_FLAGS": "-Wall -Wextra",
-                "CMAKE_EXPORT_COMPILE_COMMANDS": true
+                "CMAKE_C_FLAGS": "-finput-charset=UTF-8 -fexec-charset=UTF-8 -Wall -Wextra",
+                "CMAKE_CXX_FLAGS": "-finput-charset=UTF-8 -fexec-charset=UTF-8 -Wall -Wextra"
             }
         },
         {
-            "name": "win-debug",
-            "inherits": "win-base",
-            "displayName": "Windows MSVC Debug",
+            "name": "debug",
+            "inherits": "base",
+            "displayName": "GCC Debug",
             "cacheVariables": {
                 "CMAKE_BUILD_TYPE": "Debug"
             }
         },
         {
-            "name": "win-release",
-            "inherits": "win-base",
-            "displayName": "Windows MSVC Release",
-            "cacheVariables": {
-                "CMAKE_BUILD_TYPE": "Release"
-            }
-        },
-        {
-            "name": "linux-debug",
-            "inherits": "linux-base",
-            "displayName": "Linux GCC Debug",
-            "cacheVariables": {
-                "CMAKE_BUILD_TYPE": "Debug"
-            }
-        },
-        {
-            "name": "linux-release",
-            "inherits": "linux-base",
-            "displayName": "Linux GCC Release",
+            "name": "release",
+            "inherits": "base",
+            "displayName": "GCC Release",
             "cacheVariables": {
                 "CMAKE_BUILD_TYPE": "Release"
             }
