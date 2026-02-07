@@ -1,42 +1,37 @@
 // 资源管理器
 #pragma once
-#include <memory>
-#include <miniaudio/miniaudio.h>
+#include <SDL3_mixer/SDL_mixer.h>
+
+#include <array>
 #include <string>
 #include <unordered_map>
 
-class ImageMgr
-{
-  public:
-    enum class AudioType
-    {
-        Music,
-        Sound
-    };
-    // 单例
-    static ImageMgr *get()
-    {
-        static ImageMgr instance;
-        return &instance;
-    }
-    ImageMgr(const ImageMgr &) = delete;
-    ImageMgr &operator=(const ImageMgr &) = delete;
+class AudioMgr {
+ public:
+  enum class AudioType { Music, Sound, Voice };
+  // 单例
+  static AudioMgr* get() {
+    static AudioMgr instance;
+    return &instance;
+  }
+  AudioMgr(const AudioMgr&) = delete;
+  AudioMgr& operator=(const AudioMgr&) = delete;
 
-    bool init();
+  bool init();
 
-    // 加载资源
-    bool load(AudioType type, const std::string &name, const std::string &path);
+  // 加载资源
+  bool load(AudioType type, const std::string& name, const std::string& path);
 
-    ma_sound *find(const std::string &name);
-    // loop = true 代表循环播放，resume = true代表继续播放
-    void play(const std::string &name, bool loop = false, bool resume = false);
-    void stop(const std::string &name);
-    void clear();
+  // loop = true 代表循环播放，resume = true代表继续播放
+  void play(const std::string& name);
+  void stop(const std::string& name);
+  void clear();
 
-  private:
-    ImageMgr() = default;
-    ~ImageMgr();
+ private:
+  AudioMgr() = default;
+  ~AudioMgr();
 
-    ma_engine engine;
-    std::unordered_map<std::string, std::unique_ptr<ma_sound>> images;
+  MIX_Mixer* mixer = nullptr;
+  std::unordered_map<std::string, std::pair<MIX_Audio*, AudioType>> audio_assets = {};
+  std::array<MIX_Track*, 3> tracks = {};
 };

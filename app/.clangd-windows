@@ -1,8 +1,5 @@
 CompileFlags:
   Add: 
-    - "--target=x86_64-pc-windows-msvc"
-    - "--driver-mode=cl"
-    - "-fms-extensions"
-    - "-D_CRT_SECURE_NO_WARNINGS"
+    - "--target=i686-pc-windows-gnu"
 
   CompilationDatabase: "build/windows-debug"

@@ -1,78 +1,72 @@
-#define MINIAUDIO_IMPLEMENTATION
 #include "AudioMgr.hpp"
-#include <SDL3/SDL_log.h>
 
-bool ImageMgr::init()
-{
-    ma_result result = ma_engine_init(nullptr, &engine);
-    if (result != MA_SUCCESS)
-    {
-        SDL_Log("[C] <AudioMgr> Failed to initialize audio engine, error code = %d", result);
-        return false;
+bool AudioMgr::init() {
+  mixer = MIX_CreateMixerDevice(SDL_AUDIO_DEVICE_DEFAULT_PLAYBACK, nullptr);
+  if (!mixer) {
+    SDL_Log("[C] <AudioMgr> Failed to initialize mixer: %s", SDL_GetError());
+    return false;
+  }
+  // 创建音轨
+  for (size_t i = 0; i < tracks.size(); i++) {
+    auto& track = tracks[i];
+    track = MIX_CreateTrack(mixer);
+    if (!track) {
+      SDL_Log("[C] <AudioMgr> Can't create track: %s", SDL_GetError());
+      return false;
     }
-    return true;
+    if (i == (int)AudioType::Music) MIX_SetTrackLoops(tracks[i], -1);
+  }
+  return true;
 }
 
-ImageMgr::~ImageMgr()
-{
-    clear();
-    ma_engine_uninit(&engine);
+AudioMgr::~AudioMgr() {
+  clear();
+  for (auto track : tracks) MIX_DestroyTrack(track);
+  MIX_DestroyMixer(mixer);
 }
 
-void ImageMgr::clear()
-{
-    for (auto &[_, sound] : images)
-    {
-        ma_sound_stop(sound.get());
-        ma_sound_uninit(sound.get());
-    }
-    images.clear();
+void AudioMgr::clear() {
+  MIX_StopAllTracks(mixer, 0);
+  for (auto& [_, obj] : audio_assets) MIX_DestroyAudio(obj.first);
+  audio_assets.clear();
 }
 
-ma_sound *ImageMgr::find(const std::string &name)
-{
-    auto it = images.find(name);
-    if (it == images.end())
-    {
-        SDL_Log("[E] <AudioMgr> Can't find sound: %s", name.c_str());
-        return nullptr;
-    }
-    return it->second.get();
+void AudioMgr::play(const std::string& name) {
+  if (!audio_assets.count(name)) {
+    SDL_Log("[E] <AudioMgr> Can't find audio: %s", name.c_str());
+    return;
+  }
+  auto& [_, obj] = *audio_assets.find(name);
+  MIX_Audio* audio = obj.first;
+  MIX_Track* track = tracks[(int)obj.second];
+  MIX_SetTrackAudio(track, audio);
+  MIX_PlayTrack(track, 0);
 }
 
-void ImageMgr::play(const std::string &name, bool loop, bool resume)
-{
-    auto sound = find(name);
-    if (!sound)
-        return;
-    ma_sound_set_looping(sound, loop);
-    if (!resume)
-        ma_sound_seek_to_pcm_frame(sound, 0);
-    ma_sound_start(sound);
+void AudioMgr::stop(const std::string& name) {
+  if (!audio_assets.count(name)) {
+    SDL_Log("[E] <AudioMgr> Can't find audio: %s", name.c_str());
+    return;
+  }
+  auto& [_, obj] = *audio_assets.find(name);
+  MIX_Audio* audio = obj.first;
+  MIX_Track* track = tracks[(int)obj.second];
+  MIX_SetTrackAudio(nullptr, audio);
+  MIX_StopTrack(track, 0);
 }
 
-void ImageMgr::stop(const std::string &name)
-{
-    auto sound = find(name);
-    if (!sound)
-        return;
-    ma_sound_stop(sound);
-}
+bool AudioMgr::load(AudioType type, const std::string& name,
+                    const std::string& path) {
+  if (audio_assets.count(name)) return true;
 
-bool ImageMgr::load(AudioType type, const std::string &name, const std::string &path)
-{
-    if (images.count(name))
-        return true;
+  MIX_Audio* audio = MIX_LoadAudio(mixer, path.c_str(),
+                                   type == AudioType::Music ? false : true);
 
-    ma_sound_flags flags = type == AudioType::Music ? MA_SOUND_FLAG_STREAM : MA_SOUND_FLAG_DECODE;
-
-    auto sound = std::make_unique<ma_sound>();
-    ma_result res = ma_sound_init_from_file(&engine, path.c_str(), flags, nullptr, nullptr, sound.get());
-    if (res != MA_SUCCESS)
-    {
-        SDL_Log("[E] <AudioMgr> Can't load sound: %s", name.c_str());
-        return false;
-    }
-    images.emplace(name, std::move(sound));
-    return true;
+  if (!audio) {
+    SDL_Log("[E] <AudioMgr> Can't load sound '%s': %s",
+            path.c_str(), SDL_GetError());
+    return false;
+  }
+  audio_assets[name] = {audio, type};
+  return true;
 }

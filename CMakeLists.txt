@@ -3,6 +3,11 @@ cmake_minimum_required(VERSION 3.21)
 # 设置平台特有选项
 if(WIN32)
     add_compile_definitions(WIN32_LEAN_AND_MEAN NOMINMAX)
+    file(GLOB THIRD_PARTY_LIBS "3rdparty/*")
+
+    foreach(LIB IN LISTS THIRD_PARTY_LIBS)
+        list(APPEND CMAKE_PREFIX_PATH ${LIB})
+    endforeach()
 elseif(UNIX)
     set(CMAKE_BUILD_RPATH_USE_ORIGIN ON)
 endif()
@@ -18,6 +23,7 @@ include_directories("include")
 
 # 需要使用的第三方库
 find_package(SDL3 CONFIG REQUIRED)
+find_package(SDL3_mixer CONFIG REQUIRED)
 
 # 主项目：包含所有C++文件
 file(GLOB_RECURSE SOURCES src/*.cpp)
@@ -31,6 +37,7 @@ add_executable(${PROJECT_NAME} ${SOURCES} ${RC_FILES})
 # 链接库
 target_link_libraries(${PROJECT_NAME} PRIVATE
     SDL3::SDL3-shared
+    SDL3_mixer::SDL3_mixer-shared
 )
 
 # 编译后配置
@@ -38,6 +45,12 @@ if(WIN32)
     # Release 模式下隐藏控制台窗口
     set_target_properties(${PROJECT_NAME} PROPERTIES
         WIN32_EXECUTABLE $<CONFIG:Release>
+    )
+    add_custom_command(TARGET ${PROJECT_NAME} POST_BUILD
+        COMMAND ${CMAKE_COMMAND} -E copy_if_different
+        $<TARGET_RUNTIME_DLLS:${PROJECT_NAME}>
+        $<TARGET_FILE_DIR:${PROJECT_NAME}>
+        COMMAND_EXPAND_LISTS
     )
 endif()
 

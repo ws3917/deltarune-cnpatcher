@@ -12,26 +12,16 @@
             "name": "windows-base",
             "hidden": true,
             "inherits": "base",
-            "architecture": {
-                "value": "x64",
-                "strategy": "external"
-            },
-            "toolset": {
-                "value": "host=x64",
-                "strategy": "external"
-            },
             "condition": {
                 "type": "equals",
                 "lhs": "${hostSystemName}",
                 "rhs": "Windows"
             },
             "cacheVariables": {
-                "CMAKE_C_COMPILER": "cl.exe",
-                "CMAKE_CXX_COMPILER": "cl.exe",
-                "CMAKE_C_FLAGS": "/utf-8 /validate-charset /W4",
-                "CMAKE_CXX_FLAGS": "/utf-8 /validate-charset /EHsc /W4",
-                "CMAKE_TOOLCHAIN_FILE": "$env{VCPKG_ROOT}/scripts/buildsystems/vcpkg.cmake",
-                "VCPKG_APPLOCAL_DEPS": true,
+                "CMAKE_C_COMPILER": "i686-w64-mingw32-gcc.exe",
+                "CMAKE_CXX_COMPILER": "i686-w64-mingw32-g++.exe",
+                "CMAKE_C_FLAGS": "-finput-charset=UTF-8 -fexec-charset=UTF-8 -Wall -Wextra",
+                "CMAKE_CXX_FLAGS": "-finput-charset=UTF-8 -fexec-charset=UTF-8 -Wall -Wextra",
                 "CMAKE_EXPORT_COMPILE_COMMANDS": true
             }
         },
