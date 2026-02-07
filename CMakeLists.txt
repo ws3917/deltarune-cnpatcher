@@ -8,11 +8,9 @@ if(WIN32)
     foreach(LIB IN LISTS THIRD_PARTY_LIBS)
         list(APPEND CMAKE_PREFIX_PATH ${LIB})
     endforeach()
-elseif(UNIX)
-    set(CMAKE_BUILD_RPATH_USE_ORIGIN ON)
 endif()
 
-project(speedtest)
+project(outertale0)
 
 # C++标准
 set(CMAKE_CXX_STANDARD 17)
@@ -30,9 +28,11 @@ file(GLOB_RECURSE SOURCES src/*.cpp)
 
 if(WIN32)
     set(RC_FILES app/res.rc)
+    add_executable(${PROJECT_NAME} ${SOURCES} ${RC_FILES})
+elseif(ANDROID)
+    add_library(${PROJECT_NAME} SHARED ${SOURCES})
+    target_link_libraries(${PROJECT_NAME} PRIVATE android log)
 endif()
-
-add_executable(${PROJECT_NAME} ${SOURCES} ${RC_FILES})
 
 # 链接库
 target_link_libraries(${PROJECT_NAME} PRIVATE
@@ -54,10 +54,11 @@ if(WIN32)
     )
 endif()
 
-# 复制资源文件
-add_custom_command(TARGET ${PROJECT_NAME} POST_BUILD
-    COMMAND ${CMAKE_COMMAND} -E copy_directory_if_different
-    ${CMAKE_SOURCE_DIR}/assets/
-    $<TARGET_FILE_DIR:${PROJECT_NAME}>
-    COMMAND_EXPAND_LISTS
-)
+if(NOT ANDROID)
+    add_custom_command(TARGET ${PROJECT_NAME} POST_BUILD
+        COMMAND ${CMAKE_COMMAND} -E copy_directory_if_different
+        ${CMAKE_SOURCE_DIR}/assets/
+        $<TARGET_FILE_DIR:${PROJECT_NAME}>
+        COMMAND_EXPAND_LISTS
+    )
+endif()

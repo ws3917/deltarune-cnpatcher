@@ -22,11 +22,9 @@ void S_Init::input(SDL_Event* event) {
     switch (event->key.scancode) {
       case SDL_SCANCODE_Z:
         AudioMgr::get()->play("snd_test1");
-        SDL_Log("snd test1");
         break;
       case SDL_SCANCODE_X:
         AudioMgr::get()->play("snd_test2");
-        SDL_Log("snd test2");
         break;
       case SDL_SCANCODE_LEFT:
         AudioMgr::get()->stop("mus_test");

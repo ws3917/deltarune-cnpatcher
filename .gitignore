@@ -3,6 +3,6 @@ build/
 /android/app/.cxx
 .cache
 .gradle
-local.properties
+keystore.properties
 compile_commands.json
 /.clangd

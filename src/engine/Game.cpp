@@ -11,7 +11,7 @@ void Game::init() {
   // 创建窗口
   window =
       SDL_CreateWindow("title", WIDTH, HEIGHT,
-                       SDL_WINDOW_HIGH_PIXEL_DENSITY | SDL_WINDOW_FULLSCREEN);
+                       SDL_WINDOW_HIGH_PIXEL_DENSITY | SDL_WINDOW_RESIZABLE);
   renderer = SDL_CreateRenderer(window, nullptr);
   if (!window || !renderer) {
     SDL_Log("[C] <Init> Can't create window / renderer: %s", SDL_GetError());
