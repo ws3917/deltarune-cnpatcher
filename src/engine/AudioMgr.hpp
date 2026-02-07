@@ -6,6 +6,9 @@
 #include <string>
 #include <unordered_map>
 
+#include "SDL3/SDL_properties.h"
+
+
 class AudioMgr {
  public:
   enum class AudioType { Music, Sound, Voice };
@@ -32,6 +35,7 @@ class AudioMgr {
   ~AudioMgr() = default;
 
   MIX_Mixer* mixer = nullptr;
-  std::unordered_map<std::string, std::pair<MIX_Audio*, AudioType>> audio_assets = {};
-  std::array<MIX_Track*, 3> tracks = {};
+  std::unordered_map<std::string, std::pair<MIX_Audio*, AudioType>>
+      audio_assets = {};
+  std::array<std::pair<MIX_Track*, SDL_PropertiesID>, 3> tracks = {};
 };

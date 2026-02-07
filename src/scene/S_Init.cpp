@@ -4,6 +4,7 @@
 #include "../engine/FontMgr.hpp"
 #include "../engine/Game.hpp"
 #include "../engine/ImageMgr.hpp"
+#include "SDL3/SDL_scancode.h"
 
 void S_Init::update(float delta) {
   img_pos_x += delta;
@@ -28,6 +29,11 @@ void S_Init::input(SDL_Event* event) {
         AudioMgr::get()->play("snd_test2");
         SDL_Log("snd test2");
         break;
+      case SDL_SCANCODE_LEFT:
+        AudioMgr::get()->stop("mus_test");
+        break;
+      case SDL_SCANCODE_RIGHT:
+        AudioMgr::get()->play("mus_test");
       default:
         break;
     }
