@@ -4,6 +4,7 @@ cmake_minimum_required(VERSION 3.21)
 if(WIN32)
     add_compile_definitions(WIN32_LEAN_AND_MEAN NOMINMAX)
     file(GLOB THIRD_PARTY_LIBS 3rdparty/*)
+
     foreach(LIB IN LISTS THIRD_PARTY_LIBS)
         list(APPEND CMAKE_PREFIX_PATH ${LIB})
     endforeach()
