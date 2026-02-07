@@ -29,8 +29,15 @@ file(GLOB_RECURSE SOURCES src/*.cpp)
 if(WIN32)
     set(RC_FILES app/res.rc)
     add_executable(${PROJECT_NAME} ${SOURCES} ${RC_FILES})
+    # Release 模式下隐藏控制台窗口
+    set_target_properties(${PROJECT_NAME} PROPERTIES
+        WIN32_EXECUTABLE $<CONFIG:Release>
+    )
 elseif(ANDROID)
     add_library(${PROJECT_NAME} SHARED ${SOURCES})
+    set_target_properties(${PROJECT_NAME} PROPERTIES
+        OUTPUT_NAME "main"
+    )
     target_link_libraries(${PROJECT_NAME} PRIVATE android log)
 endif()
 
@@ -42,10 +49,6 @@ target_link_libraries(${PROJECT_NAME} PRIVATE
 
 # 编译后配置
 if(WIN32)
-    # Release 模式下隐藏控制台窗口
-    set_target_properties(${PROJECT_NAME} PROPERTIES
-        WIN32_EXECUTABLE $<CONFIG:Release>
-    )
     add_custom_command(TARGET ${PROJECT_NAME} POST_BUILD
         COMMAND ${CMAKE_COMMAND} -E copy_if_different
         $<TARGET_RUNTIME_DLLS:${PROJECT_NAME}>
