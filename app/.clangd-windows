@@ -2,4 +2,4 @@ CompileFlags:
   Add: 
     - "--target=i686-pc-windows-msvc"
 
-  CompilationDatabase: "build/win-debug"
+  CompilationDatabase: "build/debug"

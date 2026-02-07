@@ -20,7 +20,7 @@ class AudioMgr {
   bool init();
 
   // 加载资源
-  bool load(AudioType type, const std::string& name, const std::string& path);
+  bool load(const std::string& name, AudioType type, const std::string& path);
 
   // loop = true 代表循环播放，resume = true代表继续播放
   void play(const std::string& name);

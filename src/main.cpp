@@ -1,5 +1,6 @@
 #include <SDL3/SDL_main.h>
 #include <SDL3_mixer/SDL_mixer.h>
+#include <cstdint>
 
 #include "engine/Game.hpp"
 #include "scene/S_Init.hpp"
@@ -26,7 +27,7 @@ int main(int, char**) {
 
     uint64_t current_tick = SDL_GetTicksNS();
     if (last_tick == 0) last_tick = current_tick;
-    float delta = (last_tick - current_tick) / 1e6f;
+    float delta = (current_tick - last_tick) / 1e6f;
     last_tick = current_tick;
     game->update(delta);
     game->draw();

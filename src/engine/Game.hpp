@@ -2,7 +2,10 @@
 // 这里是主线程循环
 #include <SDL3/SDL.h>
 
+#include <string>
+
 #include "Scene.hpp"
+
 
 class Game {
  public:
@@ -25,8 +28,10 @@ class Game {
     static Game instance = Game();
     return &instance;
   }
+  static constexpr int WIDTH = 960, HEIGHT = 720;
 
  private:
+  void loadAssets(const std::string& path);
   Game() = default;
   ~Game() = default;
   SDL_Window* window = nullptr;

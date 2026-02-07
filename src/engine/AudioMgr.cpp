@@ -60,7 +60,7 @@ void AudioMgr::stop(const std::string& name) {
   MIX_StopTrack(track, 0);
 }
 
-bool AudioMgr::load(AudioType type, const std::string& name,
+bool AudioMgr::load(const std::string& name, AudioType type,
                     const std::string& path) {
   if (audio_assets.count(name)) return true;
 

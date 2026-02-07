@@ -7,4 +7,7 @@ class S_Init : public Scene {
   void update(float delta) override;
   void draw(SDL_Renderer* renderer) override;
   void input(SDL_Event* event) override;
+
+ private:
+  float img_pos_x = 0;
 };

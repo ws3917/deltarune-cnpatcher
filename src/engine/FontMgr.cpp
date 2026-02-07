@@ -4,7 +4,7 @@ bool FontMgr::load(SDL_Renderer* renderer, const std::string& name,
                    const std::string& path) {
   std::ifstream file(path, std::ios::binary);
   if (!file.is_open()) {
-    SDL_Log("[C] <LoadFont> Fnt file not found: %s", path.c_str());
+    SDL_Log("[E] <LoadFont> Fnt file not found: %s", path.c_str());
     return false;
   }
 
@@ -16,7 +16,7 @@ bool FontMgr::load(SDL_Renderer* renderer, const std::string& name,
   }
   SDL_Surface* glyph_file = SDL_LoadPNG(glyph_path.c_str());
   if (!glyph_file) {
-    SDL_Log("[C] <LoadFont> Can't open glyph file %s: %s", glyph_path.c_str(),
+    SDL_Log("[E] <LoadFont> Can't open glyph file %s: %s", glyph_path.c_str(),
             SDL_GetError());
     return false;
   }
@@ -30,7 +30,7 @@ bool FontMgr::load(SDL_Renderer* renderer, const std::string& name,
   for (int i = 0; i < 4; i++) {
     uint8_t value = read<uint8_t>(file);
     if (value != valid_header[i]) {
-      SDL_Log("[C] <LoadFont> Invalid fnt Header.");
+      SDL_Log("[E] <LoadFont> Invalid fnt Header.");
       return false;
     }
   }
