@@ -26,19 +26,21 @@ find_package(SDL3_mixer CONFIG REQUIRED)
 # 主项目：包含所有C++文件
 file(GLOB_RECURSE SOURCES src/*.cpp)
 
-if(WIN32)
+if(ANDROID)
+    add_library(${PROJECT_NAME} SHARED ${SOURCES})
+    set_target_properties(${PROJECT_NAME} PROPERTIES
+        OUTPUT_NAME "main"
+    )
+    target_link_libraries(${PROJECT_NAME} PRIVATE android log)
+elseif(WIN32)
     set(RC_FILES app/res.rc)
     add_executable(${PROJECT_NAME} ${SOURCES} ${RC_FILES})
     # Release 模式下隐藏控制台窗口
     set_target_properties(${PROJECT_NAME} PROPERTIES
         WIN32_EXECUTABLE $<CONFIG:Release>
     )
-elseif(ANDROID)
-    add_library(${PROJECT_NAME} SHARED ${SOURCES})
-    set_target_properties(${PROJECT_NAME} PROPERTIES
-        OUTPUT_NAME "main"
-    )
-    target_link_libraries(${PROJECT_NAME} PRIVATE android log)
+else()
+    add_executable(${PROJECT_NAME} ${SOURCES} ${RC_FILES})
 endif()
 
 # 链接库
