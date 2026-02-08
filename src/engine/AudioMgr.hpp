@@ -8,29 +8,14 @@
 
 class AudioMgr {
  public:
+  AudioMgr();
+  ~AudioMgr();
   enum class AudioType { Music, Sound, Voice };
-  // 单例
-  static AudioMgr* get() {
-    static AudioMgr instance;
-    return &instance;
-  }
-  AudioMgr(const AudioMgr&) = delete;
-  AudioMgr& operator=(const AudioMgr&) = delete;
-
-  bool init();
-
-  // 加载资源
   bool load(const std::string& name, AudioType type, const std::string& path);
-
-  // loop = true 代表循环播放，resume = true代表继续播放
   void play(const std::string& name);
   void stop(const std::string& name);
-  void exit();
 
  private:
-  AudioMgr() = default;
-  ~AudioMgr() = default;
-
   MIX_Mixer* mixer = nullptr;
   std::unordered_map<std::string, std::pair<MIX_Audio*, AudioType>>
       audio_assets = {};

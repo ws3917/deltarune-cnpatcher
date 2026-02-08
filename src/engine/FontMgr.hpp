@@ -20,21 +20,13 @@ struct Font {
 
 class FontMgr {
  public:
-  // 单例
-  static FontMgr* get() {
-    static FontMgr instance;
-    return &instance;
-  }
-  FontMgr(const FontMgr&) = delete;
-  FontMgr& operator=(const FontMgr&) = delete;
-
-  // 加载资源
   bool load(SDL_Renderer* renderer, const std::string& name,
             const std::string& path);
 
   void draw(SDL_Renderer* renderer, const std::string& name,
             const std::string& text, float x, float y, float scale = 1.0f);
-  void exit();
+  FontMgr() = default;
+  ~FontMgr();
 
  private:
   // 读取str[i]位置的下一个UTF-8字符
@@ -47,7 +39,5 @@ class FontMgr {
     cursor += sizeof(T);
     return value;
   }
-  FontMgr() = default;
-  ~FontMgr() = default;
   std::unordered_map<std::string, Font*> font_assets;
 };

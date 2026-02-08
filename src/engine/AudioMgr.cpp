@@ -2,12 +2,14 @@
 
 #include <SDL3_mixer/SDL_mixer.h>
 
+#include "GlobalVars.hpp"
 
-bool AudioMgr::init() {
+AudioMgr::AudioMgr() {
   mixer = MIX_CreateMixerDevice(SDL_AUDIO_DEVICE_DEFAULT_PLAYBACK, nullptr);
   if (!mixer) {
     SDL_Log("[C] <AudioMgr> Failed to initialize mixer: %s", SDL_GetError());
-    return false;
+    G::status = SDL_APP_FAILURE;
+    return;
   }
   // 创建音轨
   for (size_t i = 0; i < tracks.size(); i++) {
@@ -16,17 +18,17 @@ bool AudioMgr::init() {
     track.second = SDL_CreateProperties();
     if (!track.first) {
       SDL_Log("[C] <AudioMgr> Can't create track: %s", SDL_GetError());
-      return false;
+      G::status = SDL_APP_FAILURE;
+      return;
     }
     if (i == (int)AudioType::Music)
       SDL_SetNumberProperty(track.second, MIX_PROP_PLAY_LOOPS_NUMBER, -1);
     else
       SDL_SetNumberProperty(track.second, MIX_PROP_PLAY_LOOPS_NUMBER, 0);
   }
-  return true;
 }
 
-void AudioMgr::exit() {
+AudioMgr::~AudioMgr() {
   MIX_StopAllTracks(mixer, 0);
   for (auto& track : tracks) {
     if (track.first) MIX_SetTrackAudio(track.first, nullptr);

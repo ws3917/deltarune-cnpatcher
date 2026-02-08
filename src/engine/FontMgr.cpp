@@ -1,5 +1,7 @@
 #include "FontMgr.hpp"
 
+#include "SDL3/SDL_render.h"
+
 bool FontMgr::load(SDL_Renderer* renderer, const std::string& name,
                    const std::string& path) {
   size_t data_size;
@@ -132,12 +134,13 @@ uint32_t FontMgr::getNextUTF8(const std::string& str, size_t& i) {
   }
   return '?';
 }
-void FontMgr::exit() {
-  for (auto& [name, font] : font_assets) {
+FontMgr::~FontMgr() {
+  for (auto& [_, font] : font_assets) {
     if (font->atlas) {
       SDL_DestroyTexture(font->atlas);
       font->atlas = nullptr;
     }
+    font->glyphs.clear();
     delete font;
   }
   font_assets.clear();

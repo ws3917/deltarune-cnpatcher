@@ -1,5 +1,8 @@
 #pragma once
 #include <SDL3/SDL.h>
+
+#include "GlobalVars.hpp"
+
 // Scene 接口，一切场景需实现此接口
 class Scene {
  public:
