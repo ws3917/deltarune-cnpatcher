@@ -1,9 +1,9 @@
 #include <SDL3/SDL_main.h>
 #include <SDL3_mixer/SDL_mixer.h>
-#include <cstdint>
 
 #include "engine/Game.hpp"
 #include "scene/S_Init.hpp"
+
 int main(int, char**) {
   // 强制UTF-8，防止用GBK出现乱码
   //    std::locale::global(std::locale(".UTF-8"));
