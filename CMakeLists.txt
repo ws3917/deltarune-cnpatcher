@@ -40,13 +40,19 @@ elseif(WIN32)
         WIN32_EXECUTABLE $<CONFIG:Release>
     )
 else()
-    add_executable(${PROJECT_NAME} ${SOURCES} ${RC_FILES})
+    add_executable(${PROJECT_NAME} ${SOURCES})
 endif()
 
 # 链接库
 target_link_libraries(${PROJECT_NAME} PRIVATE
     SDL3::SDL3-shared
     SDL3_mixer::SDL3_mixer-shared
+)
+
+install(TARGETS ${PROJECT_NAME}
+    RUNTIME DESTINATION .
+    LIBRARY DESTINATION lib
+    ARCHIVE DESTINATION lib
 )
 
 # 编译后配置
@@ -57,6 +63,10 @@ if(WIN32)
         $<TARGET_FILE_DIR:${PROJECT_NAME}>
         COMMAND_EXPAND_LISTS
     )
+    install(FILES
+        $<TARGET_RUNTIME_DLLS:${PROJECT_NAME}>
+        DESTINATION bin
+    )
 endif()
 
 if(NOT ANDROID)
@@ -65,5 +75,8 @@ if(NOT ANDROID)
         ${CMAKE_SOURCE_DIR}/assets/
         $<TARGET_FILE_DIR:${PROJECT_NAME}>
         COMMAND_EXPAND_LISTS
+    )
+    install(DIRECTORY ${CMAKE_SOURCE_DIR}/assets/
+        DESTINATION .
     )
 endif()
