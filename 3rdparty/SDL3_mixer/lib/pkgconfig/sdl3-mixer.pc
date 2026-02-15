@@ -1,4 +1,4 @@
-prefix=C:/Users/ws3917/code/SDL_mixer/install/release
+prefix=C:/Program Files (x86)/SDL3_mixer
 exec_prefix=${prefix}
 libdir=${prefix}/lib
 includedir=${prefix}/include

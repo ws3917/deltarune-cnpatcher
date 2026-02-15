@@ -1,9 +1,14 @@
 #include "FontMgr.hpp"
 
+#include <yyjson.h>
+
+#include <algorithm>
+#include <string>
+
 #include "SDL3/SDL_render.h"
 
-bool FontMgr::load(SDL_Renderer* renderer, const std::string& name,
-                   const std::string& path) {
+FontMgr::FontMgr(SDL_Renderer* renderer) : renderer(renderer) {}
+bool FontMgr::load(const std::string& name, const std::string& path) {
   size_t data_size;
   void* raw_data = SDL_LoadFile(path.c_str(), &data_size);
   if (!raw_data) {
@@ -82,17 +87,70 @@ bool FontMgr::load(SDL_Renderer* renderer, const std::string& name,
   font_assets[name] = font;
   return true;
 }
-void FontMgr::draw(SDL_Renderer* renderer, const std::string& name,
-                   const std::string& text, float x, float y, float scale) {
+bool FontMgr::loadText(const std::string& config_path) {
+  size_t size;
+  void* config_data = SDL_LoadFile(config_path.c_str(), &size);
+  if (!config_data) {
+    SDL_Log("[E] <loadText> Can't open json file '%s': %s", config_path.c_str(),
+            SDL_GetError());
+    return false;
+  }
+  // 清理已打开文件
+  if (text_table) {
+    SDL_Log("[I] <loadText> Found existing text table, will clean it.");
+    yyjson_doc_free(text_table);
+    text_table = nullptr;
+  }
+  yyjson_read_err err;
+  text_table = yyjson_read_opts((char*)config_data, size, 0, nullptr, &err);
+  if (!text_table) {
+    SDL_free(config_data);
+    SDL_Log("[E] <loadText> Can't parse json file '%s': %s",
+            config_path.c_str(), err.msg);
+    return false;
+  }
+  return true;
+}
+void FontMgr::draw(const std::string& name, const std::string& text, float x,
+                   float y, SDL_Color color, float scale) {
   if (!font_assets.count(name)) {
-    SDL_Log("[E] <FontMgr> Can't find font '%s': %s", name.c_str(),
+    SDL_Log("[E] <DrawFont> Can't find font '%s': %s", name.c_str(),
             SDL_GetError());
     return;
   }
+  std::string result;
+  result.reserve(text.size());
+  for (size_t i = 0; i < text.size(); ++i) {
+    bool replaced = false;
+    // 检查 ${...}
+    if (text[i] == '$' && i + 1 < text.size() && text[i + 1] == '{') {
+      size_t start = i + 2;
+      size_t end = text.find('}', start);
+      if (end != std::string::npos) {
+        std::string key = "." + text.substr(start, end - start);
+        std::replace(key.begin(), key.end(), '.', '/');
+        if (text_table) {
+          yyjson_val* val = yyjson_doc_ptr_get(text_table, key.c_str());
+          if (!val) {
+            SDL_Log("[W] Key %s missing", key.c_str());
+          } else if (yyjson_is_str(val)) {
+            result += yyjson_get_str(val);
+            i = end;
+            replaced = true;
+          }
+        }
+      }
+    }
+    if (!replaced) {
+      result += text[i];
+    }
+  }
+
   Font* font = font_assets.find(name)->second;
+  SDL_SetTextureColorMod(font->atlas, color.r, color.g, color.b);
   float cur_x = x, cur_y = y;
-  for (size_t i = 0; i < text.length();) {
-    uint32_t code = getNextUTF8(text, i);
+  for (size_t i = 0; i < result.length();) {
+    uint32_t code = getNextUTF8(result, i);
 
     // 换行
     if (code == '\n') {
@@ -134,7 +192,51 @@ uint32_t FontMgr::getNextUTF8(const std::string& str, size_t& i) {
   }
   return '?';
 }
+bool FontMgr::loads(const std::string& config_path) {
+  size_t size;
+  void* config_data = SDL_LoadFile(config_path.c_str(), &size);
+  if (!config_data) {
+    SDL_Log("[E] <FontMgr - loads> Can't open json file '%s': %s",
+            config_path.c_str(), SDL_GetError());
+    return false;
+  }
+  yyjson_read_err err;
+  yyjson_doc* config =
+      yyjson_read_opts((char*)config_data, size, 0, nullptr, &err);
+  if (!config) {
+    SDL_free(config_data);
+    SDL_Log("[E] <FontMgr - loads> Can't parse json file %s: %s",
+            config_path.c_str(), err.msg);
+    return false;
+  }
+
+  yyjson_val* fonts = yyjson_doc_ptr_get(config, "/font");
+  if (!fonts || !yyjson_is_arr(fonts)) {
+    SDL_Log("[E] <FontMgr - loads> No fonts found in %s", config_path.c_str());
+    return false;
+  }
+  SDL_Log("[I] <FontMgr - loads> Loading fonts in %s...", config_path.c_str());
+  size_t idx, max;
+  yyjson_val* font;
+  yyjson_arr_foreach(fonts, idx, max, font) {
+    if (!yyjson_is_obj(font)) continue;
+    const char* name = yyjson_get_str(yyjson_obj_get(font, "name"));
+    const char* path = yyjson_get_str(yyjson_obj_get(font, "path"));
+    if (!name || !path) continue;
+    if (load(name, std::string("font/") + path))
+      SDL_Log("[I] <FontMgr - loads> Loaded font '%s'.", name);
+    else
+      SDL_Log("[E] <FontMgr - loads> Failed to load font '%s'.", name);
+  }
+  yyjson_doc_free(config);
+  SDL_free(config_data);
+  return true;
+}
 FontMgr::~FontMgr() {
+  if (text_table) {
+    yyjson_doc_free(text_table);
+    text_table = nullptr;
+  }
   for (auto& [_, font] : font_assets) {
     if (font->atlas) {
       SDL_DestroyTexture(font->atlas);

@@ -1,12 +1,16 @@
 #pragma once
 #include <string>
 #include <unordered_map>
-class Scene;
+
+#include "Scene.hpp"
+
 class SceneMgr {
  public:
   void changeScene(const std::string& name);
-  SceneMgr();
+  Scene* getCurrentScene();
+  SceneMgr(Scene* initial_scene);
 
  private:
- std::unordered_map<std::string, Scene*> scene_assets = {};
+  std::unordered_map<std::string, Scene*> scene_assets = {};
+  Scene* current_scene = nullptr;
 };

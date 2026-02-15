@@ -10,7 +10,7 @@ if(WIN32)
     endforeach()
 endif()
 
-project(outertale0)
+project(Spacetime0)
 
 # C++标准
 set(CMAKE_CXX_STANDARD 17)
@@ -22,6 +22,7 @@ include_directories("include")
 # 需要使用的第三方库
 find_package(SDL3 CONFIG REQUIRED)
 find_package(SDL3_mixer CONFIG REQUIRED)
+find_package(yyjson CONFIG REQUIRED)
 
 # 主项目：包含所有C++文件
 file(GLOB_RECURSE SOURCES src/*.cpp)
@@ -35,6 +36,7 @@ if(ANDROID)
 elseif(WIN32)
     set(RC_FILES app/res.rc)
     add_executable(${PROJECT_NAME} ${SOURCES} ${RC_FILES})
+
     # Release 模式下隐藏控制台窗口
     set_target_properties(${PROJECT_NAME} PROPERTIES
         WIN32_EXECUTABLE $<CONFIG:Release>
@@ -47,6 +49,7 @@ endif()
 target_link_libraries(${PROJECT_NAME} PRIVATE
     SDL3::SDL3-shared
     SDL3_mixer::SDL3_mixer-shared
+    yyjson::yyjson
 )
 
 install(TARGETS ${PROJECT_NAME}
