@@ -8,8 +8,7 @@
 #define SDL_MAIN_USE_CALLBACKS
 #include <SDL3/SDL_main.h>
 #include <miniaudio.h>
-
-#include <filesystem>
+#include <physfs.h>
 
 #include "engine/AudioMgr.hpp"
 #include "engine/FontMgr.hpp"
@@ -23,7 +22,7 @@ struct AppState {
   uint64_t last_tick = 0;
   Scene* current_scene = nullptr;
 };
-SDL_AppResult SDL_AppInit(void** _state, int, char**) {
+SDL_AppResult SDL_AppInit(void** _state, int, char** argv) {
   // 初始化
   constexpr int WIDTH = 320;
   constexpr int HEIGHT = 240;
@@ -35,9 +34,18 @@ SDL_AppResult SDL_AppInit(void** _state, int, char**) {
     return SDL_APP_FAILURE;
   }
   SDL_Log("[I] <Init> SDL core initialized.");
-  const char* base_path = SDL_GetBasePath();
-  if (base_path)
-    std::filesystem::current_path(std::filesystem::path(base_path));
+
+// 打包资源
+#ifndef __ANDROID__
+  std::string archivePath = SDL_GetBasePath();
+  archivePath += "main.pak";
+  if (!PHYSFS_init(argv[0]) || !PHYSFS_mount(archivePath.c_str(), "/", 1)) {
+    SDL_Log("[C] <Init> Failed to mount physFS: %s",
+            PHYSFS_getErrorByCode(PHYSFS_getLastErrorCode()));
+    return SDL_APP_FAILURE;
+  }
+#endif
+
   AppState* s = new AppState;
 
   s->mixer = new ma_engine;

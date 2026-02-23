@@ -4,10 +4,12 @@
 
 #include <algorithm>
 
+#include "Utils.hpp"
+
 FontMgr::FontMgr(SDL_Renderer* renderer) : renderer(renderer) {}
 bool FontMgr::load(const std::string& name, const std::string& path) {
   size_t data_size;
-  void* raw_data = SDL_LoadFile(path.c_str(), &data_size);
+  void* raw_data = Utils::LoadToMem(path.c_str(), &data_size);
   if (!raw_data) {
     SDL_Log("[E] <FontMgr - load> Fnt file is not found: %s", path.c_str());
     return false;
@@ -21,10 +23,17 @@ bool FontMgr::load(const std::string& name, const std::string& path) {
   if (pos != std::string::npos) {
     glyph_path.replace(pos, 4, "_0.png");
   }
-  SDL_Surface* glyph_file = SDL_LoadPNG(glyph_path.c_str());
+  size_t size = 0;
+  void* data = Utils::LoadToMem(glyph_path.c_str(), &size);
+  SDL_Surface* glyph_file = nullptr;
+  if (data) {
+    SDL_IOStream* io = SDL_IOFromConstMem(data, size);
+    if (io) glyph_file = SDL_LoadPNG_IO(io, true);
+    SDL_free(data);
+  }
   if (!glyph_file) {
-    SDL_Log("[E] <FontMgr - load> Can't open glyph file %s: %s", glyph_path.c_str(),
-            SDL_GetError());
+    SDL_Log("[E] <FontMgr - load> Can't open glyph file %s: %s",
+            glyph_path.c_str(), SDL_GetError());
     SDL_free(raw_data);
     return false;
   }
@@ -86,15 +95,16 @@ bool FontMgr::load(const std::string& name, const std::string& path) {
 }
 bool FontMgr::loadText(const std::string& config_path) {
   size_t size;
-  void* config_data = SDL_LoadFile(config_path.c_str(), &size);
+  void* config_data = Utils::LoadToMem(config_path.c_str(), &size);
   if (!config_data) {
-    SDL_Log("[E] <FontMgr - loadText> Can't open json file '%s': %s", config_path.c_str(),
-            SDL_GetError());
+    SDL_Log("[E] <FontMgr - loadText> Can't open json file '%s': %s",
+            config_path.c_str(), SDL_GetError());
     return false;
   }
   // 清理已打开文件
   if (text_table) {
-    SDL_Log("[I] <FontMgr - loadText> Found existing text table, will clean it.");
+    SDL_Log(
+        "[I] <FontMgr - loadText> Found existing text table, will clean it.");
     yyjson_doc_free(text_table);
     text_table = nullptr;
   }
@@ -193,7 +203,7 @@ uint32_t FontMgr::getNextUTF8(const std::string& str, size_t& i) {
 }
 bool FontMgr::loads(const std::string& config_path) {
   size_t size;
-  void* config_data = SDL_LoadFile(config_path.c_str(), &size);
+  void* config_data = Utils::LoadToMem(config_path.c_str(), &size);
   if (!config_data) {
     SDL_Log("[E] <FontMgr - loads> Can't open json file '%s': %s",
             config_path.c_str(), SDL_GetError());

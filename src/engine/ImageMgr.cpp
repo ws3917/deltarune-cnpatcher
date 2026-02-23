@@ -2,10 +2,19 @@
 
 #include <yyjson.h>
 
+#include "Utils.hpp"
+
 ImageMgr::ImageMgr(SDL_Renderer* renderer) : renderer(renderer) {}
 bool ImageMgr::load(const std::string& name, const std::string& path,
                     int frame_count) {
-  SDL_Surface* surface = SDL_LoadPNG(path.c_str());
+  size_t size = 0;
+  void* data = Utils::LoadToMem(path.c_str(), &size);
+  SDL_Surface* surface = nullptr;
+  if (data) {
+    SDL_IOStream* io = SDL_IOFromConstMem(data, size);
+    if (io) surface = SDL_LoadPNG_IO(io, true);
+    SDL_free(data);
+  }
   if (!surface) {
     SDL_Log("[E] <ImageMgr - load> Can't load image '%s': %s", path.c_str(),
             SDL_GetError());
@@ -24,7 +33,7 @@ bool ImageMgr::load(const std::string& name, const std::string& path,
 }
 bool ImageMgr::loads(const std::string& config_path) {
   size_t size;
-  void* config_data = SDL_LoadFile(config_path.c_str(), &size);
+  void* config_data = Utils::LoadToMem(config_path.c_str(), &size);
   if (!config_data) {
     SDL_Log("[E] <ImageMgr - loads> Can't open json file '%s': %s",
             config_path.c_str(), SDL_GetError());
@@ -83,8 +92,9 @@ void ImageMgr::draw(const std::string& name, float x, float y, float alpha,
   SDL_Texture* tex = obj.first;
   int frame_count = obj.second;
   if (frame_idx < 0 || frame_idx >= frame_count) {
-    SDL_Log("[E] <ImageMgr - draw> Can't draw image '%s': frame index out of range",
-            name.c_str());
+    SDL_Log(
+        "[E] <ImageMgr - draw> Can't draw image '%s': frame index out of range",
+        name.c_str());
     return;
   }
   // 横向平铺，x坐标为 total_x * frame_idx / frame_count

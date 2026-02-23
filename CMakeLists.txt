@@ -10,6 +10,7 @@ set(CMAKE_CXX_EXTENSIONS OFF)
 # vcpkg 仓库的库
 find_package(SDL3 CONFIG REQUIRED)
 find_package(yyjson CONFIG REQUIRED)
+find_package(PhysFS CONFIG REQUIRED)
 find_path(MINIAUDIO_INCLUDE_DIRS "miniaudio.h")
 
 # -- 项目构建 --
@@ -44,6 +45,7 @@ target_include_directories(${PROJECT_NAME} PRIVATE
 )
 target_link_libraries(${PROJECT_NAME} PRIVATE
     SDL3::SDL3-shared
+    PhysFS::PhysFS
     yyjson::yyjson
 )
 
@@ -56,11 +58,9 @@ install(TARGETS ${PROJECT_NAME}
 # -- 安装后配置 --
 if(NOT ANDROID)
     add_custom_command(TARGET ${PROJECT_NAME} POST_BUILD
-        COMMAND ${CMAKE_COMMAND} -E copy_directory
-        ${CMAKE_SOURCE_DIR}/assets/
-        $<TARGET_FILE_DIR:${PROJECT_NAME}>
-        COMMENT "Copying assets..."
+        COMMAND ${CMAKE_COMMAND} -E tar "c" "$<TARGET_FILE_DIR:${PROJECT_NAME}>/main.pak" --format=zip "."
+        WORKING_DIRECTORY ${CMAKE_SOURCE_DIR}/assets/
     )
 
-    install(DIRECTORY ${CMAKE_SOURCE_DIR}/assets/ DESTINATION .)
+    install(FILES $<TARGET_FILE_DIR:${PROJECT_NAME}>/main.pak DESTINATION .)
 endif()

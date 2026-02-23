@@ -1,12 +1,14 @@
 #include "AudioMgr.hpp"
 
-#include <SDL3/SDL.h>
 #include <yyjson.h>
+
+#include "Utils.hpp"
+
 
 AudioMgr::AudioMgr(ma_engine* mixer) : mixer(mixer) {}
 bool AudioMgr::loads(const std::string& config_path) {
   size_t size;
-  void* config_data = SDL_LoadFile(config_path.c_str(), &size);
+  void* config_data = Utils::LoadToMem(config_path.c_str(), &size);
   if (!config_data) {
     SDL_Log("[E] <AudioMgr - loads> Can't open json file '%s'.",
             config_path.c_str());
@@ -82,7 +84,7 @@ bool AudioMgr::load(const std::string& name, const std::string& type,
                     const std::string& path) {
   if (audio_assets.count(name)) return true;
   size_t data_size;
-  void* data = SDL_LoadFile(path.c_str(), &data_size);
+  void* data = Utils::LoadToMem(path.c_str(), &data_size);
   if (!data) {
     SDL_Log("[E] <AudioMgr - load> Sound file is not found: %s", path.c_str());
     return false;
