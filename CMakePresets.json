@@ -50,19 +50,6 @@
             }
         },
         {
-            "name": "win-mingw-base",
-            "hidden": true,
-            "inherits": "vcpkg-base",
-            "cacheVariables": {
-                "VCPKG_TARGET_TRIPLET": "x64-mingw-dynamic",
-                "VCPKG_HOST_TRIPLET": "x64-mingw-dynamic",
-                "CMAKE_C_COMPILER": "gcc",
-                "CMAKE_CXX_COMPILER": "g++",
-                "CMAKE_EXE_LINKER_FLAGS": "-static",
-                "X_VCPKG_APPLOCAL_DEPS_INSTALL": true
-            }
-        },
-        {
             "name": "win-msvc-base",
             "hidden": true,
             "inherits": "vcpkg-base",
@@ -94,22 +81,6 @@
                 "VCPKG_TARGET_TRIPLET": "arm64-android",
                 "VCPKG_CHAINLOAD_TOOLCHAIN_FILE": "$env{ANDROID_NDK_HOME}/build/cmake/android.toolchain.cmake"
             }
-        },
-        {
-            "name": "win-mingw-debug",
-            "inherits": [
-                "win-mingw-base",
-                "debug-base"
-            ],
-            "displayName": "Windows MinGW GCC (Debug)"
-        },
-        {
-            "name": "win-mingw-release",
-            "inherits": [
-                "win-mingw-base",
-                "release-base"
-            ],
-            "displayName": "Windows MinGW GCC (Release)"
         },
         {
             "name": "win-msvc-debug",
