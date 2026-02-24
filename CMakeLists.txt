@@ -1,4 +1,7 @@
 cmake_minimum_required(VERSION 3.21)
+
+set(VCPKG_OVERLAY_PORTS "${CMAKE_SOURCE_DIR}/vcpkg/ports")
+set(VCPKG_OVERLAY_TRIPLETS "${CMAKE_SOURCE_DIR}/vcpkg/triplets")
 project(yourBattle LANGUAGES C CXX)
 
 # C++标准

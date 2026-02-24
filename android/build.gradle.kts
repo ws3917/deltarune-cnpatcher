@@ -18,19 +18,18 @@ android {
 
     defaultConfig {
         applicationId = "xyz.ws3917.yourbattle"
-        minSdk = 21
+        minSdk = 24
         targetSdk = 36
         versionCode = 1
         versionName = "1.0"
 
         externalNativeBuild {
             cmake {
-                val vcpkgRoot = System.getenv("VCPKG_ROOT")
                 arguments(
                     "-DANDROID_STL=c++_shared",
-                    "-DCMAKE_TOOLCHAIN_FILE=$vcpkgRoot/scripts/buildsystems/vcpkg.cmake"
+                    "-DCMAKE_TOOLCHAIN_FILE=${project.rootDir}/vcpkg_android_wrapper.cmake"
                 )
-                abiFilters("arm64-v8a")
+                abiFilters("arm64-v8a", "x86_64")
             }
         }
     }
@@ -51,23 +50,11 @@ android {
         }
     }
     buildTypes {
-        getByName("debug") {
-            externalNativeBuild {
-                cmake {
-                    arguments("--preset", "android-arm64-debug")
-                }
-            }
-        }
         release {
             isMinifyEnabled = true
             isShrinkResources = true
             signingConfig = signingConfigs.getByName("release")
             proguardFiles(getDefaultProguardFile("proguard-android-optimize.txt"), "proguard-rules.pro")
-            externalNativeBuild {
-                cmake {
-                    arguments("--preset", "android-arm64-release")
-                }
-            }
         }
     }
     compileOptions {

@@ -14,8 +14,7 @@
             "installDir": "${sourceDir}/install/${presetName}",
             "cacheVariables": {
                 "CMAKE_EXPORT_COMPILE_COMMANDS": true,
-                "CMAKE_TOOLCHAIN_FILE": "$env{VCPKG_ROOT}/scripts/buildsystems/vcpkg.cmake",
-                "VCPKG_OVERLAY_PORTS": "${sourceDir}/3rdparty"
+                "CMAKE_TOOLCHAIN_FILE": "$env{VCPKG_ROOT}/scripts/buildsystems/vcpkg.cmake"
             }
         },
         {
@@ -53,8 +52,16 @@
             "name": "win-msvc-base",
             "hidden": true,
             "inherits": "vcpkg-base",
+            "architecture":{
+                "value": "x64",
+                "strategy": "external"
+            },
+            "toolset": {
+                "value": "v143,host=x64",
+                "strategy": "external"
+            },
             "cacheVariables": {
-                "VCPKG_TARGET_TRIPLET": "x64-windows",
+                "VCPKG_TARGET_TRIPLET": "custom-x64-windows-dynamic-win7",
                 "CMAKE_C_COMPILER": "cl",
                 "CMAKE_CXX_COMPILER": "cl",
                 "CMAKE_C_FLAGS": "/utf-8 /MP",
@@ -68,18 +75,9 @@
             "hidden": true,
             "inherits": "vcpkg-base",
             "cacheVariables": {
-                "VCPKG_TARGET_TRIPLET": "x64-linux-dynamic",
+                "VCPKG_TARGET_TRIPLET": "custom-x64-linux-dynamic",
                 "CMAKE_C_COMPILER": "gcc",
                 "CMAKE_CXX_COMPILER": "g++"
-            }
-        },
-        {
-            "name": "android-arm64-base",
-            "hidden": true,
-            "inherits": "vcpkg-base",
-            "cacheVariables": {
-                "VCPKG_TARGET_TRIPLET": "arm64-android",
-                "VCPKG_CHAINLOAD_TOOLCHAIN_FILE": "$env{ANDROID_NDK_HOME}/build/cmake/android.toolchain.cmake"
             }
         },
         {
@@ -113,22 +111,6 @@
                 "release-base"
             ],
             "displayName": "Linux GCC (Release)"
-        },
-        {
-            "name": "android-arm64-debug",
-            "inherits": [
-                "android-arm64-base",
-                "debug-base"
-            ],
-            "displayName": "Android ARM64 (Debug)"
-        },
-        {
-            "name": "android-arm64-release",
-            "inherits": [
-                "android-arm64-base",
-                "release-base"
-            ],
-            "displayName": "Android ARM64 (Release)"
         }
     ]
 }
