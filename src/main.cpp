@@ -37,9 +37,7 @@ SDL_AppResult SDL_AppInit(void** _state, int, char** argv) {
 
   // 打包资源
   if (!Utils::isMobile()) {
-    const char* base_path = SDL_GetBasePath();
-    std::string archive_path = std::string(base_path) + "main.pak";
-    SDL_free(const_cast<char*>(base_path));
+    std::string archive_path = std::string(SDL_GetBasePath()) + "main.pak";
     if (!PHYSFS_init(argv[0]) || !PHYSFS_mount(archive_path.c_str(), "/", 1)) {
       SDL_Log("[C] <Init> Failed to mount physFS: %s",
               PHYSFS_getErrorByCode(PHYSFS_getLastErrorCode()));
