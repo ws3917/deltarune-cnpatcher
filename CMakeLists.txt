@@ -45,9 +45,9 @@ elseif(WIN32)
     add_executable(${PROJECT_NAME} ${SOURCES} ${RC_FILES})
 
     # 保持 Win7 兼容性
-    if(MSVC)
-        add_definitions(-D_WIN32_WINNT=0x0601 -DWINVER=0x0601)
-    endif()
+    # if(MSVC)
+    #     add_definitions(-D_WIN32_WINNT=0x0601 -DWINVER=0x0601)
+    # endif()
 
     # Release 模式下隐藏控制台窗口
     set_target_properties(${PROJECT_NAME} PROPERTIES
