@@ -13,7 +13,7 @@ set(CMAKE_CXX_EXTENSIONS OFF)
 # vcpkg 仓库的库
 find_package(PhysFS CONFIG REQUIRED)
 find_package(nlohmann_json CONFIG REQUIRED)
-find_package(SFML COMPONENTS Main Graphics Window Audio System CONFIG REQUIRED)
+find_package(SFML COMPONENTS Graphics Window Audio System CONFIG REQUIRED)
 
 # -- 项目构建 --
 file(GLOB_RECURSE SOURCES CONFIGURE_DEPENDS src/*.cpp)
@@ -36,7 +36,7 @@ target_include_directories(${PROJECT_NAME} PRIVATE
 )
 
 target_link_libraries(${PROJECT_NAME} PRIVATE
-    SFML::Main SFML::Graphics SFML::Window SFML::Audio SFML::System
+    SFML::Graphics SFML::Window SFML::Audio SFML::System
     nlohmann_json::nlohmann_json
     PhysFS::PhysFS-static
 )
