@@ -13,8 +13,8 @@ class AssetMgr {
  private:
   struct MusicData {
     MusicData(const std::string filename) : stream(filename) {}
-    sf::Music music;
     PhysFSStream stream;
+    sf::Music music;
   };
   static std::vector<std::byte> loadData(const std::string& filename);
 };

@@ -9,13 +9,13 @@ std::vector<std::byte> am::loadData(const std::string& filename) {
     sf::err() << std::format("[E] Can't read file '{}'\n", filename);
     return {};
   }
-  size_t size = PHYSFS_fileLength(file);
+  auto size = PHYSFS_fileLength(file);
   if (size < 0) {
     sf::err() << std::format("[E] Can't read file '{}'\n", filename);
     PHYSFS_close(file);
     return {};
   }
-  std::vector<std::byte> buffer(size);
+  std::vector<std::byte> buffer(static_cast<size_t>(size));
   size_t read_size = PHYSFS_readBytes(file, buffer.data(), size);
   if (size != read_size) {
     sf::err() << std::format(
@@ -33,8 +33,10 @@ const sf::Texture& am::loadTexture(const std::string& filename) {
   if (newfile) {
     auto data = loadData("image/" + filename + ".png");
     // 没找到
-    if (data.empty() || it->second.loadFromMemory(data.data(), data.size()))
+    if (data.empty() || !it->second.loadFromMemory(data.data(), data.size())) {
       sf::err() << std::format("[AM] Failed to load texture {}", filename);
+      pool.erase(it);
+    }
   }
   return it->second;
 }
@@ -44,8 +46,10 @@ const sf::SoundBuffer& am::loadSound(const std::string& filename) {
   auto [it, newfile] = pool.try_emplace(filename);
   if (newfile) {
     auto data = loadData("sound/" + filename + ".mp3");
-    if (data.empty() || it->second.loadFromMemory(data.data(), data.size()))
+    if (data.empty() || !it->second.loadFromMemory(data.data(), data.size())) {
       sf::err() << std::format("[AM] Failed to load sound {}", filename);
+      pool.erase(it);
+    }
   }
   return it->second;
 }
@@ -54,7 +58,7 @@ const sf::SoundBuffer& am::loadSound(const std::string& filename) {
 sf::Music& am::loadMusic(const std::string& filename) {
   static std::unordered_map<std::string, am::MusicData> pool = {};
   auto [it, newfile] = pool.try_emplace(filename, "music/" + filename + ".mp3");
-  auto& [music, stream] = it->second;
+  auto& [stream, music] = it->second;
   if (newfile) {
     if (!music.openFromStream(stream))
       sf::err() << std::format("[AM] Failed to load sound {}", filename);
