@@ -1,34 +1,567 @@
---------- beginning of system
-03-01 09:39:24.971  4253  4253 E TransactionExecutor: Failed to execute the transaction: tId:607047190 ClientTransaction{
-03-01 09:39:24.971  4253  4253 E TransactionExecutor: tId:607047190   transactionItems=[
-03-01 09:39:24.971  4253  4253 E TransactionExecutor: tId:607047190     LaunchActivityItem{activityToken=android.os.BinderProxy@d007c3f,intent=Intent { act=android.intent.action.MAIN cat=[android.intent.category.LAUNCHER] flg=0x10200000 cmp=xyz.ws3917.game/.SDLActivity bnds=[0,447][80,567] },ident=39528205,info=ActivityInfo{4f55ed1 xyz.ws3917.game.SDLActivity},curConfig={1.0 310mcc260mnc [en_US] ldltr sw320dp w320dp h640dp 160dpi nrml long port finger qwerty/v/v -nav/h winConfig={ mBounds=Rect(0, 0 - 320, 640) mAppBounds=Rect(0, 0 - 320, 640) mMaxBounds=Rect(0, 0 - 320, 640) mDisplayRotation=ROTATION_0 mWindowingMode=fullscreen mActivityType=undefined mAlwaysOnTop=undefined mRotation=ROTATION_0} s.8 fontWeightAdjustment=0},overrideConfig={1.0 310mcc260mnc [en_US] ldltr sw320dp w320dp h640dp 160dpi nrml long port finger qwerty/v/v -nav/h winConfig={ mBounds=Rect(0, 0 - 320, 640) mAppBounds=Rect(0, 0 - 320, 640) mMaxBounds=Rect(0, 0 - 320, 640) mDisplayRotation=ROTATION_0 mWindowingMode=fullscreen mActivityType=standard mAlwaysOnTop=undefined mRotation=ROTATION_0} s.2 fontWeightAdjustment=0},deviceId=0,referrer=null,procState=2,state=null,persistentState=null,pendingResults=null,pendingNewIntents=null,sceneTransitionInfo=null,profilerInfo=null,assistToken=android.os.BinderProxy@e5d446a,shareableActivityToken=android.os.BinderProxy@c8a9d5b,activityWindowInfo=ActivityWindowInfo{isEmbedded=false, taskBounds=Rect(0, 0 - 320, 640), taskFragmentBounds=Rect(0, 0 - 320, 640)}}
-03-01 09:39:24.971  4253  4253 E TransactionExecutor: tId:607047190     ResumeActivityItem{mActivityToken=android.os.BinderProxy@d007c3f,procState=-1,updateProcState=false,isForward=true,shouldSendCompatFakeFocus=false}
-03-01 09:39:24.971  4253  4253 E TransactionExecutor: tId:607047190     Target activity: Not found for token: android.os.BinderProxy@d007c3f
-03-01 09:39:24.971  4253  4253 E TransactionExecutor: tId:607047190   ]
-03-01 09:39:24.971  4253  4253 E TransactionExecutor: tId:607047190 }
+--------- beginning of main
+03-01 09:55:39.111  4574  4574 E xyz.ws3917.game: Not starting debugger since process cannot load the jdwp agent.
+03-01 09:55:39.177  4574  4574 E xyz.ws3917.game: ----- class 'Lorg/libsdl/app/SDLActivity;' cl=0x140b9208 -----
+03-01 09:55:39.177  4574  4574 E xyz.ws3917.game:   objectSize=4917 (5045 from super)
+03-01 09:55:39.177  4574  4574 E xyz.ws3917.game:   access=0x0000.0001
+03-01 09:55:39.177  4574  4574 E xyz.ws3917.game:   super='java.lang.Class<android.app.Activity>' (cl=0x0)
+03-01 09:55:39.177  4574  4574 E xyz.ws3917.game:   interfaces (1):
+03-01 09:55:39.177  4574  4574 E xyz.ws3917.game:      0: java.lang.Class<android.view.View$OnSystemUiVisibilityChangeListener> (cl=0x0)
+03-01 09:55:39.177  4574  4574 E xyz.ws3917.game:   vtable (15 entries, 365 in super):
+03-01 09:55:39.177  4574  4574 E xyz.ws3917.game:      0: void org.libsdl.app.SDLActivity.d()
+03-01 09:55:39.177  4574  4574 E xyz.ws3917.game:      1: boolean org.libsdl.app.SDLActivity.dispatchKeyEvent(android.view.KeyEvent)
+03-01 09:55:39.177  4574  4574 E xyz.ws3917.game:      2: void org.libsdl.app.SDLActivity.onActivityResult(int, int, android.content.Intent)
+03-01 09:55:39.177  4574  4574 E xyz.ws3917.game:      3: void org.libsdl.app.SDLActivity.onBackPressed()
+03-01 09:55:39.177  4574  4574 E xyz.ws3917.game:      4: void org.libsdl.app.SDLActivity.onConfigurationChanged(android.content.res.Configuration)
+03-01 09:55:39.177  4574  4574 E xyz.ws3917.game:      5: void org.libsdl.app.SDLActivity.onCreate(android.os.Bundle)
+03-01 09:55:39.177  4574  4574 E xyz.ws3917.game:      6: void org.libsdl.app.SDLActivity.onDestroy()
+03-01 09:55:39.177  4574  4574 E xyz.ws3917.game:      7: void org.libsdl.app.SDLActivity.onPause()
+03-01 09:55:39.177  4574  4574 E xyz.ws3917.game:      8: void org.libsdl.app.SDLActivity.onRequestPermissionsResult(int, java.lang.String[], int[])
+03-01 09:55:39.177  4574  4574 E xyz.ws3917.game:      9: void org.libsdl.app.SDLActivity.onResume()
+03-01 09:55:39.177  4574  4574 E xyz.ws3917.game:     10: void org.libsdl.app.SDLActivity.onStart()
+03-01 09:55:39.177  4574  4574 E xyz.ws3917.game:     11: void org.libsdl.app.SDLActivity.onStop()
+03-01 09:55:39.177  4574  4574 E xyz.ws3917.game:     12: void org.libsdl.app.SDLActivity.onSystemUiVisibilityChange(int)
+03-01 09:55:39.177  4574  4574 E xyz.ws3917.game:     13: void org.libsdl.app.SDLActivity.onTrimMemory(int)
+03-01 09:55:39.177  4574  4574 E xyz.ws3917.game:     14: void org.libsdl.app.SDLActivity.onWindowFocusChanged(boolean)
+03-01 09:55:39.177  4574  4574 E xyz.ws3917.game:   direct methods (40 entries):
+03-01 09:55:39.177  4574  4574 E xyz.ws3917.game:      0: void org.libsdl.app.SDLActivity.<init>()
+03-01 09:55:39.177  4574  4574 E xyz.ws3917.game:      1: a.m org.libsdl.app.SDLActivity.a()
+03-01 09:55:39.177  4574  4574 E xyz.ws3917.game:      2: void org.libsdl.app.SDLActivity.b()
+03-01 09:55:39.177  4574  4574 E xyz.ws3917.game:      3: boolean org.libsdl.app.SDLActivity.c()
+03-01 09:55:39.177  4574  4574 E xyz.ws3917.game:      4: boolean org.libsdl.app.SDLActivity.nativeAllowRecreateActivity()
+03-01 09:55:39.177  4574  4574 E xyz.ws3917.game:      5: int org.libsdl.app.SDLActivity.nativeCheckSDLThreadCounter()
+03-01 09:55:39.177  4574  4574 E xyz.ws3917.game:      6: void org.libsdl.app.SDLActivity.nativeCleanupMainThread()
+03-01 09:55:39.177  4574  4574 E xyz.ws3917.game:      7: void org.libsdl.app.SDLActivity.nativeFocusChanged(boolean)
+03-01 09:55:39.177  4574  4574 E xyz.ws3917.game:      8: boolean org.libsdl.app.SDLActivity.nativeGetHintBoolean(java.lang.String, boolean)
+03-01 09:55:39.177  4574  4574 E xyz.ws3917.game:      9: java.lang.String org.libsdl.app.SDLActivity.nativeGetVersion()
+03-01 09:55:39.177  4574  4574 E xyz.ws3917.game:     10: void org.libsdl.app.SDLActivity.nativeInitMainThread()
+03-01 09:55:39.177  4574  4574 E xyz.ws3917.game:     11: void org.libsdl.app.SDLActivity.nativeLowMemory()
+03-01 09:55:39.177  4574  4574 E xyz.ws3917.game:     12: void org.libsdl.app.SDLActivity.nativePause()
+03-01 09:55:39.177  4574  4574 E xyz.ws3917.game:     13: void org.libsdl.app.SDLActivity.nativePermissionResult(int, boolean)
+03-01 09:55:39.177  4574  4574 E xyz.ws3917.game:     14: void org.libsdl.app.SDLActivity.nativeQuit()
+03-01 09:55:39.177  4574  4574 E xyz.ws3917.game:     15: void org.libsdl.app.SDLActivity.nativeResume()
+03-01 09:55:39.177  4574  4574 E xyz.ws3917.game:     16: int org.libsdl.app.SDLActivity.nativeRunMain(java.lang.String, java.lang.String, java.lang.Object)
+03-01 09:55:39.177  4574  4574 E xyz.ws3917.game:     17: void org.libsdl.app.SDLActivity.nativeSendQuit()
+03-01 09:55:39.177  4574  4574 E xyz.ws3917.game:     18: void org.libsdl.app.SDLActivity.nativeSetNaturalOrientation(int)
+03-01 09:55:39.177  4574  4574 E xyz.ws3917.game:     19: void org.libsdl.app.SDLActivity.nativeSetScreenResolution(int, int, int, int, float, float)
+03-01 09:55:39.177  4574  4574 E xyz.ws3917.game:     20: void org.libsdl.app.SDLActivity.nativeSetupJNI()
+03-01 09:55:39.177  4574  4574 E xyz.ws3917.game:     21: void org.libsdl.app.SDLActivity.onNativeAccel(float, float, float)
+03-01 09:55:39.177  4574  4574 E xyz.ws3917.game:     22: void org.libsdl.app.SDLActivity.onNativeClipboardChanged()
+03-01 09:55:39.177  4574  4574 E xyz.ws3917.game:     23: void org.libsdl.app.SDLActivity.onNativeDarkModeChanged(boolean)
+03-01 09:55:39.177  4574  4574 E xyz.ws3917.game:     24: void org.libsdl.app.SDLActivity.onNativeDropFile(java.lang.String)
+03-01 09:55:39.177  4574  4574 E xyz.ws3917.game:     25: void org.libsdl.app.SDLActivity.onNativeInsetsChanged(int, int, int, int)
+03-01 09:55:39.177  4574  4574 E xyz.ws3917.game:     26: void org.libsdl.app.SDLActivity.onNativeKeyDown(int)
+03-01 09:55:39.177  4574  4574 E xyz.ws3917.game:     27: void org.libsdl.app.SDLActivity.onNativeKeyUp(int)
+03-01 09:55:39.177  4574  4574 E xyz.ws3917.game:     28: void org.libsdl.app.SDLActivity.onNativeLocaleChanged()
+03-01 09:55:39.177  4574  4574 E xyz.ws3917.game:     29: void org.libsdl.app.SDLActivity.onNativeMouse(int, int, float, float, boolean)
+03-01 09:55:39.177  4574  4574 E xyz.ws3917.game:     30: void org.libsdl.app.SDLActivity.onNativePen(int, int, int, int, float, float, float)
+03-01 09:55:39.177  4574  4574 E xyz.ws3917.game:     31: void org.libsdl.app.SDLActivity.onNativePinchEnd()
+03-01 09:55:39.177  4574  4574 E xyz.ws3917.game:     32: void org.libsdl.app.SDLActivity.onNativePinchStart()
+03-01 09:55:39.177  4574  4574 E xyz.ws3917.game:     33: void org.libsdl.app.SDLActivity.onNativePinchUpdate(float)
+03-01 09:55:39.177  4574  4574 E xyz.ws3917.game:     34: void org.libsdl.app.SDLActivity.onNativeResize()
+03-01 09:55:39.177  4574  4574 E xyz.ws3917.game:     35: void org.libsdl.app.SDLActivity.onNativeRotationChanged(int)
+03-01 09:55:39.177  4574  4574 E xyz.ws3917.game:     36: void org.libsdl.app.SDLActivity.onNativeSurfaceChanged()
+03-01 09:55:39.177  4574  4574 E xyz.ws3917.game:     37: void org.libsdl.app.SDLActivity.onNativeSurfaceCreated()
+03-01 09:55:39.177  4574  4574 E xyz.ws3917.game:     38: void org.libsdl.app.SDLActivity.onNativeSurfaceDestroyed()
+03-01 09:55:39.179  4574  4574 E xyz.ws3917.game:     39: void org.libsdl.app.SDLActivity.onNativeTouch(int, int, int, float, float, float)
+03-01 09:55:39.179  4574  4574 E xyz.ws3917.game:   static fields (15 entries):
+03-01 09:55:39.179  4574  4574 E xyz.ws3917.game:      0: boolean org.libsdl.app.SDLActivity.c
+03-01 09:55:39.179  4574  4574 E xyz.ws3917.game:      1: int org.libsdl.app.SDLActivity.d
+03-01 09:55:39.179  4574  4574 E xyz.ws3917.game:      2: java.util.Locale org.libsdl.app.SDLActivity.e
+03-01 09:55:39.179  4574  4574 E xyz.ws3917.game:      3: boolean org.libsdl.app.SDLActivity.f
+03-01 09:55:39.179  4574  4574 E xyz.ws3917.game:      4: org.libsdl.app.SDLActivity org.libsdl.app.SDLActivity.g
+03-01 09:55:39.179  4574  4574 E xyz.ws3917.game:      5: org.libsdl.app.b org.libsdl.app.SDLActivity.h
+03-01 09:55:39.179  4574  4574 E xyz.ws3917.game:      6: android.widget.RelativeLayout org.libsdl.app.SDLActivity.i
+03-01 09:55:39.179  4574  4574 E xyz.ws3917.game:      7: a.m org.libsdl.app.SDLActivity.j
+03-01 09:55:39.179  4574  4574 E xyz.ws3917.game:      8: org.libsdl.app.HIDDeviceManager org.libsdl.app.SDLActivity.k
+03-01 09:55:39.179  4574  4574 E xyz.ws3917.game:      9: java.lang.Thread org.libsdl.app.SDLActivity.l
+03-01 09:55:39.179  4574  4574 E xyz.ws3917.game:     10: boolean org.libsdl.app.SDLActivity.m
+03-01 09:55:39.179  4574  4574 E xyz.ws3917.game:     11: boolean org.libsdl.app.SDLActivity.n
+03-01 09:55:39.179  4574  4574 E xyz.ws3917.game:     12: boolean org.libsdl.app.SDLActivity.o
+03-01 09:55:39.179  4574  4574 E xyz.ws3917.game:     13: int org.libsdl.app.SDLActivity.p
+03-01 09:55:39.179  4574  4574 E xyz.ws3917.game:     14: int org.libsdl.app.SDLActivity.q
+03-01 09:55:39.179  4574  4574 E xyz.ws3917.game:   instance fields (2 entries):
+03-01 09:55:39.179  4574  4574 E xyz.ws3917.game:      0: a.k org.libsdl.app.SDLActivity.a
+03-01 09:55:39.179  4574  4574 E xyz.ws3917.game:      1: a.b org.libsdl.app.SDLActivity.b
+03-01 09:55:39.179  4574  4574 E xyz.ws3917.game: Failed to register native method org.libsdl.app.SDLActivity.onNativeScreenKeyboardShown()V in /data/app/~~ATVbYT8VUuOBlRXGWiPwzA==/xyz.ws3917.game-nMdVyQHram48YgpwXBz-8w==/base.apk
+03-01 09:55:39.180  4574  4574 E SDL     : Failed to register methods of org/libsdl/app/SDLActivity
+03-01 09:55:39.181  4574  4574 F xyz.ws3917.game: thread.cc:2560] No pending exception expected: java.lang.NoSuchMethodError: no static or non-static method "Lorg/libsdl/app/SDLActivity;.onNativeScreenKeyboardShown()V"
+03-01 09:55:39.181  4574  4574 F xyz.ws3917.game: thread.cc:2560]   at java.lang.String java.lang.Runtime.nativeLoad(java.lang.String, java.lang.ClassLoader, java.lang.Class) (Runtime.java:-2)
+03-01 09:55:39.181  4574  4574 F xyz.ws3917.game: thread.cc:2560]   at void java.lang.Runtime.loadLibrary0(java.lang.ClassLoader, java.lang.Class, java.lang.String) (Runtime.java:1079)
+03-01 09:55:39.181  4574  4574 F xyz.ws3917.game: thread.cc:2560]   at void java.lang.Runtime.loadLibrary0(java.lang.Class, java.lang.String) (Runtime.java:1003)
+03-01 09:55:39.181  4574  4574 F xyz.ws3917.game: thread.cc:2560]   at void java.lang.System.loadLibrary(java.lang.String) (System.java:1765)
+03-01 09:55:39.181  4574  4574 F xyz.ws3917.game: thread.cc:2560]   at void org.libsdl.app.SDLActivity.d() (r8-map-id-a499034a36775866eb2a0cdb58fd65c1af9e651909f8e1db563107e1a9e2ad14:90)
+03-01 09:55:39.181  4574  4574 F xyz.ws3917.game: thread.cc:2560]   at void org.libsdl.app.SDLActivity.onCreate(android.os.Bundle) (r8-map-id-a499034a36775866eb2a0cdb58fd65c1af9e651909f8e1db563107e1a9e2ad14:15)
+03-01 09:55:39.181  4574  4574 F xyz.ws3917.game: thread.cc:2560]   at void android.app.Activity.performCreate(android.os.Bundle, android.os.PersistableBundle) (Activity.java:9002)
+03-01 09:55:39.181  4574  4574 F xyz.ws3917.game: thread.cc:2560]   at void android.app.Activity.performCreate(android.os.Bundle) (Activity.java:8980)
+03-01 09:55:39.181  4574  4574 F xyz.ws3917.game: thread.cc:2560]   at void android.app.Instrumentation.callActivityOnCreate(android.app.Activity, android.os.Bundle) (Instrumentation.java:1526)
+03-01 09:55:39.181  4574  4574 F xyz.ws3917.game: thread.cc:2560]   at android.app.Activity android.app.ActivityThread.performLaunchActivity(android.app.ActivityThread$ActivityClientRecord, android.content.Intent) (ActivityThread.java:4030)
+03-01 09:55:39.181  4574  4574 F xyz.ws3917.game: thread.cc:2560]   at android.app.Activity android.app.ActivityThread.handleLaunchActivity(android.app.ActivityThread$ActivityClientRecord, android.app.servertransaction.PendingTransactionActions, int, android.content.Intent) (ActivityThread.java:4235)
+03-01 09:55:39.181  4574  4574 F xyz.ws3917.game: thread.cc:2560]   at void android.app.servertransaction.LaunchActivityItem.execute(android.app.ClientTransactionHandler, android.app.servertransaction.PendingTransactionActions) (LaunchActivityItem.java:112)
+03-01 09:55:39.181  4574  4574 F xyz.ws3917.game: thread.cc:2560]   at void android.app.servertransaction.TransactionExecutor.executeNonLifecycleItem(android.app.servertransaction.ClientTransaction, android.app.servertransaction.ClientTransactionItem, boolean) (TransactionExecutor.java:174)
+03-01 09:55:39.181  4574  4574 F xyz.ws3917.game: thread.cc:2560]   at void android.app.servertransaction.TransactionExecutor.executeTransactionItems(android.app.servertransaction.ClientTransaction) (TransactionExecutor.java:109)
+03-01 09:55:39.181  4574  4574 F xyz.ws3917.game: thread.cc:2560]   at void android.app.servertransaction.TransactionExecutor.execute(android.app.servertransaction.ClientTransaction) (TransactionExecutor.java:81)
+03-01 09:55:39.181  4574  4574 F xyz.ws3917.game: thread.cc:2560]   at void android.app.ActivityThread$H.handleMessage(android.os.Message) (ActivityThread.java:2636)
+03-01 09:55:39.181  4574  4574 F xyz.ws3917.game: thread.cc:2560]   at void android.os.Handler.dispatchMessage(android.os.Message) (Handler.java:107)
+03-01 09:55:39.181  4574  4574 F xyz.ws3917.game: thread.cc:2560]   at boolean android.os.Looper.loopOnce(android.os.Looper, long, int) (Looper.java:232)
+03-01 09:55:39.181  4574  4574 F xyz.ws3917.game: thread.cc:2560]   at void android.os.Looper.loop() (Looper.java:317)
+03-01 09:55:39.181  4574  4574 F xyz.ws3917.game: thread.cc:2560]   at void android.app.ActivityThread.main(java.lang.String[]) (ActivityThread.java:8705)
+03-01 09:55:39.181  4574  4574 F xyz.ws3917.game: thread.cc:2560]   at java.lang.Object java.lang.reflect.Method.invoke(java.lang.Object, java.lang.Object[]) (Method.java:-2)
+03-01 09:55:39.181  4574  4574 F xyz.ws3917.game: thread.cc:2560]   at void com.android.internal.os.RuntimeInit$MethodAndArgsCaller.run() (RuntimeInit.java:580)
+03-01 09:55:39.181  4574  4574 F xyz.ws3917.game: thread.cc:2560]   at void com.android.internal.os.ZygoteInit.main(java.lang.String[]) (ZygoteInit.java:886)
+03-01 09:55:39.181  4574  4574 F xyz.ws3917.game: thread.cc:2560] 
+03-01 09:55:39.257  4574  4574 F xyz.ws3917.game: runtime.cc:708] Runtime aborting...
+03-01 09:55:39.257  4574  4574 F xyz.ws3917.game: runtime.cc:708] All threads:
+03-01 09:55:39.257  4574  4574 F xyz.ws3917.game: runtime.cc:708] DALVIK THREADS (12):
+03-01 09:55:39.257  4574  4574 F xyz.ws3917.game: runtime.cc:708] "SDLActivity" prio=10 tid=1 Runnable
+03-01 09:55:39.257  4574  4574 F xyz.ws3917.game: runtime.cc:708]   | group="" sCount=0 ucsCount=0 flags=0 obj=0x73ada9b8 self=0x799a1bfe9be0
+03-01 09:55:39.257  4574  4574 F xyz.ws3917.game: runtime.cc:708]   | sysTid=4574 nice=-10 cgrp=top-app sched=0/0 handle=0x799b0c425d18
+03-01 09:55:39.257  4574  4574 F xyz.ws3917.game: runtime.cc:708]   | state=R schedstat=( 28962184 14098724 61 ) utm=0 stm=2 core=3 HZ=100
+03-01 09:55:39.257  4574  4574 F xyz.ws3917.game: runtime.cc:708]   | stack=0x7ffd7e19d000-0x7ffd7e19f000 stackSize=8188KB
+03-01 09:55:39.257  4574  4574 F xyz.ws3917.game: runtime.cc:708]   | held mutexes= "abort lock" "mutator lock"(shared held)
+03-01 09:55:39.257  4574  4574 F xyz.ws3917.game: runtime.cc:708]   native: #00 pc 007da776  /apex/com.android.art/lib64/libart.so (art::DumpNativeStack+214) (BuildId: 86541675bab12d77c4cd601b77f3f707)
+03-01 09:55:39.257  4574  4574 F xyz.ws3917.game: runtime.cc:708]   native: #01 pc 008cddf6  /apex/com.android.art/lib64/libart.so (art::Thread::DumpStack const+358) (BuildId: 86541675bab12d77c4cd601b77f3f707)
+03-01 09:55:39.257  4574  4574 F xyz.ws3917.game: runtime.cc:708]   native: #02 pc 008ee5a6  /apex/com.android.art/lib64/libart.so (art::DumpCheckpoint::Run+1174) (BuildId: 86541675bab12d77c4cd601b77f3f707)
+03-01 09:55:39.257  4574  4574 F xyz.ws3917.game: runtime.cc:708]   native: #03 pc 008e7be9  /apex/com.android.art/lib64/libart.so (art::ThreadList::RunCheckpoint+825) (BuildId: 86541675bab12d77c4cd601b77f3f707)
+03-01 09:55:39.257  4574  4574 F xyz.ws3917.game: runtime.cc:708]   native: #04 pc 008e6be9  /apex/com.android.art/lib64/libart.so (art::ThreadList::Dump+1513) (BuildId: 86541675bab12d77c4cd601b77f3f707)
+03-01 09:55:39.257  4574  4574 F xyz.ws3917.game: runtime.cc:708]   native: #05 pc 0089792c  /apex/com.android.art/lib64/libart.so (art::AbortState::Dump const+188) (BuildId: 86541675bab12d77c4cd601b77f3f707)
+03-01 09:55:39.257  4574  4574 F xyz.ws3917.game: runtime.cc:708]   native: #06 pc 0087ea8d  /apex/com.android.art/lib64/libart.so (art::Runtime::Abort+1613) (BuildId: 86541675bab12d77c4cd601b77f3f707)
+03-01 09:55:39.257  4574  4574 F xyz.ws3917.game: runtime.cc:708]   native: #07 pc 00015eea  /apex/com.android.art/lib64/libbase.so (android::base::SetAborter::$_0::__invoke+58) (BuildId: 2d7df6e607a8928501c5363a393a3a89)
+03-01 09:55:39.257  4574  4574 F xyz.ws3917.game: runtime.cc:708]   native: #08 pc 0001540c  /apex/com.android.art/lib64/libbase.so (android::base::LogMessage::~LogMessage+492) (BuildId: 2d7df6e607a8928501c5363a393a3a89)
+03-01 09:55:39.257  4574  4574 F xyz.ws3917.game: runtime.cc:708]   native: #09 pc 008d36fc  /apex/com.android.art/lib64/libart.so (art::Thread::AssertNoPendingException const+1468) (BuildId: 86541675bab12d77c4cd601b77f3f707)
+03-01 09:55:39.257  4574  4574 F xyz.ws3917.game: runtime.cc:708]   native: #10 pc 0049c6f5  /apex/com.android.art/lib64/libart.so (art::ClassLinker::FindClass+53) (BuildId: 86541675bab12d77c4cd601b77f3f707)
+03-01 09:55:39.257  4574  4574 F xyz.ws3917.game: runtime.cc:708]   native: #11 pc 0068bc23  /apex/com.android.art/lib64/libart.so (art::JNI<false>::FindClass+1459) (BuildId: 86541675bab12d77c4cd601b77f3f707)
+03-01 09:55:39.257  4574  4574 F xyz.ws3917.game: runtime.cc:708]   native: #12 pc 001b56d4  /data/app/~~ATVbYT8VUuOBlRXGWiPwzA==/xyz.ws3917.game-nMdVyQHram48YgpwXBz-8w==/base.apk (offset 350000) (JNI_OnLoad+196) (BuildId: f2ff887bf543e243cda223f0c209c96e3a56f4bd)
+03-01 09:55:39.257  4574  4574 F xyz.ws3917.game: runtime.cc:708]   native: #13 pc 00680a3c  /apex/com.android.art/lib64/libart.so (art::JavaVMExt::LoadNativeLibrary+3516) (BuildId: 86541675bab12d77c4cd601b77f3f707)
+03-01 09:55:39.257  4574  4574 F xyz.ws3917.game: runtime.cc:708]   native: #14 pc 000050f3  /apex/com.android.art/lib64/libopenjdkjvm.so (JVM_NativeLoad+355) (BuildId: 1d3d7da26cf5268558c64a66611de01d)
+03-01 09:55:39.257  4574  4574 F xyz.ws3917.game: runtime.cc:708]   at java.lang.Runtime.nativeLoad(Native method)
+03-01 09:55:39.257  4574  4574 F xyz.ws3917.game: runtime.cc:708]   at java.lang.Runtime.loadLibrary0(Runtime.java:1079)
+03-01 09:55:39.257  4574  4574 F xyz.ws3917.game: runtime.cc:708]   - locked <@addr=0x70eeec08> (a java.lang.Runtime)
+03-01 09:55:39.257  4574  4574 F xyz.ws3917.game: runtime.cc:708]   at java.lang.Runtime.loadLibrary0(Runtime.java:1003)
+03-01 09:55:39.257  4574  4574 F xyz.ws3917.game: runtime.cc:708]   at java.lang.System.loadLibrary(System.java:1765)
+03-01 09:55:39.257  4574  4574 F xyz.ws3917.game: runtime.cc:708]   at org.libsdl.app.SDLActivity.d(r8-map-id-a499034a36775866eb2a0cdb58fd65c1af9e651909f8e1db563107e1a9e2ad14:90)
+03-01 09:55:39.257  4574  4574 F xyz.ws3917.game: runtime.cc:708]   at org.libsdl.app.SDLActivity.onCreate(r8-map-id-a499034a36775866eb2a0cdb58fd65c1af9e651909f8e1db563107e1a9e2ad14:15)
+03-01 09:55:39.257  4574  4574 F xyz.ws3917.game: runtime.cc:708]   at android.app.Activity.performCreate(Activity.java:9002)
+03-01 09:55:39.257  4574  4574 F xyz.ws3917.game: runtime.cc:708]   at android.app.Activity.performCreate(Activity.java:8980)
+03-01 09:55:39.257  4574  4574 F xyz.ws3917.game: runtime.cc:708]   at android.app.Instrumentation.callActivityOnCreate(Instrumentation.java:1526)
+03-01 09:55:39.257  4574  4574 F xyz.ws3917.game: runtime.cc:708]   at android.app.ActivityThread.performLaunchActivity(ActivityThread.java:4030)
+03-01 09:55:39.257  4574  4574 F xyz.ws3917.game: runtime.cc:708]   at android.app.ActivityThread.handleLaunchActivity(ActivityThread.java:4235)
+03-01 09:55:39.257  4574  4574 F xyz.ws3917.game: runtime.cc:708]   at android.app.servertransaction.LaunchActivityItem.execute(LaunchActivityItem.java:112)
+03-01 09:55:39.257  4574  4574 F xyz.ws3917.game: runtime.cc:708]   at android.app.servertransaction.TransactionExecutor.executeNonLifecycleItem(TransactionExecutor.java:174)
+03-01 09:55:39.257  4574  4574 F xyz.ws3917.game: runtime.cc:708]   at android.app.servertransaction.TransactionExecutor.executeTransactionItems(TransactionExecutor.java:109)
+03-01 09:55:39.257  4574  4574 F xyz.ws3917.game: runtime.cc:708]   at android.app.servertransaction.TransactionExecutor.execute(TransactionExecutor.java:81)
+03-01 09:55:39.257  4574  4574 F xyz.ws3917.game: runtime.cc:708]   at android.app.ActivityThread$H.handleMessage(ActivityThread.java:2636)
+03-01 09:55:39.257  4574  4574 F xyz.ws3917.game: runtime.cc:708]   at android.os.Handler.dispatchMessage(Handler.java:107)
+03-01 09:55:39.257  4574  4574 F xyz.ws3917.game: runtime.cc:708]   at android.os.Looper.loopOnce(Looper.java:232)
+03-01 09:55:39.257  4574  4574 F xyz.ws3917.game: runtime.cc:708]   at android.os.Looper.loop(Looper.java:317)
+03-01 09:55:39.257  4574  4574 F xyz.ws3917.game: runtime.cc:708]   at android.app.ActivityThread.main(ActivityThread.java:8705)
+03-01 09:55:39.257  4574  4574 F xyz.ws3917.game: runtime.cc:708]   at java.lang.reflect.Method.invoke(Native method)
+03-01 09:55:39.257  4574  4574 F xyz.ws3917.game: runtime.cc:708]   at com.android.internal.os.RuntimeInit$MethodAndArgsCaller.run(RuntimeInit.java:580)
+03-01 09:55:39.257  4574  4574 F xyz.ws3917.game: runtime.cc:708]   at com.android.internal.os.ZygoteInit.main(ZygoteInit.java:886)
+03-01 09:55:39.257  4574  4574 F xyz.ws3917.game: runtime.cc:708] 
+03-01 09:55:39.257  4574  4574 F xyz.ws3917.game: runtime.cc:708] "ReferenceQueueDaemon" prio=5 tid=5 Waiting
+03-01 09:55:39.257  4574  4574 F xyz.ws3917.game: runtime.cc:708]   | group="" sCount=1 ucsCount=0 flags=1 obj=0x14073128 self=0x799a1bfeef50
+03-01 09:55:39.257  4574  4574 F xyz.ws3917.game: runtime.cc:708]   | sysTid=4580 nice=4 cgrp=top-app sched=0/0 handle=0x7997ca8d68c0
+03-01 09:55:39.257  4574  4574 F xyz.ws3917.game: runtime.cc:708]   | state=S schedstat=( 148562 7972597 2 ) utm=0 stm=0 core=2 HZ=100
+03-01 09:55:39.257  4574  4574 F xyz.ws3917.game: runtime.cc:708]   | stack=0x7997ca7d3000-0x7997ca7d5000 stackSize=1038KB
+03-01 09:55:39.257  4574  4574 F xyz.ws3917.game: runtime.cc:708]   | held mutexes=
+03-01 09:55:39.257  4574  4574 F xyz.ws3917.game: runtime.cc:708]   native: #00 pc 00081f56  /apex/com.android.runtime/lib64/bionic/libc.so (syscall+22) (BuildId: eb58b4d427279994f00c0e1818477e4f)
+03-01 09:55:39.257  4574  4574 F xyz.ws3917.game: runtime.cc:708]   native: #01 pc 0047fd6b  /apex/com.android.art/lib64/libart.so (art::ConditionVariable::WaitHoldingLocks+107) (BuildId: 86541675bab12d77c4cd601b77f3f707)
+03-01 09:55:39.257  4574  4574 F xyz.ws3917.game: runtime.cc:708]   native: #02 pc 0079263e  /apex/com.android.art/lib64/libart.so (art::Monitor::Wait+1582) (BuildId: 86541675bab12d77c4cd601b77f3f707)
+03-01 09:55:39.257  4574  4574 F xyz.ws3917.game: runtime.cc:708]   at java.lang.Object.wait(Native method)
+03-01 09:55:39.257  4574  4574 F xyz.ws3917.game: runtime.cc:708]   - waiting on <0x062eada4> (a java.lang.Class<java.lang.ref.ReferenceQueue>)
+03-01 09:55:39.257  4574  4574 F xyz.ws3917.game: runtime.cc:708]   at java.lang.Object.wait(Object.java:405)
+03-01 09:55:39.257  4574  4574 F xyz.ws3917.game: runtime.cc:708]   at java.lang.Object.wait(Object.java:543)
+03-01 09:55:39.257  4574  4574 F xyz.ws3917.game: runtime.cc:708]   at java.lang.Daemons$ReferenceQueueDaemon.runInternal(Daemons.java:251)
+03-01 09:55:39.257  4574  4574 F xyz.ws3917.game: runtime.cc:708]   - locked <0x062eada4> (a java.lang.Class<java.lang.ref.ReferenceQueue>)
+03-01 09:55:39.257  4574  4574 F xyz.ws3917.game: runtime.cc:708]   at java.lang.Daemons$Daemon.run(Daemons.java:131)
+03-01 09:55:39.257  4574  4574 F xyz.ws3917.game: runtime.cc:708]   at java.lang.Thread.run(Thread.java:1012)
+03-01 09:55:39.257  4574  4574 F xyz.ws3917.game: runtime.cc:708] 
+03-01 09:55:39.257  4574  4574 F xyz.ws3917.game: runtime.cc:708] "FinalizerDaemon" prio=5 tid=7 Waiting
+03-01 09:55:39.257  4574  4574 F xyz.ws3917.game: runtime.cc:708]   | group="" sCount=1 ucsCount=0 flags=1 obj=0x140731b8 self=0x799a1bff42c0
+03-01 09:55:39.257  4574  4574 F xyz.ws3917.game: runtime.cc:708]   | sysTid=4581 nice=4 cgrp=top-app sched=0/0 handle=0x7997ca7c68c0
+03-01 09:55:39.257  4574  4574 F xyz.ws3917.game: runtime.cc:708]   | state=S schedstat=( 62298 7606045 1 ) utm=0 stm=0 core=2 HZ=100
+03-01 09:55:39.257  4574  4574 F xyz.ws3917.game: runtime.cc:708]   | stack=0x7997ca6c3000-0x7997ca6c5000 stackSize=1038KB
+03-01 09:55:39.257  4574  4574 F xyz.ws3917.game: runtime.cc:708]   | held mutexes=
+03-01 09:55:39.257  4574  4574 F xyz.ws3917.game: runtime.cc:708]   native: #00 pc 00081f56  /apex/com.android.runtime/lib64/bionic/libc.so (syscall+22) (BuildId: eb58b4d427279994f00c0e1818477e4f)
+03-01 09:55:39.257  4574  4574 F xyz.ws3917.game: runtime.cc:708]   native: #01 pc 0047fd6b  /apex/com.android.art/lib64/libart.so (art::ConditionVariable::WaitHoldingLocks+107) (BuildId: 86541675bab12d77c4cd601b77f3f707)
+03-01 09:55:39.257  4574  4574 F xyz.ws3917.game: runtime.cc:708]   native: #02 pc 0079263e  /apex/com.android.art/lib64/libart.so (art::Monitor::Wait+1582) (BuildId: 86541675bab12d77c4cd601b77f3f707)
+03-01 09:55:39.257  4574  4574 F xyz.ws3917.game: runtime.cc:708]   at java.lang.Object.wait(Native method)
+03-01 09:55:39.257  4574  4574 F xyz.ws3917.game: runtime.cc:708]   - waiting on <0x0ba0170d> (a java.lang.Object)
+03-01 09:55:39.257  4574  4574 F xyz.ws3917.game: runtime.cc:708]   at java.lang.Object.wait(Object.java:405)
+03-01 09:55:39.257  4574  4574 F xyz.ws3917.game: runtime.cc:708]   at java.lang.ref.ReferenceQueue.remove(ReferenceQueue.java:207)
+03-01 09:55:39.257  4574  4574 F xyz.ws3917.game: runtime.cc:708]   - locked <0x0ba0170d> (a java.lang.Object)
+03-01 09:55:39.257  4574  4574 F xyz.ws3917.game: runtime.cc:708]   at java.lang.ref.ReferenceQueue.remove(ReferenceQueue.java:228)
+03-01 09:55:39.258  4574  4574 F xyz.ws3917.game: runtime.cc:708]   at java.lang.Daemons$FinalizerDaemon.runInternal(Daemons.java:331)
+03-01 09:55:39.258  4574  4574 F xyz.ws3917.game: runtime.cc:708]   at java.lang.Daemons$Daemon.run(Daemons.java:131)
+03-01 09:55:39.258  4574  4574 F xyz.ws3917.game: runtime.cc:708]   at java.lang.Thread.run(Thread.java:1012)
+03-01 09:55:39.258  4574  4574 F xyz.ws3917.game: runtime.cc:708] 
+03-01 09:55:39.258  4574  4574 F xyz.ws3917.game: runtime.cc:708] "FinalizerWatchdogDaemon" prio=5 tid=8 Waiting
+03-01 09:55:39.258  4574  4574 F xyz.ws3917.game: runtime.cc:708]   | group="" sCount=1 ucsCount=0 flags=1 obj=0x14073248 self=0x799a1c00e3f0
+03-01 09:55:39.258  4574  4574 F xyz.ws3917.game: runtime.cc:708]   | sysTid=4582 nice=4 cgrp=top-app sched=0/0 handle=0x7997ca6b68c0
+03-01 09:55:39.258  4574  4574 F xyz.ws3917.game: runtime.cc:708]   | state=S schedstat=( 49052 7629320 2 ) utm=0 stm=0 core=2 HZ=100
+03-01 09:55:39.258  4574  4574 F xyz.ws3917.game: runtime.cc:708]   | stack=0x7997ca5b3000-0x7997ca5b5000 stackSize=1038KB
+03-01 09:55:39.258  4574  4574 F xyz.ws3917.game: runtime.cc:708]   | held mutexes=
+03-01 09:55:39.258  4574  4574 F xyz.ws3917.game: runtime.cc:708]   native: #00 pc 00081f56  /apex/com.android.runtime/lib64/bionic/libc.so (syscall+22) (BuildId: eb58b4d427279994f00c0e1818477e4f)
+03-01 09:55:39.258  4574  4574 F xyz.ws3917.game: runtime.cc:708]   native: #01 pc 0047fd6b  /apex/com.android.art/lib64/libart.so (art::ConditionVariable::WaitHoldingLocks+107) (BuildId: 86541675bab12d77c4cd601b77f3f707)
+03-01 09:55:39.258  4574  4574 F xyz.ws3917.game: runtime.cc:708]   native: #02 pc 0079263e  /apex/com.android.art/lib64/libart.so (art::Monitor::Wait+1582) (BuildId: 86541675bab12d77c4cd601b77f3f707)
+03-01 09:55:39.258  4574  4574 F xyz.ws3917.game: runtime.cc:708]   at java.lang.Object.wait(Native method)
+03-01 09:55:39.258  4574  4574 F xyz.ws3917.game: runtime.cc:708]   - waiting on <0x0b3df6c2> (a java.lang.Daemons$FinalizerWatchdogDaemon)
+03-01 09:55:39.258  4574  4574 F xyz.ws3917.game: runtime.cc:708]   at java.lang.Object.wait(Object.java:405)
+03-01 09:55:39.258  4574  4574 F xyz.ws3917.game: runtime.cc:708]   at java.lang.Object.wait(Object.java:543)
+03-01 09:55:39.258  4574  4574 F xyz.ws3917.game: runtime.cc:708]   at java.lang.Daemons$FinalizerWatchdogDaemon.sleepUntilNeeded(Daemons.java:464)
+03-01 09:55:39.258  4574  4574 F xyz.ws3917.game: runtime.cc:708]   - locked <0x0b3df6c2> (a java.lang.Daemons$FinalizerWatchdogDaemon)
+03-01 09:55:39.258  4574  4574 F xyz.ws3917.game: runtime.cc:708]   at java.lang.Daemons$FinalizerWatchdogDaemon.runInternal(Daemons.java:444)
+03-01 09:55:39.258  4574  4574 F xyz.ws3917.game: runtime.cc:708]   at java.lang.Daemons$Daemon.run(Daemons.java:131)
+03-01 09:55:39.258  4574  4574 F xyz.ws3917.game: runtime.cc:708]   at java.lang.Thread.run(Thread.java:1012)
+03-01 09:55:39.258  4574  4574 F xyz.ws3917.game: runtime.cc:708] 
+03-01 09:55:39.258  4574  4574 F xyz.ws3917.game: runtime.cc:708] "Signal Catcher" prio=10 tid=2 WaitingInMainSignalCatcherLoop
+03-01 09:55:39.258  4574  4574 F xyz.ws3917.game: runtime.cc:708]   | group="" sCount=1 ucsCount=0 flags=1 obj=0x14090020 self=0x799a1bff26f0
+03-01 09:55:39.258  4574  4574 F xyz.ws3917.game: runtime.cc:708]   | sysTid=4575 nice=-20 cgrp=top-app sched=0/0 handle=0x79981ac8a8c0
+03-01 09:55:39.258  4574  4574 F xyz.ws3917.game: runtime.cc:708]   | state=S schedstat=( 289372 0 1 ) utm=0 stm=0 core=0 HZ=100
+03-01 09:55:39.258  4574  4574 F xyz.ws3917.game: runtime.cc:708]   | stack=0x79981ab93000-0x79981ab95000 stackSize=990KB
+03-01 09:55:39.258  4574  4574 F xyz.ws3917.game: runtime.cc:708]   | held mutexes=
+03-01 09:55:39.258  4574  4574 F xyz.ws3917.game: runtime.cc:708]   native: #00 pc 000ce17a  /apex/com.android.runtime/lib64/bionic/libc.so (__rt_sigtimedwait+10) (BuildId: eb58b4d427279994f00c0e1818477e4f)
+03-01 09:55:39.258  4574  4574 F xyz.ws3917.game: runtime.cc:708]   native: #01 pc 0007235f  /apex/com.android.runtime/lib64/bionic/libc.so (sigwait64+111) (BuildId: eb58b4d427279994f00c0e1818477e4f)
+03-01 09:55:39.258  4574  4574 F xyz.ws3917.game: runtime.cc:708]   native: #02 pc 008b4d3a  /apex/com.android.art/lib64/libart.so (art::SignalCatcher::Run+714) (BuildId: 86541675bab12d77c4cd601b77f3f707)
+03-01 09:55:39.258  4574  4574 F xyz.ws3917.game: runtime.cc:708]   native: #03 pc 0006d62a  /apex/com.android.runtime/lib64/bionic/libc.so (__pthread_start+58) (BuildId: eb58b4d427279994f00c0e1818477e4f)
+03-01 09:55:39.258  4574  4574 F xyz.ws3917.game: runtime.cc:708]   native: #04 pc 00060348  /apex/com.android.runtime/lib64/bionic/libc.so (__start_thread+56) (BuildId: eb58b4d427279994f00c0e1818477e4f)
+03-01 09:55:39.258  4574  4574 F xyz.ws3917.game: runtime.cc:708]   (no managed stack frames)
+03-01 09:55:39.258  4574  4574 F xyz.ws3917.game: runtime.cc:708] 
+03-01 09:55:39.258  4574  4574 F xyz.ws3917.game: runtime.cc:708] "Jit thread pool worker thread 0" prio=5 tid=3 Native
+03-01 09:55:39.258  4574  4574 F xyz.ws3917.game: runtime.cc:708]   | group="" sCount=1 ucsCount=0 flags=1 obj=0x14098030 self=0x799a1bfeb7b0
+03-01 09:55:39.258  4574  4574 F xyz.ws3917.game: runtime.cc:708]   | sysTid=4577 nice=9 cgrp=top-app sched=0/0 handle=0x79981aa828c0
+03-01 09:55:39.258  4574  4574 F xyz.ws3917.game: runtime.cc:708]   | state=S schedstat=( 251264 7364369 2 ) utm=0 stm=0 core=0 HZ=100
+03-01 09:55:39.258  4574  4574 F xyz.ws3917.game: runtime.cc:708]   | stack=0x79981a983000-0x79981a985000 stackSize=1022KB
+03-01 09:55:39.258  4574  4574 F xyz.ws3917.game: runtime.cc:708]   | held mutexes=
+03-01 09:55:39.258  4574  4574 F xyz.ws3917.game: runtime.cc:708]   native: #00 pc 00081f56  /apex/com.android.runtime/lib64/bionic/libc.so (syscall+22) (BuildId: eb58b4d427279994f00c0e1818477e4f)
+03-01 09:55:39.258  4574  4574 F xyz.ws3917.game: runtime.cc:708]   native: #01 pc 0047fd6b  /apex/com.android.art/lib64/libart.so (art::ConditionVariable::WaitHoldingLocks+107) (BuildId: 86541675bab12d77c4cd601b77f3f707)
+03-01 09:55:39.258  4574  4574 F xyz.ws3917.game: runtime.cc:708]   native: #02 pc 008ef44a  /apex/com.android.art/lib64/libart.so (art::ThreadPoolWorker::Run+138) (BuildId: 86541675bab12d77c4cd601b77f3f707)
+03-01 09:55:39.259  4574  4574 F xyz.ws3917.game: runtime.cc:708]   native: #03 pc 008eeed8  /apex/com.android.art/lib64/libart.so (art::ThreadPoolWorker::Callback+152) (BuildId: 86541675bab12d77c4cd601b77f3f707)
+03-01 09:55:39.259  4574  4574 F xyz.ws3917.game: runtime.cc:708]   native: #04 pc 0006d62a  /apex/com.android.runtime/lib64/bionic/libc.so (__pthread_start+58) (BuildId: eb58b4d427279994f00c0e1818477e4f)
+03-01 09:55:39.259  4574  4574 F xyz.ws3917.game: runtime.cc:708]   native: #05 pc 00060348  /apex/com.android.runtime/lib64/bionic/libc.so (__start_thread+56) (BuildId: eb58b4d427279994f00c0e1818477e4f)
+03-01 09:55:39.259  4574  4574 F xyz.ws3917.game: runtime.cc:708]   (no managed stack frames)
+03-01 09:55:39.259  4574  4574 F xyz.ws3917.game: runtime.cc:708] 
+03-01 09:55:39.259  4574  4574 F xyz.ws3917.game: runtime.cc:708] "HeapTaskDaemon" prio=5 tid=4 WaitingForTaskProcessor
+03-01 09:55:39.259  4574  4574 F xyz.ws3917.game: runtime.cc:708]   | group="" sCount=1 ucsCount=0 flags=1 obj=0x14073098 self=0x799a1bff0b20
+03-01 09:55:39.259  4574  4574 F xyz.ws3917.game: runtime.cc:708]   | sysTid=4579 nice=4 cgrp=top-app sched=0/0 handle=0x7997ca9e68c0
+03-01 09:55:39.259  4574  4574 F xyz.ws3917.game: runtime.cc:708]   | state=S schedstat=( 73569 352276 1 ) utm=0 stm=0 core=2 HZ=100
+03-01 09:55:39.259  4574  4574 F xyz.ws3917.game: runtime.cc:708]   | stack=0x7997ca8e3000-0x7997ca8e5000 stackSize=1038KB
+03-01 09:55:39.259  4574  4574 F xyz.ws3917.game: runtime.cc:708]   | held mutexes=
+03-01 09:55:39.259  4574  4574 F xyz.ws3917.game: runtime.cc:708]   native: #00 pc 00081f58  /apex/com.android.runtime/lib64/bionic/libc.so (syscall+24) (BuildId: eb58b4d427279994f00c0e1818477e4f)
+03-01 09:55:39.259  4574  4574 F xyz.ws3917.game: runtime.cc:708]   native: #01 pc 00480161  /apex/com.android.art/lib64/libart.so (art::ConditionVariable::TimedWait+145) (BuildId: 86541675bab12d77c4cd601b77f3f707)
+03-01 09:55:39.259  4574  4574 F xyz.ws3917.game: runtime.cc:708]   native: #02 pc 005cf4ca  /apex/com.android.art/lib64/libart.so (art::gc::TaskProcessor::RunAllTasks+938) (BuildId: 86541675bab12d77c4cd601b77f3f707)
+03-01 09:55:39.259  4574  4574 F xyz.ws3917.game: runtime.cc:708]   at dalvik.system.VMRuntime.runHeapTasks(Native method)
+03-01 09:55:39.259  4574  4574 F xyz.ws3917.game: runtime.cc:708]   at java.lang.Daemons$HeapTaskDaemon.runInternal(Daemons.java:734)
+03-01 09:55:39.259  4574  4574 F xyz.ws3917.game: runtime.cc:708]   at java.lang.Daemons$Daemon.run(Daemons.java:131)
+03-01 09:55:39.259  4574  4574 F xyz.ws3917.game: runtime.cc:708]   at java.lang.Thread.run(Thread.java:1012)
+03-01 09:55:39.259  4574  4574 F xyz.ws3917.game: runtime.cc:708] 
+03-01 09:55:39.259  4574  4574 F xyz.ws3917.game: runtime.cc:708] "perfetto_hprof_listener" prio=10 tid=6 Native (still starting up)
+03-01 09:55:39.259  4574  4574 F xyz.ws3917.game: runtime.cc:708]   | group="" sCount=1 ucsCount=0 flags=1 obj=0x0 self=0x799a1c00ffc0
+03-01 09:55:39.259  4574  4574 F xyz.ws3917.game: runtime.cc:708]   | sysTid=4576 nice=-20 cgrp=top-app sched=0/0 handle=0x79981ab868c0
+03-01 09:55:39.259  4574  4574 F xyz.ws3917.game: runtime.cc:708]   | state=S schedstat=( 94268 3559243 1 ) utm=0 stm=0 core=1 HZ=100
+03-01 09:55:39.259  4574  4574 F xyz.ws3917.game: runtime.cc:708]   | stack=0x79981aa8f000-0x79981aa91000 stackSize=990KB
+03-01 09:55:39.259  4574  4574 F xyz.ws3917.game: runtime.cc:708]   | held mutexes=
+03-01 09:55:39.259  4574  4574 F xyz.ws3917.game: runtime.cc:708]   native: #00 pc 000cd475  /apex/com.android.runtime/lib64/bionic/libc.so (read+5) (BuildId: eb58b4d427279994f00c0e1818477e4f)
+03-01 09:55:39.259  4574  4574 F xyz.ws3917.game: runtime.cc:708]   native: #01 pc 00027ef0  /apex/com.android.art/lib64/libperfetto_hprof.so (void* std::__1::__thread_proxy[abi:nn180000]<std::__1::tuple<std::__1::unique_ptr<std::__1::__thread_struct, std::__1::default_delete<std::__1::__thread_struct>>, ArtPlugin_Initialize::$_7>>+336) (BuildId: caa09f9a0238bc04e1b43eaff8107861)
+03-01 09:55:39.259  4574  4574 F xyz.ws3917.game: runtime.cc:708]   native: #02 pc 0006d62a  /apex/com.android.runtime/lib64/bionic/libc.so (__pthread_start+58) (BuildId: eb58b4d427279994f00c0e1818477e4f)
+03-01 09:55:39.259  4574  4574 F xyz.ws3917.game: runtime.cc:708]   native: #03 pc 00060348  /apex/com.android.runtime/lib64/bionic/libc.so (__start_thread+56) (BuildId: eb58b4d427279994f00c0e1818477e4f)
+03-01 09:55:39.259  4574  4574 F xyz.ws3917.game: runtime.cc:708]   (no managed stack frames)
+03-01 09:55:39.259  4574  4574 F xyz.ws3917.game: runtime.cc:708] 
+03-01 09:55:39.259  4574  4574 F xyz.ws3917.game: runtime.cc:708] "binder:4574_1" prio=5 tid=9 Native
+03-01 09:55:39.259  4574  4574 F xyz.ws3917.game: runtime.cc:708]   | group="" sCount=1 ucsCount=0 flags=1 obj=0x140a0020 self=0x799a1c013760
+03-01 09:55:39.259  4574  4574 F xyz.ws3917.game: runtime.cc:708]   | sysTid=4583 nice=0 cgrp=top-app sched=0/0 handle=0x7997ca4a88c0
+03-01 09:55:39.259  4574  4574 F xyz.ws3917.game: runtime.cc:708]   | state=S schedstat=( 202944 157657 1 ) utm=0 stm=0 core=2 HZ=100
+03-01 09:55:39.259  4574  4574 F xyz.ws3917.game: runtime.cc:708]   | stack=0x7997ca3b1000-0x7997ca3b3000 stackSize=990KB
+03-01 09:55:39.259  4574  4574 F xyz.ws3917.game: runtime.cc:708]   | held mutexes=
+03-01 09:55:39.259  4574  4574 F xyz.ws3917.game: runtime.cc:708]   native: #00 pc 000cd777  /apex/com.android.runtime/lib64/bionic/libc.so (__ioctl+7) (BuildId: eb58b4d427279994f00c0e1818477e4f)
+03-01 09:55:39.259  4574  4574 F xyz.ws3917.game: runtime.cc:708]   native: #01 pc 00068a48  /apex/com.android.runtime/lib64/bionic/libc.so (ioctl+216) (BuildId: eb58b4d427279994f00c0e1818477e4f)
+03-01 09:55:39.259  4574  4574 F xyz.ws3917.game: runtime.cc:708]   native: #02 pc 00057f0c  /system/lib64/libbinder.so (android::IPCThreadState::joinThreadPool+380) (BuildId: 9787e923a8c93596d3c1f09a7fc9023a)
+03-01 09:55:39.259  4574  4574 F xyz.ws3917.game: runtime.cc:708]   native: #03 pc 00070437  /system/lib64/libbinder.so (android::PoolThread::threadLoop+23) (BuildId: 9787e923a8c93596d3c1f09a7fc9023a)
+03-01 09:55:39.259  4574  4574 F xyz.ws3917.game: runtime.cc:708]   native: #04 pc 00016936  /system/lib64/libutils.so (android::Thread::_threadLoop+166) (BuildId: f128755c26519c61f5cd218576eff285)
+03-01 09:55:39.259  4574  4574 F xyz.ws3917.game: runtime.cc:708]   native: #05 pc 000f3352  /system/lib64/libandroid_runtime.so (android::AndroidRuntime::javaThreadShell+146) (BuildId: 74e467b22a4c3107eac51948743c9977)
+03-01 09:55:39.259  4574  4574 F xyz.ws3917.game: runtime.cc:708]   native: #06 pc 0006d62a  /apex/com.android.runtime/lib64/bionic/libc.so (__pthread_start+58) (BuildId: eb58b4d427279994f00c0e1818477e4f)
+03-01 09:55:39.259  4574  4574 F xyz.ws3917.game: runtime.cc:708]   native: #07 pc 00060348  /apex/com.android.runtime/lib64/bionic/libc.so (__start_thread+56) (BuildId: eb58b4d427279994f00c0e1818477e4f)
+03-01 09:55:39.259  4574  4574 F xyz.ws3917.game: runtime.cc:708]   (no managed stack frames)
+03-01 09:55:39.259  4574  4574 F xyz.ws3917.game: runtime.cc:708] 
+03-01 09:55:39.259  4574  4574 F xyz.ws3917.game: runtime.cc:708] "binder:4574_2" prio=5 tid=10 Native
+03-01 09:55:39.259  4574  4574 F xyz.ws3917.game: runtime.cc:708]   | group="" sCount=1 ucsCount=0 flags=1 obj=0x140a8020 self=0x799a1c016f00
+03-01 09:55:39.259  4574  4574 F xyz.ws3917.game: runtime.cc:708]   | sysTid=4584 nice=0 cgrp=top-app sched=0/0 handle=0x7997ca3a48c0
+03-01 09:55:39.259  4574  4574 F xyz.ws3917.game: runtime.cc:708]   | state=S schedstat=( 803327 1020424 5 ) utm=0 stm=0 core=3 HZ=100
+03-01 09:55:39.259  4574  4574 F xyz.ws3917.game: runtime.cc:708]   | stack=0x7997ca2ad000-0x7997ca2af000 stackSize=990KB
+03-01 09:55:39.259  4574  4574 F xyz.ws3917.game: runtime.cc:708]   | held mutexes=
+03-01 09:55:39.259  4574  4574 F xyz.ws3917.game: runtime.cc:708]   native: #00 pc 000cd777  /apex/com.android.runtime/lib64/bionic/libc.so (__ioctl+7) (BuildId: eb58b4d427279994f00c0e1818477e4f)
+03-01 09:55:39.259  4574  4574 F xyz.ws3917.game: runtime.cc:708]   native: #01 pc 00068a48  /apex/com.android.runtime/lib64/bionic/libc.so (ioctl+216) (BuildId: eb58b4d427279994f00c0e1818477e4f)
+03-01 09:55:39.259  4574  4574 F xyz.ws3917.game: runtime.cc:708]   native: #02 pc 00057f0c  /system/lib64/libbinder.so (android::IPCThreadState::joinThreadPool+380) (BuildId: 9787e923a8c93596d3c1f09a7fc9023a)
+03-01 09:55:39.259  4574  4574 F xyz.ws3917.game: runtime.cc:708]   native: #03 pc 00070437  /system/lib64/libbinder.so (android::PoolThread::threadLoop+23) (BuildId: 9787e923a8c93596d3c1f09a7fc9023a)
+03-01 09:55:39.259  4574  4574 F xyz.ws3917.game: runtime.cc:708]   native: #04 pc 00016936  /system/lib64/libutils.so (android::Thread::_threadLoop+166) (BuildId: f128755c26519c61f5cd218576eff285)
+03-01 09:55:39.259  4574  4574 F xyz.ws3917.game: runtime.cc:708]   native: #05 pc 000f3352  /system/lib64/libandroid_runtime.so (android::AndroidRuntime::javaThreadShell+146) (BuildId: 74e467b22a4c3107eac51948743c9977)
+03-01 09:55:39.259  4574  4574 F xyz.ws3917.game: runtime.cc:708]   native: #06 pc 0006d62a  /apex/com.android.runtime/lib64/bionic/libc.so (__pthread_start+58) (BuildId: eb58b4d427279994f00c0e1818477e4f)
+03-01 09:55:39.259  4574  4574 F xyz.ws3917.game: runtime.cc:708]   native: #07 pc 00060348  /apex/com.android.runtime/lib64/bionic/libc.so (__start_thread+56) (BuildId: eb58b4d427279994f00c0e1818477e4f)
+03-01 09:55:39.259  4574  4574 F xyz.ws3917.game: runtime.cc:708]   (no managed stack frames)
+03-01 09:55:39.259  4574  4574 F xyz.ws3917.game: runtime.cc:708] 
+03-01 09:55:39.259  4574  4574 F xyz.ws3917.game: runtime.cc:708] "Profile Saver" prio=5 tid=11 Native
+03-01 09:55:39.259  4574  4574 F xyz.ws3917.game: runtime.cc:708]   | group="" sCount=1 ucsCount=0 flags=1 obj=0x140c0020 self=0x799a1c011b90
+03-01 09:55:39.259  4574  4574 F xyz.ws3917.game: runtime.cc:708]   | sysTid=4586 nice=9 cgrp=top-app sched=0/0 handle=0x7997ca1c58c0
+03-01 09:55:39.259  4574  4574 F xyz.ws3917.game: runtime.cc:708]   | state=S schedstat=( 197725 32080 1 ) utm=0 stm=0 core=3 HZ=100
+03-01 09:55:39.259  4574  4574 F xyz.ws3917.game: runtime.cc:708]   | stack=0x7997ca0ce000-0x7997ca0d0000 stackSize=990KB
+03-01 09:55:39.259  4574  4574 F xyz.ws3917.game: runtime.cc:708]   | held mutexes=
+03-01 09:55:39.259  4574  4574 F xyz.ws3917.game: runtime.cc:708]   native: #00 pc 00081f58  /apex/com.android.runtime/lib64/bionic/libc.so (syscall+24) (BuildId: eb58b4d427279994f00c0e1818477e4f)
+03-01 09:55:39.259  4574  4574 F xyz.ws3917.game: runtime.cc:708]   native: #01 pc 00480161  /apex/com.android.art/lib64/libart.so (art::ConditionVariable::TimedWait+145) (BuildId: 86541675bab12d77c4cd601b77f3f707)
+03-01 09:55:39.259  4574  4574 F xyz.ws3917.game: runtime.cc:708]   native: #02 pc 006511c3  /apex/com.android.art/lib64/libart.so (art::ProfileSaver::RunProfileSaverThread+2371) (BuildId: 86541675bab12d77c4cd601b77f3f707)
+03-01 09:55:39.259  4574  4574 F xyz.ws3917.game: runtime.cc:708]   native: #03 pc 0006d62a  /apex/com.android.runtime/lib64/bionic/libc.so (__pthread_start+58) (BuildId: eb58b4d427279994f00c0e1818477e4f)
+03-01 09:55:39.259  4574  4574 F xyz.ws3917.game: runtime.cc:708]   native: #04 pc 00060348  /apex/com.android.runtime/lib64/bionic/libc.so (__start_thread+56) (BuildId: eb58b4d427279994f00c0e1818477e4f)
+03-01 09:55:39.259  4574  4574 F xyz.ws3917.game: runtime.cc:708]   (no managed stack frames)
+03-01 09:55:39.259  4574  4574 F xyz.ws3917.game: runtime.cc:708] 
+03-01 09:55:39.259  4574  4574 F xyz.ws3917.game: runtime.cc:708] "RenderThread" prio=7 tid=12 Native
+03-01 09:55:39.259  4574  4574 F xyz.ws3917.game: runtime.cc:708]   | group="" sCount=1 ucsCount=0 flags=1 obj=0x140d0020 self=0x799a1c015330
+03-01 09:55:39.260  4574  4574 F xyz.ws3917.game: runtime.cc:708]   | sysTid=4587 nice=-4 cgrp=top-app sched=0/0 handle=0x799844f098c0
+03-01 09:55:39.260  4574  4574 F xyz.ws3917.game: runtime.cc:708]   | state=S schedstat=( 791203 836679 5 ) utm=0 stm=0 core=3 HZ=100
+03-01 09:55:39.260  4574  4574 F xyz.ws3917.game: runtime.cc:708]   | stack=0x799844e12000-0x799844e14000 stackSize=990KB
+03-01 09:55:39.260  4574  4574 F xyz.ws3917.game: runtime.cc:708]   | held mutexes=
+03-01 09:55:39.260  4574  4574 F xyz.ws3917.game: runtime.cc:708]   native: #00 pc 000ce75a  /apex/com.android.runtime/lib64/bionic/libc.so (__epoll_pwait+10) (BuildId: eb58b4d427279994f00c0e1818477e4f)
+03-01 09:55:39.260  4574  4574 F xyz.ws3917.game: runtime.cc:708]   native: #01 pc 000130c4  /system/lib64/libutils.so (android::Looper::pollOnce+308) (BuildId: f128755c26519c61f5cd218576eff285)
+03-01 09:55:39.260  4574  4574 F xyz.ws3917.game: runtime.cc:708]   native: #02 pc 00266268  /system/lib64/libhwui.so (android::uirenderer::ThreadBase::waitForWork+152) (BuildId: 35d37af4b0a83cc5d3a054e91ea6e9af)
+03-01 09:55:39.260  4574  4574 F xyz.ws3917.game: runtime.cc:708]   native: #03 pc 002b43d3  /system/lib64/libhwui.so (android::uirenderer::renderthread::RenderThread::threadLoop+467) (BuildId: 35d37af4b0a83cc5d3a054e91ea6e9af)
+03-01 09:55:39.260  4574  4574 F xyz.ws3917.game: runtime.cc:708]   native: #04 pc 00016936  /system/lib64/libutils.so (android::Thread::_threadLoop+166) (BuildId: f128755c26519c61f5cd218576eff285)
+03-01 09:55:39.260  4574  4574 F xyz.ws3917.game: runtime.cc:708]   native: #05 pc 0006d62a  /apex/com.android.runtime/lib64/bionic/libc.so (__pthread_start+58) (BuildId: eb58b4d427279994f00c0e1818477e4f)
+03-01 09:55:39.260  4574  4574 F xyz.ws3917.game: runtime.cc:708]   native: #06 pc 00060348  /apex/com.android.runtime/lib64/bionic/libc.so (__start_thread+56) (BuildId: eb58b4d427279994f00c0e1818477e4f)
+03-01 09:55:39.260  4574  4574 F xyz.ws3917.game: runtime.cc:708]   (no managed stack frames)
+03-01 09:55:39.260  4574  4574 F xyz.ws3917.game: runtime.cc:708] 
+03-01 09:55:39.260  4574  4574 F xyz.ws3917.game: runtime.cc:708] Aborting thread:
+03-01 09:55:39.260  4574  4574 F xyz.ws3917.game: runtime.cc:708] "SDLActivity" prio=10 tid=1 Runnable
+03-01 09:55:39.260  4574  4574 F xyz.ws3917.game: runtime.cc:708]   | group="" sCount=0 ucsCount=0 flags=0 obj=0x73ada9b8 self=0x799a1bfe9be0
+03-01 09:55:39.260  4574  4574 F xyz.ws3917.game: runtime.cc:708]   | sysTid=4574 nice=-10 cgrp=top-app sched=0/0 handle=0x799b0c425d18
+03-01 09:55:39.260  4574  4574 F xyz.ws3917.game: runtime.cc:708]   | state=R schedstat=( 53506243 16411220 93 ) utm=0 stm=4 core=0 HZ=100
+03-01 09:55:39.260  4574  4574 F xyz.ws3917.game: runtime.cc:708]   | stack=0x7ffd7e19d000-0x7ffd7e19f000 stackSize=8188KB
+03-01 09:55:39.260  4574  4574 F xyz.ws3917.game: runtime.cc:708]   | held mutexes= "abort lock" "mutator lock"(shared held)
+03-01 09:55:39.260  4574  4574 F xyz.ws3917.game: runtime.cc:708]   native: #00 pc 007da776  /apex/com.android.art/lib64/libart.so (art::DumpNativeStack+214) (BuildId: 86541675bab12d77c4cd601b77f3f707)
+03-01 09:55:39.260  4574  4574 F xyz.ws3917.game: runtime.cc:708]   native: #01 pc 008cddf6  /apex/com.android.art/lib64/libart.so (art::Thread::DumpStack const+358) (BuildId: 86541675bab12d77c4cd601b77f3f707)
+03-01 09:55:39.260  4574  4574 F xyz.ws3917.game: runtime.cc:708]   native: #02 pc 008c85b6  /apex/com.android.art/lib64/libart.so (art::Thread::Dump const+198) (BuildId: 86541675bab12d77c4cd601b77f3f707)
+03-01 09:55:39.260  4574  4574 F xyz.ws3917.game: runtime.cc:708]   native: #03 pc 00897dcc  /apex/com.android.art/lib64/libart.so (art::AbortState::DumpThread const+44) (BuildId: 86541675bab12d77c4cd601b77f3f707)
+03-01 09:55:39.260  4574  4574 F xyz.ws3917.game: runtime.cc:708]   native: #04 pc 0087ea8d  /apex/com.android.art/lib64/libart.so (art::Runtime::Abort+1613) (BuildId: 86541675bab12d77c4cd601b77f3f707)
+03-01 09:55:39.260  4574  4574 F xyz.ws3917.game: runtime.cc:708]   native: #05 pc 00015eea  /apex/com.android.art/lib64/libbase.so (android::base::SetAborter::$_0::__invoke+58) (BuildId: 2d7df6e607a8928501c5363a393a3a89)
+03-01 09:55:39.260  4574  4574 F xyz.ws3917.game: runtime.cc:708]   native: #06 pc 0001540c  /apex/com.android.art/lib64/libbase.so (android::base::LogMessage::~LogMessage+492) (BuildId: 2d7df6e607a8928501c5363a393a3a89)
+03-01 09:55:39.260  4574  4574 F xyz.ws3917.game: runtime.cc:708]   native: #07 pc 008d36fc  /apex/com.android.art/lib64/libart.so (art::Thread::AssertNoPendingException const+1468) (BuildId: 86541675bab12d77c4cd601b77f3f707)
+03-01 09:55:39.260  4574  4574 F xyz.ws3917.game: runtime.cc:708]   native: #08 pc 0049c6f5  /apex/com.android.art/lib64/libart.so (art::ClassLinker::FindClass+53) (BuildId: 86541675bab12d77c4cd601b77f3f707)
+03-01 09:55:39.260  4574  4574 F xyz.ws3917.game: runtime.cc:708]   native: #09 pc 0068bc23  /apex/com.android.art/lib64/libart.so (art::JNI<false>::FindClass+1459) (BuildId: 86541675bab12d77c4cd601b77f3f707)
+03-01 09:55:39.260  4574  4574 F xyz.ws3917.game: runtime.cc:708]   native: #10 pc 001b56d4  /data/app/~~ATVbYT8VUuOBlRXGWiPwzA==/xyz.ws3917.game-nMdVyQHram48YgpwXBz-8w==/base.apk (offset 350000) (JNI_OnLoad+196) (BuildId: f2ff887bf543e243cda223f0c209c96e3a56f4bd)
+03-01 09:55:39.260  4574  4574 F xyz.ws3917.game: runtime.cc:708]   native: #11 pc 00680a3c  /apex/com.android.art/lib64/libart.so (art::JavaVMExt::LoadNativeLibrary+3516) (BuildId: 86541675bab12d77c4cd601b77f3f707)
+03-01 09:55:39.260  4574  4574 F xyz.ws3917.game: runtime.cc:708]   native: #12 pc 000050f3  /apex/com.android.art/lib64/libopenjdkjvm.so (JVM_NativeLoad+355) (BuildId: 1d3d7da26cf5268558c64a66611de01d)
+03-01 09:55:39.260  4574  4574 F xyz.ws3917.game: runtime.cc:708]   native: #13 pc 000a0835  /system/framework/x86_64/boot.oat (art_jni_trampoline+181) (BuildId: 68b5d9df423be4ebd4a6c38087fc90e635afb135)
+03-01 09:55:39.260  4574  4574 F xyz.ws3917.game: runtime.cc:708]   native: #14 pc 000b057c  /system/framework/x86_64/boot.oat (java.lang.Runtime.loadLibrary0+348) (BuildId: 68b5d9df423be4ebd4a6c38087fc90e635afb135)
+03-01 09:55:39.260  4574  4574 F xyz.ws3917.game: runtime.cc:708]   native: #15 pc 000b1339  /system/framework/x86_64/boot.oat (java.lang.Runtime.loadLibrary0+425) (BuildId: 68b5d9df423be4ebd4a6c38087fc90e635afb135)
+03-01 09:55:39.260  4574  4574 F xyz.ws3917.game: runtime.cc:708]   native: #16 pc 000b46e5  /system/framework/x86_64/boot.oat (java.lang.System.loadLibrary+85) (BuildId: 68b5d9df423be4ebd4a6c38087fc90e635afb135)
+03-01 09:55:39.260  4574  4574 F xyz.ws3917.game: runtime.cc:708]   native: #17 pc 00208a15  /apex/com.android.art/lib64/libart.so (nterp_helper+165) (BuildId: 86541675bab12d77c4cd601b77f3f707)
+03-01 09:55:39.260  4574  4574 F xyz.ws3917.game: runtime.cc:708]   native: #18 pc 000048e6  /data/app/~~ATVbYT8VUuOBlRXGWiPwzA==/xyz.ws3917.game-nMdVyQHram48YgpwXBz-8w==/oat/x86_64/base.vdex (org.libsdl.app.SDLActivity.d+178)
+03-01 09:55:39.260  4574  4574 F xyz.ws3917.game: runtime.cc:708]   native: #19 pc 00209808  /apex/com.android.art/lib64/libart.so (nterp_helper+3736) (BuildId: 86541675bab12d77c4cd601b77f3f707)
+03-01 09:55:39.260  4574  4574 F xyz.ws3917.game: runtime.cc:708]   native: #20 pc 00004b16  /data/app/~~ATVbYT8VUuOBlRXGWiPwzA==/xyz.ws3917.game-nMdVyQHram48YgpwXBz-8w==/oat/x86_64/base.vdex (org.libsdl.app.SDLActivity.onCreate+290)
+03-01 09:55:39.260  4574  4574 F xyz.ws3917.game: runtime.cc:708]   native: #21 pc 004916ad  /system/framework/x86_64/boot-framework.oat (android.app.Activity.performCreate+925) (BuildId: bc047a67a4076b80992fbdfabdfba12acbd1924a)
+03-01 09:55:39.260  4574  4574 F xyz.ws3917.game: runtime.cc:708]   native: #22 pc 00241f6c  /system/framework/x86_64/boot-framework.oat (android.app.Instrumentation.callActivityOnCreate+76) (BuildId: bc047a67a4076b80992fbdfabdfba12acbd1924a)
+03-01 09:55:39.260  4574  4574 F xyz.ws3917.game: runtime.cc:708]   native: #23 pc 0030b10a  /system/framework/x86_64/boot-framework.oat (android.app.ActivityThread.performLaunchActivity+3098) (BuildId: bc047a67a4076b80992fbdfabdfba12acbd1924a)
+03-01 09:55:39.260  4574  4574 F xyz.ws3917.game: runtime.cc:708]   native: #24 pc 00311d9b  /system/framework/x86_64/boot-framework.oat (android.app.ActivityThread.handleLaunchActivity+811) (BuildId: bc047a67a4076b80992fbdfabdfba12acbd1924a)
+03-01 09:55:39.260  4574  4574 F xyz.ws3917.game: runtime.cc:708]   native: #25 pc 0020986d  /apex/com.android.art/lib64/libart.so (nterp_helper+3837) (BuildId: 86541675bab12d77c4cd601b77f3f707)
+03-01 09:55:39.260  4574  4574 F xyz.ws3917.game: runtime.cc:708]   native: #26 pc 002fcd62  /system/framework/framework.jar (android.app.servertransaction.LaunchActivityItem.execute+170)
+03-01 09:55:39.260  4574  4574 F xyz.ws3917.game: runtime.cc:708]   native: #27 pc 00209808  /apex/com.android.art/lib64/libart.so (nterp_helper+3736) (BuildId: 86541675bab12d77c4cd601b77f3f707)
+03-01 09:55:39.260  4574  4574 F xyz.ws3917.game: runtime.cc:708]   native: #28 pc 002ff8e6  /system/framework/framework.jar (android.app.servertransaction.TransactionExecutor.executeNonLifecycleItem+154)
+03-01 09:55:39.260  4574  4574 F xyz.ws3917.game: runtime.cc:708]   native: #29 pc 00209808  /apex/com.android.art/lib64/libart.so (nterp_helper+3736) (BuildId: 86541675bab12d77c4cd601b77f3f707)
+03-01 09:55:39.260  4574  4574 F xyz.ws3917.game: runtime.cc:708]   native: #30 pc 002ff972  /system/framework/framework.jar (android.app.servertransaction.TransactionExecutor.executeTransactionItems+70)
+03-01 09:55:39.260  4574  4574 F xyz.ws3917.game: runtime.cc:708]   native: #31 pc 0026f413  /system/framework/x86_64/boot-framework.oat (android.app.servertransaction.TransactionExecutor.execute+179) (BuildId: bc047a67a4076b80992fbdfabdfba12acbd1924a)
+03-01 09:55:39.260  4574  4574 F xyz.ws3917.game: runtime.cc:708]   native: #32 pc 002faa53  /system/framework/x86_64/boot-framework.oat (android.app.ActivityThread$H.handleMessage+1459) (BuildId: bc047a67a4076b80992fbdfabdfba12acbd1924a)
+03-01 09:55:39.260  4574  4574 F xyz.ws3917.game: runtime.cc:708]   native: #33 pc 0052bb9e  /system/framework/x86_64/boot-framework.oat (android.os.Handler.dispatchMessage+158) (BuildId: bc047a67a4076b80992fbdfabdfba12acbd1924a)
+03-01 09:55:39.260  4574  4574 F xyz.ws3917.game: runtime.cc:708]   native: #34 pc 0052ed9e  /system/framework/x86_64/boot-framework.oat (android.os.Looper.loopOnce+942) (BuildId: bc047a67a4076b80992fbdfabdfba12acbd1924a)
+03-01 09:55:39.260  4574  4574 F xyz.ws3917.game: runtime.cc:708]   native: #35 pc 0052e93b  /system/framework/x86_64/boot-framework.oat (android.os.Looper.loop+235) (BuildId: bc047a67a4076b80992fbdfabdfba12acbd1924a)
+03-01 09:55:39.261  4574  4574 F xyz.ws3917.game: runtime.cc:708]   native: #36 pc 0030a33c  /system/framework/x86_64/boot-framework.oat (android.app.ActivityThread.main+1500) (BuildId: bc047a67a4076b80992fbdfabdfba12acbd1924a)
+03-01 09:55:39.261  4574  4574 F xyz.ws3917.game: runtime.cc:708]   native: #37 pc 002124b6  /apex/com.android.art/lib64/libart.so (art_quick_invoke_static_stub+806) (BuildId: 86541675bab12d77c4cd601b77f3f707)
+03-01 09:55:39.261  4574  4574 F xyz.ws3917.game: runtime.cc:708]   native: #38 pc 00474c24  /apex/com.android.art/lib64/libart.so (art::ArtMethod::Invoke+228) (BuildId: 86541675bab12d77c4cd601b77f3f707)
+03-01 09:55:39.261  4574  4574 F xyz.ws3917.game: runtime.cc:708]   native: #39 pc 0087486a  /apex/com.android.art/lib64/libart.so (_jobject* art::InvokeMethod<8>+2218) (BuildId: 86541675bab12d77c4cd601b77f3f707)
+03-01 09:55:39.261  4574  4574 F xyz.ws3917.game: runtime.cc:708]   native: #40 pc 007d0337  /apex/com.android.art/lib64/libart.so (art::Method_invoke +39) (BuildId: 86541675bab12d77c4cd601b77f3f707)
+03-01 09:55:39.261  4574  4574 F xyz.ws3917.game: runtime.cc:708]   native: #41 pc 000a672f  /system/framework/x86_64/boot.oat (art_jni_trampoline+127) (BuildId: 68b5d9df423be4ebd4a6c38087fc90e635afb135)
+03-01 09:55:39.261  4574  4574 F xyz.ws3917.game: runtime.cc:708]   native: #42 pc 00810405  /system/framework/x86_64/boot-framework.oat (com.android.internal.os.RuntimeInit$MethodAndArgsCaller.run+117) (BuildId: bc047a67a4076b80992fbdfabdfba12acbd1924a)
+03-01 09:55:39.261  4574  4574 F xyz.ws3917.game: runtime.cc:708]   native: #43 pc 008196f0  /system/framework/x86_64/boot-framework.oat (com.android.internal.os.ZygoteInit.main+2704) (BuildId: bc047a67a4076b80992fbdfabdfba12acbd1924a)
+03-01 09:55:39.261  4574  4574 F xyz.ws3917.game: runtime.cc:708]   native: #44 pc 002124b6  /apex/com.android.art/lib64/libart.so (art_quick_invoke_static_stub+806) (BuildId: 86541675bab12d77c4cd601b77f3f707)
+03-01 09:55:39.261  4574  4574 F xyz.ws3917.game: runtime.cc:708]   native: #45 pc 00474c24  /apex/com.android.art/lib64/libart.so (art::ArtMethod::Invoke+228) (BuildId: 86541675bab12d77c4cd601b77f3f707)
+03-01 09:55:39.261  4574  4574 F xyz.ws3917.game: runtime.cc:708]   native: #46 pc 008753a6  /apex/com.android.art/lib64/libart.so (art::JValue art::InvokeWithVarArgs<_jmethodID*>+518) (BuildId: 86541675bab12d77c4cd601b77f3f707)
+03-01 09:55:39.261  4574  4574 F xyz.ws3917.game: runtime.cc:708]   native: #47 pc 0072711a  /apex/com.android.art/lib64/libart.so (art::JNI<true>::CallStaticVoidMethodV+586) (BuildId: 86541675bab12d77c4cd601b77f3f707)
+03-01 09:55:39.261  4574  4574 F xyz.ws3917.game: runtime.cc:708]   native: #48 pc 000dcf68  /system/lib64/libandroid_runtime.so (_JNIEnv::CallStaticVoidMethod+136) (BuildId: 74e467b22a4c3107eac51948743c9977)
+03-01 09:55:39.261  4574  4574 F xyz.ws3917.game: runtime.cc:708]   native: #49 pc 000f2fb0  /system/lib64/libandroid_runtime.so (android::AndroidRuntime::start+928) (BuildId: 74e467b22a4c3107eac51948743c9977)
+03-01 09:55:39.261  4574  4574 F xyz.ws3917.game: runtime.cc:708]   native: #50 pc 00004706  /system/bin/app_process64 (main+1638) (BuildId: 2919fb70658f9ff2e805cbbbdd33a33b)
+03-01 09:55:39.261  4574  4574 F xyz.ws3917.game: runtime.cc:708]   native: #51 pc 00057c82  /apex/com.android.runtime/lib64/bionic/libc.so (__libc_init+114) (BuildId: eb58b4d427279994f00c0e1818477e4f)
+03-01 09:55:39.261  4574  4574 F xyz.ws3917.game: runtime.cc:708]   at java.lang.Runtime.nativeLoad(Native method)
+03-01 09:55:39.261  4574  4574 F xyz.ws3917.game: runtime.cc:708]   at java.lang.Runtime.loadLibrary0(Runtime.java:1079)
+03-01 09:55:39.261  4574  4574 F xyz.ws3917.game: runtime.cc:708]   - locked <@addr=0x70eeec08> (a java.lang.Runtime)
+03-01 09:55:39.261  4574  4574 F xyz.ws3917.game: runtime.cc:708]   at java.lang.Runtime.loadLibrary0(Runtime.java:1003)
+03-01 09:55:39.261  4574  4574 F xyz.ws3917.game: runtime.cc:708]   at java.lang.System.loadLibrary(System.java:1765)
+03-01 09:55:39.261  4574  4574 F xyz.ws3917.game: runtime.cc:708]   at org.libsdl.app.SDLActivity.d(r8-map-id-a499034a36775866eb2a0cdb58fd65c1af9e651909f8e1db563107e1a9e2ad14:90)
+03-01 09:55:39.261  4574  4574 F xyz.ws3917.game: runtime.cc:708]   at org.libsdl.app.SDLActivity.onCreate(r8-map-id-a499034a36775866eb2a0cdb58fd65c1af9e651909f8e1db563107e1a9e2ad14:15)
+03-01 09:55:39.261  4574  4574 F xyz.ws3917.game: runtime.cc:708]   at android.app.Activity.performCreate(Activity.java:9002)
+03-01 09:55:39.261  4574  4574 F xyz.ws3917.game: runtime.cc:708]   at android.app.Activity.performCreate(Activity.java:8980)
+03-01 09:55:39.261  4574  4574 F xyz.ws3917.game: runtime.cc:708]   at android.app.Instrumentation.callActivityOnCreate(Instrumentation.java:1526)
+03-01 09:55:39.261  4574  4574 F xyz.ws3917.game: runtime.cc:708]   at android.app.ActivityThread.performLaunchActivity(ActivityThread.java:4030)
+03-01 09:55:39.261  4574  4574 F xyz.ws3917.game: runtime.cc:708]   at android.app.ActivityThread.handleLaunchActivity(ActivityThread.java:4235)
+03-01 09:55:39.261  4574  4574 F xyz.ws3917.game: runtime.cc:708]   at android.app.servertransaction.LaunchActivityItem.execute(LaunchActivityItem.java:112)
+03-01 09:55:39.261  4574  4574 F xyz.ws3917.game: runtime.cc:708]   at android.app.servertransaction.TransactionExecutor.executeNonLifecycleItem(TransactionExecutor.java:174)
+03-01 09:55:39.261  4574  4574 F xyz.ws3917.game: runtime.cc:708]   at android.app.servertransaction.TransactionExecutor.executeTransactionItems(TransactionExecutor.java:109)
+03-01 09:55:39.262  4574  4574 F xyz.ws3917.game: runtime.cc:708]   at android.app.servertransaction.TransactionExecutor.execute(TransactionExecutor.java:81)
+03-01 09:55:39.262  4574  4574 F xyz.ws3917.game: runtime.cc:708]   at android.app.ActivityThread$H.handleMessage(ActivityThread.java:2636)
+03-01 09:55:39.262  4574  4574 F xyz.ws3917.game: runtime.cc:708]   at android.os.Handler.dispatchMessage(Handler.java:107)
+03-01 09:55:39.262  4574  4574 F xyz.ws3917.game: runtime.cc:708]   at android.os.Looper.loopOnce(Looper.java:232)
+03-01 09:55:39.262  4574  4574 F xyz.ws3917.game: runtime.cc:708]   at android.os.Looper.loop(Looper.java:317)
+03-01 09:55:39.262  4574  4574 F xyz.ws3917.game: runtime.cc:708]   at android.app.ActivityThread.main(ActivityThread.java:8705)
+03-01 09:55:39.262  4574  4574 F xyz.ws3917.game: runtime.cc:708]   at java.lang.reflect.Method.invoke(Native method)
+03-01 09:55:39.262  4574  4574 F xyz.ws3917.game: runtime.cc:708]   at com.android.internal.os.RuntimeInit$MethodAndArgsCaller.run(RuntimeInit.java:580)
+03-01 09:55:39.262  4574  4574 F xyz.ws3917.game: runtime.cc:708]   at com.android.internal.os.ZygoteInit.main(ZygoteInit.java:886)
+03-01 09:55:39.262  4574  4574 F xyz.ws3917.game: runtime.cc:708] Pending exception java.lang.NoSuchMethodError: no static or non-static method "Lorg/libsdl/app/SDLActivity;.onNativeScreenKeyboardShown()V"
+03-01 09:55:39.262  4574  4574 F xyz.ws3917.game: runtime.cc:708]   at java.lang.String java.lang.Runtime.nativeLoad(java.lang.String, java.lang.ClassLoader, java.lang.Class) (Runtime.java:-2)
+03-01 09:55:39.262  4574  4574 F xyz.ws3917.game: runtime.cc:708]   at void java.lang.Runtime.loadLibrary0(java.lang.ClassLoader, java.lang.Class, java.lang.String) (Runtime.java:1079)
+03-01 09:55:39.262  4574  4574 F xyz.ws3917.game: runtime.cc:708]   at void java.lang.Runtime.loadLibrary0(java.lang.Class, java.lang.String) (Runtime.java:1003)
+03-01 09:55:39.262  4574  4574 F xyz.ws3917.game: runtime.cc:708]   at void java.lang.System.loadLibrary(java.lang.String) (System.java:1765)
+03-01 09:55:39.262  4574  4574 F xyz.ws3917.game: runtime.cc:708]   at void org.libsdl.app.SDLActivity.d() (r8-map-id-a499034a36775866eb2a0cdb58fd65c1af9e651909f8e1db563107e1a9e2ad14:90)
+03-01 09:55:39.262  4574  4574 F xyz.ws3917.game: runtime.cc:708]   at void org.libsdl.app.SDLActivity.onCreate(android.os.Bundle) (r8-map-id-a499034a36775866eb2a0cdb58fd65c1af9e651909f8e1db563107e1a9e2ad14:15)
+03-01 09:55:39.262  4574  4574 F xyz.ws3917.game: runtime.cc:708]   at void android.app.Activity.performCreate(android.os.Bundle, android.os.PersistableBundle) (Activity.java:9002)
+03-01 09:55:39.262  4574  4574 F xyz.ws3917.game: runtime.cc:708]   at void android.app.Activity.performCreate(android.os.Bundle) (Activity.java:8980)
+03-01 09:55:39.262  4574  4574 F xyz.ws3917.game: runtime.cc:708]   at void android.app.Instrumentation.callActivityOnCreate(android.app.Activity, android.os.Bundle) (Instrumentation.java:1526)
+03-01 09:55:39.262  4574  4574 F xyz.ws3917.game: runtime.cc:708]   at android.app.Activity android.app.ActivityThread.performLaunchActivity(android.app.ActivityThread$ActivityClientRecord, android.content.Intent) (ActivityThread.java:4030)
+03-01 09:55:39.262  4574  4574 F xyz.ws3917.game: runtime.cc:708]   at android.app.Activity android.app.ActivityThread.handleLaunchActivity(android.app.ActivityThread$ActivityClientRecord, android.app.servertransaction.PendingTransactionActions, int, android.content.Intent) (ActivityThread.java:4235)
+03-01 09:55:39.262  4574  4574 F xyz.ws3917.game: runtime.cc:708]   at void android.app.servertransaction.LaunchActivityItem.execute(android.app.ClientTransactionHandler, android.app.servertransaction.PendingTransactionActions) (LaunchActivityItem.java:112)
+03-01 09:55:39.262  4574  4574 F xyz.ws3917.game: runtime.cc:708]   at void android.app.servertransaction.TransactionExecutor.executeNonLifecycleItem(android.app.servertransaction.ClientTransaction, android.app.servertransaction.ClientTransactionItem, boolean) (TransactionExecutor.java:174)
+03-01 09:55:39.262  4574  4574 F xyz.ws3917.game: runtime.cc:708]   at void android.app.servertransaction.TransactionExecutor.executeTransactionItems(android.app.servertransaction.ClientTransaction) (TransactionExecutor.java:109)
+03-01 09:55:39.262  4574  4574 F xyz.ws3917.game: runtime.cc:708]   at void android.app.servertransaction.TransactionExecutor.execute(android.app.servertransaction.ClientTransaction) (TransactionExecutor.java:81)
+03-01 09:55:39.262  4574  4574 F xyz.ws3917.game: runtime.cc:708]   at void android.app.ActivityThread$H.handleMessage(android.os.Message) (ActivityThread.java:2636)
+03-01 09:55:39.262  4574  4574 F xyz.ws3917.game: runtime.cc:708]   at void android.os.Handler.dispatchMessage(android.os.Message) (Handler.java:107)
+03-01 09:55:39.262  4574  4574 F xyz.ws3917.game: runtime.cc:708]   at boolean android.os.Looper.loopOnce(android.os.Looper, long, int) (Looper.java:232)
+03-01 09:55:39.262  4574  4574 F xyz.ws3917.game: runtime.cc:708]   at void android.os.Looper.loop() (Looper.java:317)
+03-01 09:55:39.262  4574  4574 F xyz.ws3917.game: runtime.cc:708]   at void android.app.ActivityThread.main(java.lang.String[]) (ActivityThread.java:8705)
+03-01 09:55:39.262  4574  4574 F xyz.ws3917.game: runtime.cc:708]   at java.lang.Object java.lang.reflect.Method.invoke(java.lang.Object, java.lang.Object[]) (Method.java:-2)
+03-01 09:55:39.262  4574  4574 F xyz.ws3917.game: runtime.cc:708]   at void com.android.internal.os.RuntimeInit$MethodAndArgsCaller.run() (RuntimeInit.java:580)
+03-01 09:55:39.262  4574  4574 F xyz.ws3917.game: runtime.cc:708]   at void com.android.internal.os.ZygoteInit.main(java.lang.String[]) (ZygoteInit.java:886)
+03-01 09:55:39.262  4574  4574 F xyz.ws3917.game: runtime.cc:708] 
+03-01 09:55:39.262  4574  4574 F xyz.ws3917.game: runtime.cc:716] No pending exception expected: java.lang.NoSuchMethodError: no static or non-static method "Lorg/libsdl/app/SDLActivity;.onNativeScreenKeyboardShown()V"
+03-01 09:55:39.262  4574  4574 F xyz.ws3917.game: runtime.cc:716]   at java.lang.String java.lang.Runtime.nativeLoad(java.lang.String, java.lang.ClassLoader, java.lang.Class) (Runtime.java:-2)
+03-01 09:55:39.262  4574  4574 F xyz.ws3917.game: runtime.cc:716]   at void java.lang.Runtime.loadLibrary0(java.lang.ClassLoader, java.lang.Class, java.lang.String) (Runtime.java:1079)
+03-01 09:55:39.262  4574  4574 F xyz.ws3917.game: runtime.cc:716]   at void java.lang.Runtime.loadLibrary0(java.lang.Class, java.lang.String) (Runtime.java:1003)
+03-01 09:55:39.262  4574  4574 F xyz.ws3917.game: runtime.cc:716]   at void java.lang.System.loadLibrary(java.lang.String) (System.java:1765)
+03-01 09:55:39.262  4574  4574 F xyz.ws3917.game: runtime.cc:716]   at void org.libsdl.app.SDLActivity.d() (r8-map-id-a499034a36775866eb2a0cdb58fd65c1af9e651909f8e1db563107e1a9e2ad14:90)
+03-01 09:55:39.262  4574  4574 F xyz.ws3917.game: runtime.cc:716]   at void org.libsdl.app.SDLActivity.onCreate(android.os.Bundle) (r8-map-id-a499034a36775866eb2a0cdb58fd65c1af9e651909f8e1db563107e1a9e2ad14:15)
+03-01 09:55:39.262  4574  4574 F xyz.ws3917.game: runtime.cc:716]   at void android.app.Activity.performCreate(android.os.Bundle, android.os.PersistableBundle) (Activity.java:9002)
+03-01 09:55:39.262  4574  4574 F xyz.ws3917.game: runtime.cc:716]   at void android.app.Activity.performCreate(android.os.Bundle) (Activity.java:8980)
+03-01 09:55:39.262  4574  4574 F xyz.ws3917.game: runtime.cc:716]   at void android.app.Instrumentation.callActivityOnCreate(android.app.Activity, android.os.Bundle) (Instrumentation.java:1526)
+03-01 09:55:39.262  4574  4574 F xyz.ws3917.game: runtime.cc:716]   at android.app.Activity android.app.ActivityThread.performLaunchActivity(android.app.ActivityThread$ActivityClientRecord, android.content.Intent) (ActivityThread.java:4030)
+03-01 09:55:39.262  4574  4574 F xyz.ws3917.game: runtime.cc:716]   at android.app.Activity android.app.ActivityThread.handleLaunchActivity(android.app.ActivityThread$ActivityClientRecord, android.app.servertransaction.PendingTransactionActions, int, android.content.Intent) (ActivityThread.java:4235)
+03-01 09:55:39.262  4574  4574 F xyz.ws3917.game: runtime.cc:716]   at void android.app.servertransaction.LaunchActivityItem.execute(android.app.ClientTransactionHandler, android.app.servertransaction.PendingTransactionActions) (LaunchActivityItem.java:112)
+03-01 09:55:39.262  4574  4574 F xyz.ws3917.game: runtime.cc:716]   at void android.app.servertransaction.TransactionExecutor.executeNonLifecycleItem(android.app.servertransaction.ClientTransaction, android.app.servertransaction.ClientTransactionItem, boolean) (TransactionExecutor.java:174)
+03-01 09:55:39.262  4574  4574 F xyz.ws3917.game: runtime.cc:716]   at void android.app.servertransaction.TransactionExecutor.executeTransactionItems(android.app.servertransaction.ClientTransaction) (TransactionExecutor.java:109)
+03-01 09:55:39.262  4574  4574 F xyz.ws3917.game: runtime.cc:716]   at void android.app.servertransaction.TransactionExecutor.execute(android.app.servertransaction.ClientTransaction) (TransactionExecutor.java:81)
+03-01 09:55:39.262  4574  4574 F xyz.ws3917.game: runtime.cc:716]   at void android.app.ActivityThread$H.handleMessage(android.os.Message) (ActivityThread.java:2636)
+03-01 09:55:39.262  4574  4574 F xyz.ws3917.game: runtime.cc:716]   at void android.os.Handler.dispatchMessage(android.os.Message) (Handler.java:107)
+03-01 09:55:39.262  4574  4574 F xyz.ws3917.game: runtime.cc:716]   at boolean android.os.Looper.loopOnce(android.os.Looper, long, int) (Looper.java:232)
+03-01 09:55:39.262  4574  4574 F xyz.ws3917.game: runtime.cc:716]   at void android.os.Looper.loop() (Looper.java:317)
+03-01 09:55:39.262  4574  4574 F xyz.ws3917.game: runtime.cc:716]   at void android.app.ActivityThread.main(java.lang.String[]) (ActivityThread.java:8705)
+03-01 09:55:39.262  4574  4574 F xyz.ws3917.game: runtime.cc:716]   at java.lang.Object java.lang.reflect.Method.invoke(java.lang.Object, java.lang.Object[]) (Method.java:-2)
+03-01 09:55:39.262  4574  4574 F xyz.ws3917.game: runtime.cc:716]   at void com.android.internal.os.RuntimeInit$MethodAndArgsCaller.run() (RuntimeInit.java:580)
+03-01 09:55:39.262  4574  4574 F xyz.ws3917.game: runtime.cc:716]   at void com.android.internal.os.ZygoteInit.main(java.lang.String[]) (ZygoteInit.java:886)
+03-01 09:55:39.262  4574  4574 F xyz.ws3917.game: runtime.cc:716] 
 --------- beginning of crash
-03-01 09:39:24.973  4253  4253 E AndroidRuntime: FATAL EXCEPTION: main
-03-01 09:39:24.973  4253  4253 E AndroidRuntime: Process: xyz.ws3917.game, PID: 4253
-03-01 09:39:24.973  4253  4253 E AndroidRuntime: java.lang.RuntimeException: Unable to instantiate activity ComponentInfo{xyz.ws3917.game/xyz.ws3917.game.SDLActivity}: java.lang.ClassNotFoundException: Didn't find class "xyz.ws3917.game.SDLActivity" on path: DexPathList[[zip file "/data/app/~~mP09Oz2gXn0QVywIApCcqg==/xyz.ws3917.game-r3eUG0-XQE_-UtC4EgSBJg==/base.apk"],nativeLibraryDirectories=[/data/app/~~mP09Oz2gXn0QVywIApCcqg==/xyz.ws3917.game-r3eUG0-XQE_-UtC4EgSBJg==/lib/x86_64, /data/app/~~mP09Oz2gXn0QVywIApCcqg==/xyz.ws3917.game-r3eUG0-XQE_-UtC4EgSBJg==/base.apk!/lib/x86_64, /system/lib64, /system_ext/lib64]]
-03-01 09:39:24.973  4253  4253 E AndroidRuntime: 	at android.app.ActivityThread.performLaunchActivity(ActivityThread.java:3954)
-03-01 09:39:24.973  4253  4253 E AndroidRuntime: 	at android.app.ActivityThread.handleLaunchActivity(ActivityThread.java:4235)
-03-01 09:39:24.973  4253  4253 E AndroidRuntime: 	at android.app.servertransaction.LaunchActivityItem.execute(LaunchActivityItem.java:112)
-03-01 09:39:24.973  4253  4253 E AndroidRuntime: 	at android.app.servertransaction.TransactionExecutor.executeNonLifecycleItem(TransactionExecutor.java:174)
-03-01 09:39:24.973  4253  4253 E AndroidRuntime: 	at android.app.servertransaction.TransactionExecutor.executeTransactionItems(TransactionExecutor.java:109)
-03-01 09:39:24.973  4253  4253 E AndroidRuntime: 	at android.app.servertransaction.TransactionExecutor.execute(TransactionExecutor.java:81)
-03-01 09:39:24.973  4253  4253 E AndroidRuntime: 	at android.app.ActivityThread$H.handleMessage(ActivityThread.java:2636)
-03-01 09:39:24.973  4253  4253 E AndroidRuntime: 	at android.os.Handler.dispatchMessage(Handler.java:107)
-03-01 09:39:24.973  4253  4253 E AndroidRuntime: 	at android.os.Looper.loopOnce(Looper.java:232)
-03-01 09:39:24.973  4253  4253 E AndroidRuntime: 	at android.os.Looper.loop(Looper.java:317)
-03-01 09:39:24.973  4253  4253 E AndroidRuntime: 	at android.app.ActivityThread.main(ActivityThread.java:8705)
-03-01 09:39:24.973  4253  4253 E AndroidRuntime: 	at java.lang.reflect.Method.invoke(Native Method)
-03-01 09:39:24.973  4253  4253 E AndroidRuntime: 	at com.android.internal.os.RuntimeInit$MethodAndArgsCaller.run(RuntimeInit.java:580)
-03-01 09:39:24.973  4253  4253 E AndroidRuntime: 	at com.android.internal.os.ZygoteInit.main(ZygoteInit.java:886)
-03-01 09:39:24.973  4253  4253 E AndroidRuntime: Caused by: java.lang.ClassNotFoundException: Didn't find class "xyz.ws3917.game.SDLActivity" on path: DexPathList[[zip file "/data/app/~~mP09Oz2gXn0QVywIApCcqg==/xyz.ws3917.game-r3eUG0-XQE_-UtC4EgSBJg==/base.apk"],nativeLibraryDirectories=[/data/app/~~mP09Oz2gXn0QVywIApCcqg==/xyz.ws3917.game-r3eUG0-XQE_-UtC4EgSBJg==/lib/x86_64, /data/app/~~mP09Oz2gXn0QVywIApCcqg==/xyz.ws3917.game-r3eUG0-XQE_-UtC4EgSBJg==/base.apk!/lib/x86_64, /system/lib64, /system_ext/lib64]]
-03-01 09:39:24.973  4253  4253 E AndroidRuntime: 	at dalvik.system.BaseDexClassLoader.findClass(BaseDexClassLoader.java:259)
-03-01 09:39:24.973  4253  4253 E AndroidRuntime: 	at java.lang.ClassLoader.loadClass(ClassLoader.java:637)
-03-01 09:39:24.973  4253  4253 E AndroidRuntime: 	at java.lang.ClassLoader.loadClass(ClassLoader.java:573)
-03-01 09:39:24.973  4253  4253 E AndroidRuntime: 	at android.app.AppComponentFactory.instantiateActivity(AppComponentFactory.java:95)
-03-01 09:39:24.973  4253  4253 E AndroidRuntime: 	at android.app.Instrumentation.newActivity(Instrumentation.java:1448)
-03-01 09:39:24.973  4253  4253 E AndroidRuntime: 	at android.app.ActivityThread.performLaunchActivity(ActivityThread.java:3941)
-03-01 09:39:24.973  4253  4253 E AndroidRuntime: 	... 13 more
+03-01 09:55:39.263  4574  4574 F libc    : Fatal signal 6 (SIGABRT), code -1 (SI_QUEUE) in tid 4574 (SDLActivity), pid 4574 (SDLActivity)
+03-01 09:55:39.279  4592  4592 E crash_dump64: failed to get the guest state header for thread 4574: Bad address
+03-01 09:55:39.280  4592  4592 E crash_dump64: failed to get the guest state header for thread 4575: Bad address
+03-01 09:55:39.281  4592  4592 E crash_dump64: failed to get the guest state header for thread 4576: Bad address
+03-01 09:55:39.281  4592  4592 E crash_dump64: failed to get the guest state header for thread 4577: Bad address
+03-01 09:55:39.282  4592  4592 E crash_dump64: failed to get the guest state header for thread 4579: Bad address
+03-01 09:55:39.283  4592  4592 E crash_dump64: failed to get the guest state header for thread 4580: Bad address
+03-01 09:55:39.283  4592  4592 E crash_dump64: failed to get the guest state header for thread 4581: Bad address
+03-01 09:55:39.284  4592  4592 E crash_dump64: failed to get the guest state header for thread 4582: Bad address
+03-01 09:55:39.284  4592  4592 E crash_dump64: failed to get the guest state header for thread 4583: Bad address
+03-01 09:55:39.286  4592  4592 E crash_dump64: failed to get the guest state header for thread 4584: Bad address
+03-01 09:55:39.287  4592  4592 E crash_dump64: failed to get the guest state header for thread 4586: Bad address
+03-01 09:55:39.288  4592  4592 E crash_dump64: failed to get the guest state header for thread 4587: Bad address
+03-01 09:55:39.440  4592  4592 F DEBUG   : *** *** *** *** *** *** *** *** *** *** *** *** *** *** *** ***
+03-01 09:55:39.440  4592  4592 F DEBUG   : Build fingerprint: 'Android/sdk_phone64_x86_64/emu64x:15/AE3A.240806.019/12368160:userdebug/test-keys'
+03-01 09:55:39.440  4592  4592 F DEBUG   : Revision: '0'
+03-01 09:55:39.440  4592  4592 F DEBUG   : ABI: 'x86_64'
+03-01 09:55:39.440  4592  4592 F DEBUG   : Timestamp: 2026-03-01 09:55:39.305611800+0000
+03-01 09:55:39.440  4592  4592 F DEBUG   : Process uptime: 1s
+03-01 09:55:39.440  4592  4592 F DEBUG   : Cmdline: xyz.ws3917.game
+03-01 09:55:39.441  4592  4592 F DEBUG   : pid: 4574, tid: 4574, name: SDLActivity  >>> xyz.ws3917.game <<<
+03-01 09:55:39.441  4592  4592 F DEBUG   : uid: 10151
+03-01 09:55:39.442  4592  4592 F DEBUG   : signal 6 (SIGABRT), code -1 (SI_QUEUE), fault addr --------
+03-01 09:55:39.442  4592  4592 F DEBUG   : Abort message: 'No pending exception expected: java.lang.NoSuchMethodError: no static or non-static method "Lorg/libsdl/app/SDLActivity;.onNativeScreenKeyboardShown()V"
+03-01 09:55:39.442  4592  4592 F DEBUG   :   at java.lang.String java.lang.Runtime.nativeLoad(java.lang.String, java.lang.ClassLoader, java.lang.Class) (Runtime.java:-2)
+03-01 09:55:39.442  4592  4592 F DEBUG   :   at void java.lang.Runtime.loadLibrary0(java.lang.ClassLoader, java.lang.Class, java.lang.String) (Runtime.java:1079)
+03-01 09:55:39.442  4592  4592 F DEBUG   :   at void java.lang.Runtime.loadLibrary0(java.lang.Class, java.lang.String) (Runtime.java:1003)
+03-01 09:55:39.442  4592  4592 F DEBUG   :   at void java.lang.System.loadLibrary(java.lang.String) (System.java:1765)
+03-01 09:55:39.442  4592  4592 F DEBUG   :   at void org.libsdl.app.SDLActivity.d() (r8-map-id-a499034a36775866eb2a0cdb58fd65c1af9e651909f8e1db563107e1a9e2ad14:90)
+03-01 09:55:39.442  4592  4592 F DEBUG   :   at void org.libsdl.app.SDLActivity.onCreate(android.os.Bundle) (r8-map-id-a499034a36775866eb2a0cdb58fd65c1af9e651909f8e1db563107e1a9e2ad14:15)
+03-01 09:55:39.442  4592  4592 F DEBUG   :   at void android.app.Activity.performCreate(android.os.Bundle, android.os.PersistableBundle) (Activity.java:9002)
+03-01 09:55:39.442  4592  4592 F DEBUG   :   at void android.app.Activity.performCreate(android.os.Bundle) (Activity.java:8980)
+03-01 09:55:39.442  4592  4592 F DEBUG   :   at void android.app.Instrumentation.callActivityOnCreate(android.app.Activity, android.os.Bundle) (Instrumentation.java:1526)
+03-01 09:55:39.442  4592  4592 F DEBUG   :   at android.app.Activity android.app.ActivityThread.performLaunchActivity(android.app.ActivityThread$ActivityClientRecord, android.content.Intent) (ActivityThread.java:4030)
+03-01 09:55:39.442  4592  4592 F DEBUG   :   at android.app.Activity android.app.ActivityThread.handleLaunchActivity(android.app.ActivityThread$ActivityClientRecord, android.app.servertransaction.PendingTransactionActions, int, android.content.Intent) (ActivityThread.java:4235)
+03-01 09:55:39.442  4592  4592 F DEBUG   :   at void android.app.servertransaction.LaunchActivityItem.execute(android.app.ClientTransactionHandler, android.app.servertransaction.PendingTransactionActions) (LaunchActivityItem.java:112)
+03-01 09:55:39.442  4592  4592 F DEBUG   :   at void android.app.servertransaction.TransactionExecutor.executeNonLifecycleItem(android.app.servertransaction.ClientTransaction, android.app.servertransaction.ClientTransactionItem, boolean) (TransactionExecutor.java:174)
+03-01 09:55:39.442  4592  4592 F DEBUG   :   at void android.app.servertransaction.TransactionExecutor.executeTransactionItems(android.app.servertransaction.ClientTransaction) (TransactionExecutor.java:109)
+03-01 09:55:39.442  4592  4592 F DEBUG   :   at void android.app.servertransaction.TransactionExecutor.execute(android.app.servertransaction.ClientTransaction) (TransactionExecutor.java:81)
+03-01 09:55:39.442  4592  4592 F DEBUG   :   at void android.app.ActivityThread$H.handleMessage(android.os.Message) (ActivityThread.java:2636)
+03-01 09:55:39.442  4592  4592 F DEBUG   :   at void android.os.Handler.dispatchMessage(android.os.Message) (Handler.java:107)
+03-01 09:55:39.442  4592  4592 F DEBUG   :   at boolean android.os.Looper.loopOnce(android.os.Looper, long, int) (Looper.java:232)
+03-01 09:55:39.442  4592  4592 F DEBUG   :   at void android.os.Looper.loop() (Looper.java:317)
+03-01 09:55:39.442  4592  4592 F DEBUG   :   at void android.app.ActivityThread.main(java.lang.String[]) (ActivityThread.java:8705)
+03-01 09:55:39.442  4592  4592 F DEBUG   :   at java.lang.Object java.lang.reflect.Method.invoke(java.lang.Object, java.lang.Object[]) (Method.java:-2)
+03-01 09:55:39.442  4592  4592 F DEBUG   :   at void com.android.internal.os.RuntimeInit$MethodAndArgsCaller.run() (RuntimeInit.java:580)
+03-01 09:55:39.442  4592  4592 F DEBUG   :   at void com.android.internal.os.ZygoteInit.main(java.lang.String[]) (ZygoteInit.java:886)'
+03-01 09:55:39.442  4592  4592 F DEBUG   :     rax 0000000000000000  rbx 00007ffd7e997558  rcx 0000799afef42b90  rdx 0000000000000006
+03-01 09:55:39.442  4592  4592 F DEBUG   :     r8  000079993c041b20  r9  000079993c041b20  r10 00007ffd7e997560  r11 0000000000000207
+03-01 09:55:39.442  4592  4592 F DEBUG   :     r12 00007999bc02b690  r13 000079984907e861  r14 00000000000011de  r15 00000000000011de
+03-01 09:55:39.442  4592  4592 F DEBUG   :     rdi 00000000000011de  rsi 00000000000011de
+03-01 09:55:39.442  4592  4592 F DEBUG   :     rbp 0000000000000002  rsp 00007ffd7e997550  rip 0000799afef42b90
+03-01 09:55:39.443  4592  4592 F DEBUG   : 49 total frames
+03-01 09:55:39.443  4592  4592 F DEBUG   : backtrace:
+03-01 09:55:39.443  4592  4592 F DEBUG   :       #00 pc 000000000005cb90  /apex/com.android.runtime/lib64/bionic/libc.so (abort+192) (BuildId: eb58b4d427279994f00c0e1818477e4f)
+03-01 09:55:39.443  4592  4592 F DEBUG   :       #01 pc 000000000087ea41  /apex/com.android.art/lib64/libart.so (art::Runtime::Abort(char const*)+1537) (BuildId: 86541675bab12d77c4cd601b77f3f707)
+03-01 09:55:39.443  4592  4592 F DEBUG   :       #02 pc 0000000000015eea  /apex/com.android.art/lib64/libbase.so (android::base::SetAborter(std::__1::function<void (char const*)>&&)::$_0::__invoke(char const*)+58) (BuildId: 2d7df6e607a8928501c5363a393a3a89)
+03-01 09:55:39.443  4592  4592 F DEBUG   :       #03 pc 000000000001540c  /apex/com.android.art/lib64/libbase.so (android::base::LogMessage::~LogMessage()+492) (BuildId: 2d7df6e607a8928501c5363a393a3a89)
+03-01 09:55:39.443  4592  4592 F DEBUG   :       #04 pc 00000000008d36fc  /apex/com.android.art/lib64/libart.so (art::Thread::AssertNoPendingException() const+1468) (BuildId: 86541675bab12d77c4cd601b77f3f707)
+03-01 09:55:39.443  4592  4592 F DEBUG   :       #05 pc 000000000049c6f5  /apex/com.android.art/lib64/libart.so (art::ClassLinker::FindClass(art::Thread*, char const*, art::Handle<art::mirror::ClassLoader>)+53) (BuildId: 86541675bab12d77c4cd601b77f3f707)
+03-01 09:55:39.444  4592  4592 F DEBUG   :       #06 pc 000000000068bc23  /apex/com.android.art/lib64/libart.so (art::JNI<false>::FindClass(_JNIEnv*, char const*)+1459) (BuildId: 86541675bab12d77c4cd601b77f3f707)
+03-01 09:55:39.444  4592  4592 F DEBUG   :       #07 pc 00000000001b56d4  /data/app/~~ATVbYT8VUuOBlRXGWiPwzA==/xyz.ws3917.game-nMdVyQHram48YgpwXBz-8w==/base.apk!libSDL3.so (offset 0x350000) (JNI_OnLoad+196) (BuildId: f2ff887bf543e243cda223f0c209c96e3a56f4bd)
+03-01 09:55:39.444  4592  4592 F DEBUG   :       #08 pc 0000000000680a3c  /apex/com.android.art/lib64/libart.so (art::JavaVMExt::LoadNativeLibrary(_JNIEnv*, std::__1::basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char>> const&, _jobject*, _jclass*, std::__1::basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char>>*)+3516) (BuildId: 86541675bab12d77c4cd601b77f3f707)
+03-01 09:55:39.444  4592  4592 F DEBUG   :       #09 pc 00000000000050f3  /apex/com.android.art/lib64/libopenjdkjvm.so (JVM_NativeLoad+355) (BuildId: 1d3d7da26cf5268558c64a66611de01d)
+03-01 09:55:39.444  4592  4592 F DEBUG   :       #10 pc 00000000000a0835  /system/framework/x86_64/boot.oat (art_jni_trampoline+181) (BuildId: 68b5d9df423be4ebd4a6c38087fc90e635afb135)
+03-01 09:55:39.445  4592  4592 F DEBUG   :       #11 pc 00000000000b057c  /system/framework/x86_64/boot.oat (java.lang.Runtime.loadLibrary0+348) (BuildId: 68b5d9df423be4ebd4a6c38087fc90e635afb135)
+03-01 09:55:39.445  4592  4592 F DEBUG   :       #12 pc 00000000000b1339  /system/framework/x86_64/boot.oat (java.lang.Runtime.loadLibrary0+425) (BuildId: 68b5d9df423be4ebd4a6c38087fc90e635afb135)
+03-01 09:55:39.445  4592  4592 F DEBUG   :       #13 pc 00000000000b46e5  /system/framework/x86_64/boot.oat (java.lang.System.loadLibrary+85) (BuildId: 68b5d9df423be4ebd4a6c38087fc90e635afb135)
+03-01 09:55:39.445  4592  4592 F DEBUG   :       #14 pc 0000000000208a15  /apex/com.android.art/lib64/libart.so (nterp_helper+165) (BuildId: 86541675bab12d77c4cd601b77f3f707)
+03-01 09:55:39.445  4592  4592 F DEBUG   :       #15 pc 00000000000048e6  /data/app/~~ATVbYT8VUuOBlRXGWiPwzA==/xyz.ws3917.game-nMdVyQHram48YgpwXBz-8w==/oat/x86_64/base.vdex (org.libsdl.app.SDLActivity.d+178)
+03-01 09:55:39.445  4592  4592 F DEBUG   :       #16 pc 0000000000209808  /apex/com.android.art/lib64/libart.so (nterp_helper+3736) (BuildId: 86541675bab12d77c4cd601b77f3f707)
+03-01 09:55:39.446  4592  4592 F DEBUG   :       #17 pc 0000000000004b16  /data/app/~~ATVbYT8VUuOBlRXGWiPwzA==/xyz.ws3917.game-nMdVyQHram48YgpwXBz-8w==/oat/x86_64/base.vdex (org.libsdl.app.SDLActivity.onCreate+290)
+03-01 09:55:39.446  4592  4592 F DEBUG   :       #18 pc 00000000004916ad  /system/framework/x86_64/boot-framework.oat (android.app.Activity.performCreate+925) (BuildId: bc047a67a4076b80992fbdfabdfba12acbd1924a)
+03-01 09:55:39.446  4592  4592 F DEBUG   :       #19 pc 0000000000241f6c  /system/framework/x86_64/boot-framework.oat (android.app.Instrumentation.callActivityOnCreate+76) (BuildId: bc047a67a4076b80992fbdfabdfba12acbd1924a)
+03-01 09:55:39.446  4592  4592 F DEBUG   :       #20 pc 000000000030b10a  /system/framework/x86_64/boot-framework.oat (android.app.ActivityThread.performLaunchActivity+3098) (BuildId: bc047a67a4076b80992fbdfabdfba12acbd1924a)
+03-01 09:55:39.446  4592  4592 F DEBUG   :       #21 pc 0000000000311d9b  /system/framework/x86_64/boot-framework.oat (android.app.ActivityThread.handleLaunchActivity+811) (BuildId: bc047a67a4076b80992fbdfabdfba12acbd1924a)
+03-01 09:55:39.446  4592  4592 F DEBUG   :       #22 pc 000000000020986d  /apex/com.android.art/lib64/libart.so (nterp_helper+3837) (BuildId: 86541675bab12d77c4cd601b77f3f707)
+03-01 09:55:39.446  4592  4592 F DEBUG   :       #23 pc 00000000002fcd62  /system/framework/framework.jar (android.app.servertransaction.LaunchActivityItem.execute+170)
+03-01 09:55:39.446  4592  4592 F DEBUG   :       #24 pc 0000000000209808  /apex/com.android.art/lib64/libart.so (nterp_helper+3736) (BuildId: 86541675bab12d77c4cd601b77f3f707)
+03-01 09:55:39.447  4592  4592 F DEBUG   :       #25 pc 00000000002ff8e6  /system/framework/framework.jar (android.app.servertransaction.TransactionExecutor.executeNonLifecycleItem+154)
+03-01 09:55:39.447  4592  4592 F DEBUG   :       #26 pc 0000000000209808  /apex/com.android.art/lib64/libart.so (nterp_helper+3736) (BuildId: 86541675bab12d77c4cd601b77f3f707)
+03-01 09:55:39.447  4592  4592 F DEBUG   :       #27 pc 00000000002ff972  /system/framework/framework.jar (android.app.servertransaction.TransactionExecutor.executeTransactionItems+70)
+03-01 09:55:39.447  4592  4592 F DEBUG   :       #28 pc 000000000026f413  /system/framework/x86_64/boot-framework.oat (android.app.servertransaction.TransactionExecutor.execute+179) (BuildId: bc047a67a4076b80992fbdfabdfba12acbd1924a)
+03-01 09:55:39.449  4592  4592 F DEBUG   :       #29 pc 00000000002faa53  /system/framework/x86_64/boot-framework.oat (android.app.ActivityThread$H.handleMessage+1459) (BuildId: bc047a67a4076b80992fbdfabdfba12acbd1924a)
+03-01 09:55:39.450  4592  4592 F DEBUG   :       #30 pc 000000000052bb9e  /system/framework/x86_64/boot-framework.oat (android.os.Handler.dispatchMessage+158) (BuildId: bc047a67a4076b80992fbdfabdfba12acbd1924a)
+03-01 09:55:39.450  4592  4592 F DEBUG   :       #31 pc 000000000052ed9e  /system/framework/x86_64/boot-framework.oat (android.os.Looper.loopOnce+942) (BuildId: bc047a67a4076b80992fbdfabdfba12acbd1924a)
+03-01 09:55:39.450  4592  4592 F DEBUG   :       #32 pc 000000000052e93b  /system/framework/x86_64/boot-framework.oat (android.os.Looper.loop+235) (BuildId: bc047a67a4076b80992fbdfabdfba12acbd1924a)
+03-01 09:55:39.450  4592  4592 F DEBUG   :       #33 pc 000000000030a33c  /system/framework/x86_64/boot-framework.oat (android.app.ActivityThread.main+1500) (BuildId: bc047a67a4076b80992fbdfabdfba12acbd1924a)
+03-01 09:55:39.450  4592  4592 F DEBUG   :       #34 pc 00000000002124b6  /apex/com.android.art/lib64/libart.so (art_quick_invoke_static_stub+806) (BuildId: 86541675bab12d77c4cd601b77f3f707)
+03-01 09:55:39.450  4592  4592 F DEBUG   :       #35 pc 0000000000474c24  /apex/com.android.art/lib64/libart.so (art::ArtMethod::Invoke(art::Thread*, unsigned int*, unsigned int, art::JValue*, char const*)+228) (BuildId: 86541675bab12d77c4cd601b77f3f707)
+03-01 09:55:39.450  4592  4592 F DEBUG   :       #36 pc 000000000087486a  /apex/com.android.art/lib64/libart.so (_jobject* art::InvokeMethod<(art::PointerSize)8>(art::ScopedObjectAccessAlreadyRunnable const&, _jobject*, _jobject*, _jobject*, unsigned long)+2218) (BuildId: 86541675bab12d77c4cd601b77f3f707)
+03-01 09:55:39.450  4592  4592 F DEBUG   :       #37 pc 00000000007d0337  /apex/com.android.art/lib64/libart.so (art::Method_invoke(_JNIEnv*, _jobject*, _jobject*, _jobjectArray*) (.__uniq.165753521025965369065708152063621506277)+39) (BuildId: 86541675bab12d77c4cd601b77f3f707)
+03-01 09:55:39.450  4592  4592 F DEBUG   :       #38 pc 00000000000a672f  /system/framework/x86_64/boot.oat (art_jni_trampoline+127) (BuildId: 68b5d9df423be4ebd4a6c38087fc90e635afb135)
+03-01 09:55:39.451  4592  4592 F DEBUG   :       #39 pc 0000000000810405  /system/framework/x86_64/boot-framework.oat (com.android.internal.os.RuntimeInit$MethodAndArgsCaller.run+117) (BuildId: bc047a67a4076b80992fbdfabdfba12acbd1924a)
+03-01 09:55:39.451  4592  4592 F DEBUG   :       #40 pc 00000000008196f0  /system/framework/x86_64/boot-framework.oat (com.android.internal.os.ZygoteInit.main+2704) (BuildId: bc047a67a4076b80992fbdfabdfba12acbd1924a)
+03-01 09:55:39.451  4592  4592 F DEBUG   :       #41 pc 00000000002124b6  /apex/com.android.art/lib64/libart.so (art_quick_invoke_static_stub+806) (BuildId: 86541675bab12d77c4cd601b77f3f707)
+03-01 09:55:39.451  4592  4592 F DEBUG   :       #42 pc 0000000000474c24  /apex/com.android.art/lib64/libart.so (art::ArtMethod::Invoke(art::Thread*, unsigned int*, unsigned int, art::JValue*, char const*)+228) (BuildId: 86541675bab12d77c4cd601b77f3f707)
+03-01 09:55:39.451  4592  4592 F DEBUG   :       #43 pc 00000000008753a6  /apex/com.android.art/lib64/libart.so (art::JValue art::InvokeWithVarArgs<_jmethodID*>(art::ScopedObjectAccessAlreadyRunnable const&, _jobject*, _jmethodID*, __va_list_tag*)+518) (BuildId: 86541675bab12d77c4cd601b77f3f707)
+03-01 09:55:39.451  4592  4592 F DEBUG   :       #44 pc 000000000072711a  /apex/com.android.art/lib64/libart.so (art::JNI<true>::CallStaticVoidMethodV(_JNIEnv*, _jclass*, _jmethodID*, __va_list_tag*)+586) (BuildId: 86541675bab12d77c4cd601b77f3f707)
+03-01 09:55:39.452  4592  4592 F DEBUG   :       #45 pc 00000000000dcf68  /system/lib64/libandroid_runtime.so (_JNIEnv::CallStaticVoidMethod(_jclass*, _jmethodID*, ...)+136) (BuildId: 74e467b22a4c3107eac51948743c9977)
+03-01 09:55:39.452  4592  4592 F DEBUG   :       #46 pc 00000000000f2fb0  /system/lib64/libandroid_runtime.so (android::AndroidRuntime::start(char const*, android::Vector<android::String8> const&, bool)+928) (BuildId: 74e467b22a4c3107eac51948743c9977)
+03-01 09:55:39.452  4592  4592 F DEBUG   :       #47 pc 0000000000004706  /system/bin/app_process64 (main+1638) (BuildId: 2919fb70658f9ff2e805cbbbdd33a33b)
+03-01 09:55:39.452  4592  4592 F DEBUG   :       #48 pc 0000000000057c82  /apex/com.android.runtime/lib64/bionic/libc.so (__libc_init+114) (BuildId: eb58b4d427279994f00c0e1818477e4f)
+03-01 09:55:39.462   244   244 E tombstoned: Tombstone written to: tombstone_30
