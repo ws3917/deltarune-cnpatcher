@@ -43,13 +43,11 @@ target_include_directories(${PROJECT_NAME} PRIVATE
 target_link_libraries(${PROJECT_NAME} PRIVATE
     SDL3::SDL3
     nlohmann_json::nlohmann_json
-    PhysFS::PhysFS-static
+    PhysFS::PhysFS
 )
 
 if(ANDROID)
-    add_library(native_app_glue STATIC
-            ${ANDROID_NDK}/sources/android/native_app_glue/android_native_app_glue.c)
-    target_link_libraries(${PROJECT_NAME} PRIVATE native_app_glue android log)
+    target_link_libraries(${PROJECT_NAME} PRIVATE android log)
 endif()
 
 install(TARGETS ${PROJECT_NAME}
