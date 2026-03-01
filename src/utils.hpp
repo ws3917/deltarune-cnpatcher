@@ -4,7 +4,7 @@
 #include <string>
 
 namespace U {
-inline SDL_IOStream* IOFromFile(const std::string& filepath) {
+inline void* ReadFile(const std::string& filepath, size_t* file_size) {
   const std::string full_path = "assets/" + filepath;
   PHYSFS_File* file = PHYSFS_openRead(full_path.c_str());
   if (file == nullptr) {
@@ -24,6 +24,13 @@ inline SDL_IOStream* IOFromFile(const std::string& filepath) {
   char* buffer = (char*)SDL_malloc(size);
   PHYSFS_readBytes(file, buffer, size);
   PHYSFS_close(file);
-  return SDL_IOFromConstMem(buffer, size);
+  *file_size = size;
+  return buffer;
+}
+inline SDL_IOStream* IOFromFile(const std::string& filepath) {
+  size_t size;
+  void* data = ReadFile(filepath, &size);
+  if (data == nullptr) return nullptr;
+  return SDL_IOFromConstMem(data, size);
 }
 }  // namespace U

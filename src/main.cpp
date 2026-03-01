@@ -3,6 +3,8 @@
 #include <SDL3_mixer/SDL_mixer.h>
 #include <physfs.h>
 
+#include <nlohmann/json.hpp>
+
 #include "save.hpp"
 #include "utils.hpp"
 #include "values.hpp"
