@@ -1,3 +1,4 @@
+#pragma once
 // save metadata
 #include <SDL3/SDL.h>
 

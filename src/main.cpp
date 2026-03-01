@@ -13,22 +13,29 @@ int main(int, char** argv) {
   // 读取一张图片并显示
   if (!SDL_Init(SDL_INIT_VIDEO)) return 1;
   if (!MIX_Init()) return 1;
-  bool mount_success = false;
+  bool data_mount_success = false, save_mount_success = false;
 #ifdef SDL_PLATFORM_ANDROID
-  PHYSFS_init(reinterpret_cast<char*>(new PHYSFS_AndroidInit{
-      SDL_GetAndroidJNIEnv(), SDL_GetAndroidActivity()}));
+  if (!PHYSFS_init(reinterpret_cast<char*>(new PHYSFS_AndroidInit{
+          SDL_GetAndroidJNIEnv(), SDL_GetAndroidActivity()})))
+    return 1;
   mount_success = PHYSFS_mount(PHYSFS_getBaseDir(), "/", 0);
+  save_mount_success =
+      PHYSFS_mount(SDL_GetAndroidExternalStoragePath(), "/user", 1);
+  PHYSFS_setWriteDir(SDL_GetAndroidExternalStoragePath());
 #else
-  PHYSFS_init(argv[0]);
+  if (!PHYSFS_init(argv[0])) return 1;
   char data_path[1024];
   SDL_snprintf(data_path, sizeof(data_path), "%smain.pak", PHYSFS_getBaseDir());
-  mount_success = PHYSFS_mount(data_path, "/assets", 0);
+  data_mount_success = PHYSFS_mount(data_path, "/assets", 0);
+  save_mount_success = PHYSFS_mount(
+      SDL_GetPrefPath(V::GAME_AUTHOR, V::GAME_SHORTNAME), "/user", 1);
+  PHYSFS_setWriteDir(SDL_GetPrefPath(V::GAME_AUTHOR, V::GAME_SHORTNAME));
 #endif
-  if (!mount_success) {
-    SDL_LogError(SDL_LOG_CATEGORY_APPLICATION, "Can't mount game data! ");
+  if (!data_mount_success || !save_mount_success) {
     return 1;
   }
-  SDL_LogInfo(SDL_LOG_CATEGORY_APPLICATION, "Mounted game data");
+  auto j = U::LoadJson("text/zh_CN.json");
+  SDL_Log("hello, %s", j["myname"].get<std::string>().c_str());
   Save save;
   SDL_CreateWindowAndRenderer(
       "hello", static_cast<int>(V::WINDOW_SCALE * V::RENDER_WIDTH),
@@ -56,6 +63,5 @@ int main(int, char** argv) {
   PHYSFS_deinit();
   MIX_Quit();
   SDL_Quit();
-  SDL_LogInfo(SDL_LOG_CATEGORY_APPLICATION, "Game stopped successfully!");
   return 0;
 }
