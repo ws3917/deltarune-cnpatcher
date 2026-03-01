@@ -1,6 +1,7 @@
 #pragma once
 // save metadata
 #include <SDL3/SDL.h>
+#include <SDL3_mixer/SDL_mixer.h>
 
 #include <string>
 #include <unordered_map>
@@ -9,6 +10,7 @@ struct Save {
   struct {
     SDL_Window* window = nullptr;
     SDL_Renderer* renderer = nullptr;
+    MIX_Mixer* mixer = nullptr;
   } meta;
   std::unordered_map<std::string, bool> flag_bool = {
       {"fullscreen", false},

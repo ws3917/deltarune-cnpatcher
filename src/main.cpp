@@ -11,7 +11,7 @@
 
 int main(int, char** argv) {
   // 读取一张图片并显示
-  if (!SDL_Init(SDL_INIT_VIDEO)) return 1;
+  if (!SDL_Init(SDL_INIT_VIDEO | SDL_INIT_AUDIO)) return 1;
   if (!MIX_Init()) return 1;
   bool data_mount_success = false, save_mount_success = false;
 #ifdef SDL_PLATFORM_ANDROID
@@ -46,6 +46,11 @@ int main(int, char** argv) {
   SDL_SetRenderLogicalPresentation(save.meta.renderer, V::RENDER_WIDTH,
                                    V::RENDER_HEIGHT,
                                    SDL_LOGICAL_PRESENTATION_LETTERBOX);
+  save.meta.mixer =
+      MIX_CreateMixerDevice(SDL_AUDIO_DEVICE_DEFAULT_PLAYBACK, nullptr);
+  MIX_Audio* audio = MIX_LoadAudio_IO(
+      save.meta.mixer, U::IOFromFile("music/thousands_star.mp3"), true, true);
+  MIX_PlayAudio(save.meta.mixer, audio);
   SDL_Event event;
   SDL_Surface* img = SDL_LoadPNG_IO(U::IOFromFile("image/bg_static.png"), true);
   SDL_Texture* tex = SDL_CreateTextureFromSurface(save.meta.renderer, img);
@@ -60,6 +65,11 @@ int main(int, char** argv) {
     SDL_RenderTexture(save.meta.renderer, tex, nullptr, nullptr);
     SDL_RenderPresent(save.meta.renderer);
   }
+  SDL_DestroyTexture(tex);
+  MIX_DestroyAudio(audio);
+  MIX_DestroyMixer(save.meta.mixer);
+  SDL_DestroyRenderer(save.meta.renderer);
+  SDL_DestroyWindow(save.meta.window);
   PHYSFS_deinit();
   MIX_Quit();
   SDL_Quit();
