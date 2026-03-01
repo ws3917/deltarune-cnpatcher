@@ -48,15 +48,11 @@ android {
     sourceSets {
         getByName("main") {
             jniLibs.directories.add("libs")
-            assets.directories.add("../app/main.pak")
+            assets.directories.add("assets")
         }
     }
 }
 
 dependencies {
     implementation(fileTree("libs") { include("*.jar") })
-}
-
-tasks.register("clean", Delete::class) {
-    delete(rootProject.layout.buildDirectory)
 }

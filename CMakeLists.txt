@@ -48,13 +48,13 @@ target_link_libraries(${PROJECT_NAME} PRIVATE
 if(WIN32)
     target_link_libraries(${PROJECT_NAME} PRIVATE SFML::Main)
 elseif(ANDROID)
-    target_link_libraries(sfml-example PUBLIC
+    target_link_libraries(${PROJECT_NAME} PRIVATE android log)
+    target_link_libraries(${PROJECT_NAME} PUBLIC
         -Wl,--whole-archive
         SFML::Main
         -Wl,--no-whole-archive
     )
-    target_link_options(sfml-example PRIVATE android log
-        "-Wl,-z,max-page-size=16384")
+    target_link_options(${PROJECT_NAME} PRIVATE "-Wl,-z,max-page-size=16384")
 endif()
 
 install(TARGETS ${PROJECT_NAME}
@@ -66,7 +66,7 @@ install(TARGETS ${PROJECT_NAME}
 # -- 安装后配置 --
 add_custom_command(TARGET ${PROJECT_NAME} POST_BUILD
     COMMAND ${CMAKE_COMMAND} -E tar "c" "$<TARGET_FILE_DIR:${PROJECT_NAME}>/main.pak" --format=zip "."
-    COMMAND ${CMAKE_COMMAND} -E copy "$<TARGET_FILE_DIR:${PROJECT_NAME}>/main.pak" "${CMAKE_SOURCE_DIR}/app/main.pak"
+    COMMAND ${CMAKE_COMMAND} -E copy "$<TARGET_FILE_DIR:${PROJECT_NAME}>/main.pak" "${CMAKE_SOURCE_DIR}/android/assets/main.pak"
     WORKING_DIRECTORY ${CMAKE_SOURCE_DIR}/assets/
 )
 install(FILES $<TARGET_FILE_DIR:${PROJECT_NAME}>/main.pak DESTINATION .)

@@ -1,7 +1,7 @@
 if(ANDROID_ABI STREQUAL "arm64-v8a")
-    set(VCPKG_TARGET_TRIPLET "custom-arm64-android-dynamic" CACHE STRING "")
+    set(VCPKG_TARGET_TRIPLET "custom-arm64-android" CACHE STRING "")
 elseif(ANDROID_ABI STREQUAL "x86_64")
-    set(VCPKG_TARGET_TRIPLET "custom-x64-android-dynamic" CACHE STRING "")
+    set(VCPKG_TARGET_TRIPLET "custom-x64-android" CACHE STRING "")
 endif()
 
 set(VCPKG_CHAINLOAD_TOOLCHAIN_FILE "$ENV{ANDROID_NDK_HOME}/build/cmake/android.toolchain.cmake" CACHE FILEPATH "")
