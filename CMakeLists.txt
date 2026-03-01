@@ -18,12 +18,15 @@ find_package(SFML COMPONENTS Graphics Window Audio System CONFIG REQUIRED)
 # -- 项目构建 --
 file(GLOB_RECURSE SOURCES CONFIGURE_DEPENDS src/*.cpp)
 
+if(WIN32 OR ANDROID)
+    find_package(SFML COMPONENTS Main CONFIG REQUIRED)
+endif()
+
 if(WIN32)
     set(RC_FILES app/res.rc)
     add_executable(${PROJECT_NAME} ${SOURCES} ${RC_FILES})
 
     # Release 模式下隐藏控制台窗口
-    find_package(SFML COMPONENTS Main CONFIG REQUIRED)
     set_target_properties(${PROJECT_NAME} PROPERTIES
         WIN32_EXECUTABLE $<CONFIG:Release>
     )
@@ -44,6 +47,14 @@ target_link_libraries(${PROJECT_NAME} PRIVATE
 
 if(WIN32)
     target_link_libraries(${PROJECT_NAME} PRIVATE SFML::Main)
+elseif(ANDROID)
+    target_link_libraries(sfml-example PUBLIC
+        -Wl,--whole-archive
+        SFML::Main
+        -Wl,--no-whole-archive
+    )
+    target_link_options(sfml-example PRIVATE android log
+        "-Wl,-z,max-page-size=16384")
 endif()
 
 install(TARGETS ${PROJECT_NAME}
@@ -55,6 +66,7 @@ install(TARGETS ${PROJECT_NAME}
 # -- 安装后配置 --
 add_custom_command(TARGET ${PROJECT_NAME} POST_BUILD
     COMMAND ${CMAKE_COMMAND} -E tar "c" "$<TARGET_FILE_DIR:${PROJECT_NAME}>/main.pak" --format=zip "."
+    COMMAND ${CMAKE_COMMAND} -E copy "$<TARGET_FILE_DIR:${PROJECT_NAME}>/main.pak" "${CMAKE_SOURCE_DIR}/app/main.pak"
     WORKING_DIRECTORY ${CMAKE_SOURCE_DIR}/assets/
 )
 install(FILES $<TARGET_FILE_DIR:${PROJECT_NAME}>/main.pak DESTINATION .)
