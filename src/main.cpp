@@ -10,7 +10,7 @@
 int main(int, char** argv) {
   // 读取一张图片并显示
   if (!SDL_Init(SDL_INIT_VIDEO)) return 1;
-  if (MIX_Init()) return 1;
+  if (!MIX_Init()) return 1;
   bool mount_success = false;
 #ifdef SDL_PLATFORM_ANDROID
   PHYSFS_init(reinterpret_cast<char*>(new PHYSFS_AndroidInit{
