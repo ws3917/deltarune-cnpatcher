@@ -1,6 +1,7 @@
 build/
 /install/
 /android/.cxx
+/android/assets
 keystore.properties
 compile_commands.json
 /.clangd
