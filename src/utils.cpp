@@ -38,6 +38,7 @@ nlohmann::json U::LoadJson(const std::string& filepath) {
     SDL_CloseIO(io);
     return j;
   } catch (const nlohmann::json::parse_error& e) {
+    SDL_LogError(SDL_LOG_CATEGORY_APPLICATION, "%s", e.what());
     SDL_CloseIO(io);
     return nlohmann::json::object();
   }

@@ -18,7 +18,7 @@ int main(int, char** argv) {
   if (!PHYSFS_init(reinterpret_cast<char*>(new PHYSFS_AndroidInit{
           SDL_GetAndroidJNIEnv(), SDL_GetAndroidActivity()})))
     return 1;
-  mount_success = PHYSFS_mount(PHYSFS_getBaseDir(), "/", 0);
+  data_mount_success = PHYSFS_mount(PHYSFS_getBaseDir(), "/", 0);
   save_mount_success =
       PHYSFS_mount(SDL_GetAndroidExternalStoragePath(), "/user", 1);
   PHYSFS_setWriteDir(SDL_GetAndroidExternalStoragePath());
